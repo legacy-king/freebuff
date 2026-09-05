@@ -13,3 +13,5 @@ thiserror.workspace = true
 sqlx = { workspace = true, features = ["uuid", "chrono"] }
 axum.workspace = true
 jsonwebtoken.workspace = true
+anyhow.workspace = true
+dotenvy.workspace = true
