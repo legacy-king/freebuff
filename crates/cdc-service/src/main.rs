@@ -6,7 +6,10 @@ mod presence;
 mod broadcast;
 mod protocol;
 
-use axum::{routing::{get, post}, Router};
+use axum::{
+    routing::{delete, get, post},
+    Router,
+};
 use std::sync::Arc;
 use tokio::sync::RwLock;
 use tower_http::cors::{Any, CorsLayer};

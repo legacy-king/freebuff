@@ -40,7 +40,9 @@ pub async fn restore_point_in_time(
         return Err(AppError::NotFound(format!("Branch {} not found", branch_id)));
     }
 
-    let target = input.target_lsn
+    let target = input
+        .target_lsn
+        .clone()
         .or(input.target_time.clone())
         .ok_or_else(|| AppError::BadRequest("Either target_lsn or target_time must be provided".into()))?;
 

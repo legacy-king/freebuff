@@ -286,6 +286,26 @@ impl ChangeEvent {
                                     }
                                 }
                             }
+                            FilterCondition::GreaterThanOrEqual(expected) => {
+                                if let (Some(val_num), Some(exp_num)) = (
+                                    value.as_f64(),
+                                    expected.as_f64(),
+                                ) {
+                                    if val_num < exp_num {
+                                        return false;
+                                    }
+                                }
+                            }
+                            FilterCondition::LessThanOrEqual(expected) => {
+                                if let (Some(val_num), Some(exp_num)) = (
+                                    value.as_f64(),
+                                    expected.as_f64(),
+                                ) {
+                                    if val_num > exp_num {
+                                        return false;
+                                    }
+                                }
+                            }
                             FilterCondition::Contains(expected) => {
                                 if let Some(s) = value.as_str() {
                                     if !s.contains(expected) {

@@ -135,13 +135,15 @@ async fn handle_socket(socket: WebSocket, project_id: String, state: CdcState) {
     });
     let _ = ws_sender.send(Message::Text(welcome.to_string().into())).await;
 
-    // Spawn task to forward events to WebSocket
-    let mut ws_sender_clone = ws_sender;
+    // Spawn task to forward events to WebSocket. The sink is shared with
+    // the read loop (for pong replies) via a mutex.
+    let ws_sender = Arc::new(tokio::sync::Mutex::new(ws_sender));
+    let forward_sender = ws_sender.clone();
     let forward_task = tokio::spawn(async move {
         while let Some(msg) = event_rx.recv().await {
             match serde_json::to_string(&msg) {
                 Ok(json) => {
-                    if ws_sender_clone.send(Message::Text(json.into())).await.is_err() {
+                    if forward_sender.lock().await.send(Message::Text(json.into())).await.is_err() {
                         break;
                     }
                 }
@@ -172,7 +174,7 @@ async fn handle_socket(socket: WebSocket, project_id: String, state: CdcState) {
                 }
             }
             Ok(Message::Ping(data)) => {
-                let _ = ws_sender.send(Message::Pong(data)).await;
+                let _ = ws_sender.lock().await.send(Message::Pong(data)).await;
             }
             Ok(Message::Close(_)) => {
                 break;
@@ -381,7 +383,7 @@ async fn handle_client_message(
                 project_id,
                 &channel,
                 &key,
-                presence_state,
+                presence_state.clone(),
             ).await;
 
             // Notify others
