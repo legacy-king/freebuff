@@ -3,7 +3,8 @@ use std::sync::Arc;
 use tokio::sync::RwLock;
 use std::collections::HashMap;
 
-use crate::{WalConfig, WalSegment, LSN};
+use crate::timeline::WalSegment;
+use crate::{WalConfig, LSN};
 use freebuff_shared::AppError;
 
 /// WalArchiver handles archiving WAL segments to object storage (S3/MinIO).

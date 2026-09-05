@@ -13,8 +13,7 @@ use freebuff_shared::AppError;
 pub struct WalReceiveRequest {
     /// The starting LSN of the WAL data being sent
     pub start_lsn: String,
-    /// The WAL data (binary)
-    /// In practice this comes from the HTTP body
+    // The WAL data (binary) — in practice this comes from the HTTP body
 }
 
 #[derive(Debug, Serialize)]
@@ -56,8 +55,11 @@ pub async fn receive_wal(
     // Get the current LSN as the start point
     let start_lsn = timeline.current_lsn();
 
-    // Append WAL data
-    let end_lsn = timeline.append_wal(&body, start_lsn);
+    // Append WAL data (Arc must be unique while the write lock is held)
+    let timeline_mut = Arc::get_mut(timeline).ok_or_else(|| {
+        AppError::Internal("Timeline is currently shared; cannot append WAL".into())
+    })?;
+    let end_lsn = timeline_mut.append_wal(&body, start_lsn);
 
     tracing::debug!(
         "Timeline {}: WAL appended from {} to {} ({} bytes)",
@@ -110,12 +112,14 @@ pub async fn start_wal_streaming(
     ).await?;
 
     // Start streaming
-    let mut stream = client
-        .copy_out(&format!(
-            "START_REPLICATION LOGICAL {} (\"proto_version\" '1', \"publication_names\" 'freebuff publication')",
-            replication_slot
-        ))
-        .await?;
+    let mut stream = Box::pin(
+        client
+            .copy_out(&format!(
+                "START_REPLICATION LOGICAL {} (\"proto_version\" '1', \"publication_names\" 'freebuff publication')",
+                replication_slot
+            ))
+            .await?,
+    );
 
     tracing::info!("WAL streaming started for timeline {}", timeline_id);
 
@@ -125,8 +129,10 @@ pub async fn start_wal_streaming(
             Ok(bytes) => {
                 let mut timelines_guard = timelines.write().await;
                 if let Some(timeline) = timelines_guard.get_mut(&timeline_id) {
-                    let start_lsn = timeline.current_lsn();
-                    timeline.append_wal(&bytes, start_lsn);
+                    if let Some(timeline_mut) = Arc::get_mut(timeline) {
+                        let start_lsn = timeline_mut.current_lsn();
+                        timeline_mut.append_wal(&bytes, start_lsn);
+                    }
                 }
             }
             Err(e) => {

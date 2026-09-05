@@ -178,6 +178,23 @@ impl Timeline {
     }
 }
 
+impl Clone for Timeline {
+    fn clone(&self) -> Self {
+        Self {
+            id: self.id.clone(),
+            parent_id: self.parent_id.clone(),
+            parent_branch_lsn: self.parent_branch_lsn,
+            state: self.state.clone(),
+            segments: self.segments.clone(),
+            current_lsn: self.current_lsn,
+            // A fresh notify is fine: it only wakes WAL waiters on this instance.
+            write_notify: Notify::new(),
+            data_dir: self.data_dir.clone(),
+            created_at: self.created_at,
+        }
+    }
+}
+
 impl Serialize for Timeline {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where

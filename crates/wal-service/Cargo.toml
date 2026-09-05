@@ -26,6 +26,7 @@ thiserror.workspace = true
 dotenvy.workspace = true
 reqwest.workspace = true
 flate2.workspace = true
+zstd.workspace = true
 bytes.workspace = true
 tokio-postgres.workspace = true
 futures.workspace = true
