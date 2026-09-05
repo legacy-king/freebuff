@@ -104,7 +104,7 @@ pub async fn doctor(client: &ApiClient) -> Result<()> {
 
     // Check API server
     print_check("API server reachable");
-    if client.health_check().await? {
+    if client.health_check()? {
         pass("connected");
     } else {
         warn("API server not reachable");

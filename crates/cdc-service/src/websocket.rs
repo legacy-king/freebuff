@@ -44,7 +44,7 @@ impl WsConnection {
     }
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Clone, Serialize)]
 #[serde(tag = "type")]
 pub enum WsMessage {
     #[serde(rename = "heartbeat")]
@@ -80,7 +80,7 @@ pub enum WsMessage {
     },
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Clone, Serialize)]
 pub struct PresenceState {
     pub key: String,
     pub user: Option<serde_json::Value>,

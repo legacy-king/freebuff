@@ -1,5 +1,5 @@
 use anyhow::{Context, Result};
-use reqwest::Client;
+use reqwest::blocking::Client;
 use serde::{de::DeserializeOwned, Serialize};
 
 use crate::config::{Config, Credentials};
@@ -150,9 +150,9 @@ impl ApiClient {
     }
 
     /// Check if the server is reachable
-    pub async fn health_check(&self) -> Result<bool> {
+    pub fn health_check(&self) -> Result<bool> {
         let url = format!("{}/health", self.base_url);
-        match self.http.get(&url).send().await {
+        match self.http.get(&url).send() {
             Ok(resp) => Ok(resp.status().is_success()),
             Err(_) => Ok(false),
         }

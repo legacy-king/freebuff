@@ -4,7 +4,7 @@ use colored::*;
 use crate::client::ApiClient;
 use crate::BranchCommands;
 
-#[derive(serde::Deserialize)]
+#[derive(serde::Deserialize, serde::Serialize)]
 struct Branch {
     id: String,
     name: String,

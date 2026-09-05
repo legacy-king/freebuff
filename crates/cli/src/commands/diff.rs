@@ -3,7 +3,7 @@ use colored::*;
 
 use crate::client::ApiClient;
 
-#[derive(serde::Deserialize)]
+#[derive(serde::Deserialize, serde::Serialize)]
 struct SchemaDiff {
     from_branch: String,
     to_branch: String,
@@ -14,7 +14,7 @@ struct SchemaDiff {
     columns_removed: Vec<ColumnInfo>,
 }
 
-#[derive(serde::Deserialize)]
+#[derive(serde::Deserialize, serde::Serialize)]
 struct TableDiff {
     table: String,
     columns_added: Vec<String>,
@@ -22,7 +22,7 @@ struct TableDiff {
     columns_modified: Vec<String>,
 }
 
-#[derive(serde::Deserialize)]
+#[derive(serde::Deserialize, serde::Serialize)]
 struct ColumnInfo {
     table: String,
     column: String,

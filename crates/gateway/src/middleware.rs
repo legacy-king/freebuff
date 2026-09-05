@@ -43,11 +43,11 @@ pub async fn auth_middleware(
     // 3. Extract the project_id and scopes
     // 4. Add project context to request extensions
 
+    let path = request.uri().path().to_string();
     let response = next.run(request).await;
 
     // Meter REST API calls for usage-based billing. Counts are batched and
     // flushed to the control plane by the background reporter task.
-    let path = response.uri().path().to_string();
     if path.starts_with("/rest/") {
         let mut counts = state.usage_counts.lock().await;
         *counts.entry("api_calls".to_string()).or_insert(0u64) += 1;

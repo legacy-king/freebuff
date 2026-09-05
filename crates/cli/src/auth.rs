@@ -94,7 +94,8 @@ fn whoami() -> Result<()> {
     if let Some(name) = creds.name {
         println!("  Name:  {}", name);
     }
-    println!("  Token: {}...", &creds.token.unwrap_or_default()[..20.min(creds.token.unwrap_or_default().len())]);
+    let token = creds.token.as_deref().unwrap_or_default();
+    println!("  Token: {}...", &token[..token.len().min(20)]);
     println!();
 
     // Verify token is still valid

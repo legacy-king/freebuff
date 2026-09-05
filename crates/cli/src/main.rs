@@ -157,7 +157,7 @@ enum Commands {
 }
 
 #[derive(Subcommand)]
-enum AuthCommands {
+pub enum AuthCommands {
     /// Login to Freebuff
     Login {
         /// Email address
@@ -173,7 +173,7 @@ enum AuthCommands {
 }
 
 #[derive(Subcommand)]
-enum ProjectCommands {
+pub enum ProjectCommands {
     /// List all projects
     List,
 
@@ -203,7 +203,7 @@ enum ProjectCommands {
 }
 
 #[derive(Subcommand)]
-enum BranchCommands {
+pub enum BranchCommands {
     /// List all branches
     List {
         /// Project name or ID
@@ -248,7 +248,7 @@ enum BranchCommands {
 }
 
 #[derive(Subcommand)]
-enum MigrationCommands {
+pub enum MigrationCommands {
     /// List all migrations
     List,
 
@@ -274,7 +274,7 @@ enum MigrationCommands {
 }
 
 #[derive(Subcommand)]
-enum DevCommands {
+pub enum DevCommands {
     /// Start local development stack
     Start {
         /// Port for the local Postgres
@@ -307,7 +307,7 @@ enum DevCommands {
 }
 
 #[derive(Subcommand)]
-enum ConfigCommands {
+pub enum ConfigCommands {
     /// Show current configuration
     Show,
 

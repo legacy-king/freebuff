@@ -14,8 +14,8 @@ use tower_http::trace::TraceLayer;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 use std::collections::HashMap;
 
-pub use change_event::{ChangeEvent, ChangeOperation, ColumnValue};
-pub use subscription::{Subscription, SubscriptionFilter};
+pub use change_event::{ChangeEvent, ChangeOperation, ColumnValue, SubscriptionFilter};
+pub use subscription::Subscription;
 
 #[derive(Clone)]
 pub struct CdcState {

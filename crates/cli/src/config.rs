@@ -26,7 +26,7 @@ pub struct Config {
     pub org_id: Option<String>,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct Credentials {
     /// Auth token
     pub token: Option<String>,

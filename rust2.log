@@ -1,0 +1,1942 @@
+﻿2026-09-05T19:27:09.5702883Z Current runner version: '2.337.0'
+2026-09-05T19:27:09.5728808Z ##[group]Runner Image Provisioner
+2026-09-05T19:27:09.5729713Z Hosted Compute Agent
+2026-09-05T19:27:09.5730490Z Version: 20260828.587
+2026-09-05T19:27:09.5731174Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+2026-09-05T19:27:09.5731961Z Build Date: 2026-08-28T16:44:25Z
+2026-09-05T19:27:09.5732655Z Worker ID: {c0a690e5-359b-4e5b-bab2-6c95b15fa960}
+2026-09-05T19:27:09.5733382Z Azure Region: eastus
+2026-09-05T19:27:09.5734064Z ##[endgroup]
+2026-09-05T19:27:09.5735605Z ##[group]Operating System
+2026-09-05T19:27:09.5736335Z Ubuntu
+2026-09-05T19:27:09.5736909Z 24.04.4
+2026-09-05T19:27:09.5737417Z LTS
+2026-09-05T19:27:09.5738029Z ##[endgroup]
+2026-09-05T19:27:09.5739150Z ##[group]Runner Image
+2026-09-05T19:27:09.5739844Z Image: ubuntu-24.04
+2026-09-05T19:27:09.5740431Z Version: 20260831.293.1
+2026-09-05T19:27:09.5741787Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260831.293/images/ubuntu/Ubuntu2404-Readme.md
+2026-09-05T19:27:09.5743338Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260831.293
+2026-09-05T19:27:09.5744351Z ##[endgroup]
+2026-09-05T19:27:09.5745571Z ##[group]GITHUB_TOKEN Permissions
+2026-09-05T19:27:09.5748980Z Contents: read
+2026-09-05T19:27:09.5749651Z Metadata: read
+2026-09-05T19:27:09.5750652Z Packages: read
+2026-09-05T19:27:09.5751482Z ##[endgroup]
+2026-09-05T19:27:09.5753933Z Secret source: Actions
+2026-09-05T19:27:09.5755273Z Prepare workflow directory
+2026-09-05T19:27:09.6145016Z Prepare all required actions
+2026-09-05T19:27:09.6194078Z Getting action download info
+2026-09-05T19:27:09.7955345Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-09-05T19:27:09.8957214Z Download action repository 'dtolnay/rust-toolchain@stable' (SHA:6bed0761d98439e5a578e2877258200ad565ba87)
+2026-09-05T19:27:09.9805953Z Download action repository 'Swatinem/rust-cache@v2' (SHA:6323deb102c322ba6fcbdcafc7e3dddab59af2b6)
+2026-09-05T19:27:10.2878092Z Complete job name: Rust (check + test build)
+2026-09-05T19:27:10.3768953Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-09-05T19:27:10.3778123Z ##[group]Run actions/checkout@v4
+2026-09-05T19:27:10.3779245Z with:
+2026-09-05T19:27:10.3779716Z   repository: legacy-king/freebuff
+2026-09-05T19:27:10.3783502Z   token: ***
+2026-09-05T19:27:10.3783943Z   ssh-strict: true
+2026-09-05T19:27:10.3784392Z   ssh-user: git
+2026-09-05T19:27:10.3784844Z   persist-credentials: true
+2026-09-05T19:27:10.3785337Z   clean: true
+2026-09-05T19:27:10.3785779Z   sparse-checkout-cone-mode: true
+2026-09-05T19:27:10.3786301Z   fetch-depth: 1
+2026-09-05T19:27:10.3786742Z   fetch-tags: false
+2026-09-05T19:27:10.3787252Z   show-progress: true
+2026-09-05T19:27:10.3787749Z   lfs: false
+2026-09-05T19:27:10.3788390Z   submodules: false
+2026-09-05T19:27:10.3788868Z   set-safe-directory: true
+2026-09-05T19:27:10.3789602Z   allow-unsafe-pr-checkout: false
+2026-09-05T19:27:10.3790716Z env:
+2026-09-05T19:27:10.3791169Z   CARGO_TERM_COLOR: always
+2026-09-05T19:27:10.3791662Z ##[endgroup]
+2026-09-05T19:27:10.4839416Z Syncing repository: legacy-king/freebuff
+2026-09-05T19:27:10.4841568Z ##[group]Getting Git version info
+2026-09-05T19:27:10.4842349Z Working directory is '/home/runner/work/freebuff/freebuff'
+2026-09-05T19:27:10.4843402Z [command]/usr/bin/git version
+2026-09-05T19:27:10.4956649Z git version 2.55.0
+2026-09-05T19:27:10.4985387Z ##[endgroup]
+2026-09-05T19:27:10.5005438Z Temporarily overriding HOME='/home/runner/work/_temp/7b03af95-d9f9-4c5b-9f5f-c9ebef659e83' before making global git config changes
+2026-09-05T19:27:10.5007035Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-05T19:27:10.5013307Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/freebuff/freebuff
+2026-09-05T19:27:10.5073622Z Deleting the contents of '/home/runner/work/freebuff/freebuff'
+2026-09-05T19:27:10.5084034Z ##[group]Initializing the repository
+2026-09-05T19:27:10.5093687Z [command]/usr/bin/git init /home/runner/work/freebuff/freebuff
+2026-09-05T19:27:10.5200099Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-09-05T19:27:10.5201869Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-09-05T19:27:10.5203443Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-09-05T19:27:10.5204659Z hint: call:
+2026-09-05T19:27:10.5205314Z hint:
+2026-09-05T19:27:10.5206153Z hint: 	git config --global init.defaultBranch <name>
+2026-09-05T19:27:10.5207147Z hint:
+2026-09-05T19:27:10.5208087Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-09-05T19:27:10.5209486Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-09-05T19:27:10.5210350Z hint:
+2026-09-05T19:27:10.5211018Z hint: 	git branch -m <name>
+2026-09-05T19:27:10.5211673Z hint:
+2026-09-05T19:27:10.5212770Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-09-05T19:27:10.5214492Z Initialized empty Git repository in /home/runner/work/freebuff/freebuff/.git/
+2026-09-05T19:27:10.5216801Z [command]/usr/bin/git remote add origin https://github.com/legacy-king/freebuff
+2026-09-05T19:27:10.5272915Z ##[endgroup]
+2026-09-05T19:27:10.5274135Z ##[group]Disabling automatic garbage collection
+2026-09-05T19:27:10.5277037Z [command]/usr/bin/git config --local gc.auto 0
+2026-09-05T19:27:10.5320064Z ##[endgroup]
+2026-09-05T19:27:10.5321906Z ##[group]Setting up auth
+2026-09-05T19:27:10.5329920Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-05T19:27:10.5376387Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-09-05T19:27:10.5763010Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-05T19:27:10.5811257Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-09-05T19:27:10.6134751Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-09-05T19:27:10.6181795Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-09-05T19:27:10.6456699Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-09-05T19:27:10.6499216Z ##[endgroup]
+2026-09-05T19:27:10.6500223Z ##[group]Fetching the repository
+2026-09-05T19:27:10.6510067Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +94ae8cbd50a6bdacffb7a8051674c4ffa839bf0f:refs/remotes/origin/main
+2026-09-05T19:27:10.8760353Z From https://github.com/legacy-king/freebuff
+2026-09-05T19:27:10.8761992Z  * [new ref]         94ae8cbd50a6bdacffb7a8051674c4ffa839bf0f -> origin/main
+2026-09-05T19:27:10.8765577Z ##[endgroup]
+2026-09-05T19:27:10.8767005Z ##[group]Determining the checkout info
+2026-09-05T19:27:10.8769437Z ##[endgroup]
+2026-09-05T19:27:10.8777466Z [command]/usr/bin/git sparse-checkout disable
+2026-09-05T19:27:10.8833581Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-09-05T19:27:10.8869031Z ##[group]Checking out the ref
+2026-09-05T19:27:10.8874712Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-09-05T19:27:10.9021736Z Switched to a new branch 'main'
+2026-09-05T19:27:10.9025726Z branch 'main' set up to track 'origin/main'.
+2026-09-05T19:27:10.9033488Z ##[endgroup]
+2026-09-05T19:27:10.9083265Z [command]/usr/bin/git log -1 --format=%H
+2026-09-05T19:27:10.9113091Z 94ae8cbd50a6bdacffb7a8051674c4ffa839bf0f
+2026-09-05T19:27:10.9600842Z ##[group]Run dtolnay/rust-toolchain@stable
+2026-09-05T19:27:10.9601497Z with:
+2026-09-05T19:27:10.9601917Z   toolchain: stable
+2026-09-05T19:27:10.9602359Z env:
+2026-09-05T19:27:10.9602768Z   CARGO_TERM_COLOR: always
+2026-09-05T19:27:10.9603246Z ##[endgroup]
+2026-09-05T19:27:10.9677841Z ##[start-action display=Parse toolchain version;id=__dtolnay_rust-toolchain.parse]
+2026-09-05T19:27:10.9741453Z ##[group]Run if [[ -z $toolchain ]]; then
+2026-09-05T19:27:10.9742175Z [36;1mif [[ -z $toolchain ]]; then[0m
+2026-09-05T19:27:10.9743150Z [36;1m  # GitHub does not enforce `required: true` inputs itself. https://github.com/actions/runner/issues/1070[0m
+2026-09-05T19:27:10.9744177Z [36;1m  echo "'toolchain' is a required input" >&2[0m
+2026-09-05T19:27:10.9744768Z [36;1m  exit 1[0m
+2026-09-05T19:27:10.9745423Z [36;1melif [[ $toolchain =~ ^stable' '[0-9]+' '(year|month|week|day)s?' 'ago$ ]]; then[0m
+2026-09-05T19:27:10.9746222Z [36;1m  if [[ Linux == macOS ]]; then[0m
+2026-09-05T19:27:10.9747223Z [36;1m    echo "toolchain=1.$((($(date -v-$(sed 's/stable \([0-9]*\) \(.\).*/\1\2/' <<< $toolchain) +%s)/60/60/24-16569)/7/6))" >> $GITHUB_OUTPUT[0m
+2026-09-05T19:27:10.9748150Z [36;1m  else[0m
+2026-09-05T19:27:10.9749110Z [36;1m    echo "toolchain=1.$((($(date --date "${toolchain#stable }" +%s)/60/60/24-16569)/7/6))" >> $GITHUB_OUTPUT[0m
+2026-09-05T19:27:10.9749974Z [36;1m  fi[0m
+2026-09-05T19:27:10.9750568Z [36;1melif [[ $toolchain =~ ^stable' 'minus' '[0-9]+' 'releases?$ ]]; then[0m
+2026-09-05T19:27:10.9751561Z [36;1m  echo "toolchain=1.$((($(date +%s)/60/60/24-16569)/7/6-${toolchain//[^0-9]/}))" >> $GITHUB_OUTPUT[0m
+2026-09-05T19:27:10.9752424Z [36;1melif [[ $toolchain =~ ^1\.[0-9]+$ ]]; then[0m
+2026-09-05T19:27:10.9753391Z [36;1m  echo "toolchain=1.$((i=${toolchain#1.}, c=($(date +%s)/60/60/24-16569)/7/6, i+9*i*(10*i<=c)+90*i*(100*i<=c)))" >> $GITHUB_OUTPUT[0m
+2026-09-05T19:27:10.9754304Z [36;1melse[0m
+2026-09-05T19:27:10.9754811Z [36;1m  echo "toolchain=$toolchain" >> $GITHUB_OUTPUT[0m
+2026-09-05T19:27:10.9755413Z [36;1mfi[0m
+2026-09-05T19:27:10.9797269Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-09-05T19:27:10.9797952Z env:
+2026-09-05T19:27:10.9798636Z   CARGO_TERM_COLOR: always
+2026-09-05T19:27:10.9799130Z   toolchain: stable
+2026-09-05T19:27:10.9799585Z ##[endgroup]
+2026-09-05T19:27:10.9923209Z ##[end-action id=__dtolnay_rust-toolchain.parse;outcome=success;conclusion=success;duration_ms=24]
+2026-09-05T19:27:10.9938564Z ##[start-action display=Construct rustup command line;id=__dtolnay_rust-toolchain.flags]
+2026-09-05T19:27:10.9974273Z ##[group]Run echo "targets=$(for t in ${targets//,/ }; do echo -n ' --target' $t; done)" >> $GITHUB_OUTPUT
+2026-09-05T19:27:10.9975429Z [36;1mecho "targets=$(for t in ${targets//,/ }; do echo -n ' --target' $t; done)" >> $GITHUB_OUTPUT[0m
+2026-09-05T19:27:10.9976568Z [36;1mecho "components=$(for c in ${components//,/ }; do echo -n ' --component' $c; done)" >> $GITHUB_OUTPUT[0m
+2026-09-05T19:27:10.9977545Z [36;1mecho "downgrade=" >> $GITHUB_OUTPUT[0m
+2026-09-05T19:27:11.0014826Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-09-05T19:27:11.0015499Z env:
+2026-09-05T19:27:11.0015923Z   CARGO_TERM_COLOR: always
+2026-09-05T19:27:11.0016398Z   targets: 
+2026-09-05T19:27:11.0016814Z   components: 
+2026-09-05T19:27:11.0017232Z ##[endgroup]
+2026-09-05T19:27:11.0099972Z ##[end-action id=__dtolnay_rust-toolchain.flags;outcome=success;conclusion=success;duration_ms=15]
+2026-09-05T19:27:11.0103731Z ##[start-action display=Set $CARGO_HOME;id=__dtolnay_rust-toolchain.__run]
+2026-09-05T19:27:11.0129351Z ##[group]Run echo CARGO_HOME=${CARGO_HOME:-"$HOME/.cargo"} >> $GITHUB_ENV
+2026-09-05T19:27:11.0130251Z [36;1mecho CARGO_HOME=${CARGO_HOME:-"$HOME/.cargo"} >> $GITHUB_ENV[0m
+2026-09-05T19:27:11.0166688Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-09-05T19:27:11.0167350Z env:
+2026-09-05T19:27:11.0167953Z   CARGO_TERM_COLOR: always
+2026-09-05T19:27:11.0168728Z ##[endgroup]
+2026-09-05T19:27:11.0244421Z ##[end-action id=__dtolnay_rust-toolchain.__run;outcome=success;conclusion=success;duration_ms=13]
+2026-09-05T19:27:11.0248712Z ##[start-action display=Install rustup if needed;id=__dtolnay_rust-toolchain.__run_2]
+2026-09-05T19:27:11.0282976Z ##[group]Run if ! command -v rustup &>/dev/null; then
+2026-09-05T19:27:11.0283739Z [36;1mif ! command -v rustup &>/dev/null; then[0m
+2026-09-05T19:27:11.0285082Z [36;1m  curl --proto '=https' --tlsv1.2 --retry 10 --retry-connrefused --location --silent --show-error --fail https://sh.rustup.rs | sh -s -- --default-toolchain none -y[0m
+2026-09-05T19:27:11.0286379Z [36;1m  echo "$CARGO_HOME/bin" >> $GITHUB_PATH[0m
+2026-09-05T19:27:11.0286963Z [36;1mfi[0m
+2026-09-05T19:27:11.0323833Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-09-05T19:27:11.0324487Z env:
+2026-09-05T19:27:11.0324896Z   CARGO_TERM_COLOR: always
+2026-09-05T19:27:11.0325404Z   CARGO_HOME: /home/runner/.cargo
+2026-09-05T19:27:11.0325915Z ##[endgroup]
+2026-09-05T19:27:11.0398136Z ##[end-action id=__dtolnay_rust-toolchain.__run_2;outcome=success;conclusion=success;duration_ms=14]
+2026-09-05T19:27:11.0402291Z ##[start-action display=Install rustup if needed on windows;id=__dtolnay_rust-toolchain.__run_3]
+2026-09-05T19:27:11.0412470Z ##[end-action id=__dtolnay_rust-toolchain.__run_3;outcome=skipped;conclusion=skipped;duration_ms=0]
+2026-09-05T19:27:11.0425724Z ##[start-action display=rustup toolchain install stable;id=__dtolnay_rust-toolchain.__run_4]
+2026-09-05T19:27:11.0451332Z ##[group]Run rustup toolchain install stable --profile minimal --no-self-update
+2026-09-05T19:27:11.0452329Z [36;1mrustup toolchain install stable --profile minimal --no-self-update[0m
+2026-09-05T19:27:11.0489334Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-09-05T19:27:11.0490015Z env:
+2026-09-05T19:27:11.0490435Z   CARGO_TERM_COLOR: always
+2026-09-05T19:27:11.0490944Z   CARGO_HOME: /home/runner/.cargo
+2026-09-05T19:27:11.0491489Z   RUSTUP_PERMIT_COPY_RENAME: 1
+2026-09-05T19:27:11.0491996Z ##[endgroup]
+2026-09-05T19:27:11.2173365Z info: syncing channel updates for stable-x86_64-unknown-linux-gnu
+2026-09-05T19:27:11.5682905Z info: latest update on 2026-09-03 for version 1.98.1 (48a229cea 2026-09-01)
+2026-09-05T19:27:11.5825557Z info: removing previous version of component clippy
+2026-09-05T19:27:11.5840924Z info: removing previous version of component rustfmt
+2026-09-05T19:27:11.5854008Z info: removing previous version of component cargo
+2026-09-05T19:27:11.5901544Z info: removing previous version of component rust-std
+2026-09-05T19:27:11.5948674Z info: removing previous version of component rustc
+2026-09-05T19:27:11.6013876Z info: downloading 5 components
+2026-09-05T19:27:19.8481839Z 
+2026-09-05T19:27:19.8555991Z   stable-x86_64-unknown-linux-gnu updated - rustc 1.98.1 (48a229cea 2026-09-01) (from rustc 1.98.0 (88d9e12ae 2026-08-18))
+2026-09-05T19:27:19.8556932Z 
+2026-09-05T19:27:19.8621561Z ##[end-action id=__dtolnay_rust-toolchain.__run_4;outcome=success;conclusion=success;duration_ms=8819]
+2026-09-05T19:27:19.8629312Z ##[start-action display=rustup default stable;id=__dtolnay_rust-toolchain.__run_5]
+2026-09-05T19:27:19.8652628Z ##[group]Run rustup default stable
+2026-09-05T19:27:19.8652985Z [36;1mrustup default stable[0m
+2026-09-05T19:27:19.8691272Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-09-05T19:27:19.8691714Z env:
+2026-09-05T19:27:19.8691961Z   CARGO_TERM_COLOR: always
+2026-09-05T19:27:19.8692254Z   CARGO_HOME: /home/runner/.cargo
+2026-09-05T19:27:19.8692549Z ##[endgroup]
+2026-09-05T19:27:19.8812015Z info: using existing install for stable-x86_64-unknown-linux-gnu
+2026-09-05T19:27:19.8819518Z info: default toolchain set to stable-x86_64-unknown-linux-gnu
+2026-09-05T19:27:19.8819963Z 
+2026-09-05T19:27:19.8890954Z   stable-x86_64-unknown-linux-gnu unchanged - rustc 1.98.1 (48a229cea 2026-09-01)
+2026-09-05T19:27:19.8904096Z 
+2026-09-05T19:27:19.8910576Z ##[end-action id=__dtolnay_rust-toolchain.__run_5;outcome=success;conclusion=success;duration_ms=28]
+2026-09-05T19:27:19.8914246Z ##[start-action display=Create cachekey;id=__dtolnay_rust-toolchain.rustc-version]
+2026-09-05T19:27:19.8937802Z ##[group]Run DATE=$(rustc +stable --version --verbose | sed -ne 's/^commit-date: \(20[0-9][0-9]\)-\([01][0-9]\)-\([0-3][0-9]\)$/\1\2\3/p')
+2026-09-05T19:27:19.8939051Z [36;1mDATE=$(rustc +stable --version --verbose | sed -ne 's/^commit-date: \(20[0-9][0-9]\)-\([01][0-9]\)-\([0-3][0-9]\)$/\1\2\3/p')[0m
+2026-09-05T19:27:19.8939786Z [36;1mHASH=$(rustc +stable --version --verbose | sed -ne 's/^commit-hash: //p')[0m
+2026-09-05T19:27:19.8940383Z [36;1mecho "cachekey=$(echo $DATE$HASH | head -c12)" >> $GITHUB_OUTPUT[0m
+2026-09-05T19:27:19.8979354Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-09-05T19:27:19.8979769Z env:
+2026-09-05T19:27:19.8980015Z   CARGO_TERM_COLOR: always
+2026-09-05T19:27:19.8980308Z   CARGO_HOME: /home/runner/.cargo
+2026-09-05T19:27:19.8980656Z ##[endgroup]
+2026-09-05T19:27:19.9334629Z ##[end-action id=__dtolnay_rust-toolchain.rustc-version;outcome=success;conclusion=success;duration_ms=41]
+2026-09-05T19:27:19.9337787Z ##[start-action display=Disable incremental compilation;id=__dtolnay_rust-toolchain.__run_6]
+2026-09-05T19:27:19.9359351Z ##[group]Run if [ -z "${CARGO_INCREMENTAL+set}" ]; then
+2026-09-05T19:27:19.9359784Z [36;1mif [ -z "${CARGO_INCREMENTAL+set}" ]; then[0m
+2026-09-05T19:27:19.9360159Z [36;1m  echo CARGO_INCREMENTAL=0 >> $GITHUB_ENV[0m
+2026-09-05T19:27:19.9360486Z [36;1mfi[0m
+2026-09-05T19:27:19.9401184Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-09-05T19:27:19.9401594Z env:
+2026-09-05T19:27:19.9401840Z   CARGO_TERM_COLOR: always
+2026-09-05T19:27:19.9402135Z   CARGO_HOME: /home/runner/.cargo
+2026-09-05T19:27:19.9402426Z ##[endgroup]
+2026-09-05T19:27:19.9489099Z ##[end-action id=__dtolnay_rust-toolchain.__run_6;outcome=success;conclusion=success;duration_ms=14]
+2026-09-05T19:27:19.9491838Z ##[start-action display=Enable colors in Cargo output;id=__dtolnay_rust-toolchain.__run_7]
+2026-09-05T19:27:19.9512771Z ##[group]Run if [ -z "${CARGO_TERM_COLOR+set}" ]; then
+2026-09-05T19:27:19.9513208Z [36;1mif [ -z "${CARGO_TERM_COLOR+set}" ]; then[0m
+2026-09-05T19:27:19.9513600Z [36;1m  echo CARGO_TERM_COLOR=always >> $GITHUB_ENV[0m
+2026-09-05T19:27:19.9513932Z [36;1mfi[0m
+2026-09-05T19:27:19.9549481Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-09-05T19:27:19.9549878Z env:
+2026-09-05T19:27:19.9550119Z   CARGO_TERM_COLOR: always
+2026-09-05T19:27:19.9550422Z   CARGO_HOME: /home/runner/.cargo
+2026-09-05T19:27:19.9550717Z   CARGO_INCREMENTAL: 0
+2026-09-05T19:27:19.9550971Z ##[endgroup]
+2026-09-05T19:27:19.9614319Z ##[end-action id=__dtolnay_rust-toolchain.__run_7;outcome=success;conclusion=success;duration_ms=12]
+2026-09-05T19:27:19.9616878Z ##[start-action display=Enable Cargo sparse registry;id=__dtolnay_rust-toolchain.__run_8]
+2026-09-05T19:27:19.9638644Z ##[group]Run # implemented in 1.66, stabilized in 1.68, made default in 1.70
+2026-09-05T19:27:19.9639299Z [36;1m# implemented in 1.66, stabilized in 1.68, made default in 1.70[0m
+2026-09-05T19:27:19.9640072Z [36;1mif [ -z "${CARGO_REGISTRIES_CRATES_IO_PROTOCOL+set}" -o -f "/home/runner/work/_temp"/.implicit_cargo_registries_crates_io_protocol ]; then[0m
+2026-09-05T19:27:19.9640842Z [36;1m  if rustc +stable --version --verbose | grep -q '^release: 1\.6[89]\.'; then[0m
+2026-09-05T19:27:19.9641474Z [36;1m    touch "/home/runner/work/_temp"/.implicit_cargo_registries_crates_io_protocol || true[0m
+2026-09-05T19:27:19.9642067Z [36;1m    echo CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse >> $GITHUB_ENV[0m
+2026-09-05T19:27:19.9642617Z [36;1m  elif rustc +stable --version --verbose | grep -q '^release: 1\.6[67]\.'; then[0m
+2026-09-05T19:27:19.9643249Z [36;1m    touch "/home/runner/work/_temp"/.implicit_cargo_registries_crates_io_protocol || true[0m
+2026-09-05T19:27:19.9643842Z [36;1m    echo CARGO_REGISTRIES_CRATES_IO_PROTOCOL=git >> $GITHUB_ENV[0m
+2026-09-05T19:27:19.9644435Z [36;1m  fi[0m
+2026-09-05T19:27:19.9644675Z [36;1mfi[0m
+2026-09-05T19:27:19.9680322Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-09-05T19:27:19.9680738Z env:
+2026-09-05T19:27:19.9680989Z   CARGO_TERM_COLOR: always
+2026-09-05T19:27:19.9681293Z   CARGO_HOME: /home/runner/.cargo
+2026-09-05T19:27:19.9681589Z   CARGO_INCREMENTAL: 0
+2026-09-05T19:27:19.9681843Z ##[endgroup]
+2026-09-05T19:27:19.9996983Z ##[end-action id=__dtolnay_rust-toolchain.__run_8;outcome=success;conclusion=success;duration_ms=37]
+2026-09-05T19:27:20.0000606Z ##[start-action display=Work around spurious network errors in curl 8.0;id=__dtolnay_rust-toolchain.__run_9]
+2026-09-05T19:27:20.0023302Z ##[group]Run # https://rust-lang.zulipchat.com/#narrow/stream/246057-t-cargo/topic/timeout.20investigation
+2026-09-05T19:27:20.0024134Z [36;1m# https://rust-lang.zulipchat.com/#narrow/stream/246057-t-cargo/topic/timeout.20investigation[0m
+2026-09-05T19:27:20.0024798Z [36;1mif rustc +stable --version --verbose | grep -q '^release: 1\.7[01]\.'; then[0m
+2026-09-05T19:27:20.0025343Z [36;1m  echo CARGO_HTTP_MULTIPLEXING=false >> $GITHUB_ENV[0m
+2026-09-05T19:27:20.0025702Z [36;1mfi[0m
+2026-09-05T19:27:20.0064745Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-09-05T19:27:20.0065161Z env:
+2026-09-05T19:27:20.0065419Z   CARGO_TERM_COLOR: always
+2026-09-05T19:27:20.0065716Z   CARGO_HOME: /home/runner/.cargo
+2026-09-05T19:27:20.0066015Z   CARGO_INCREMENTAL: 0
+2026-09-05T19:27:20.0066278Z ##[endgroup]
+2026-09-05T19:27:20.0267174Z ##[end-action id=__dtolnay_rust-toolchain.__run_9;outcome=success;conclusion=success;duration_ms=26]
+2026-09-05T19:27:20.0272555Z ##[start-action display=rustc +stable --version --verbose;id=__dtolnay_rust-toolchain.__run_10]
+2026-09-05T19:27:20.0294134Z ##[group]Run rustc +stable --version --verbose
+2026-09-05T19:27:20.0294544Z [36;1mrustc +stable --version --verbose[0m
+2026-09-05T19:27:20.0333135Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-09-05T19:27:20.0333570Z env:
+2026-09-05T19:27:20.0333811Z   CARGO_TERM_COLOR: always
+2026-09-05T19:27:20.0334110Z   CARGO_HOME: /home/runner/.cargo
+2026-09-05T19:27:20.0334405Z   CARGO_INCREMENTAL: 0
+2026-09-05T19:27:20.0334668Z ##[endgroup]
+2026-09-05T19:27:20.0519239Z rustc 1.98.1 (48a229cea 2026-09-01)
+2026-09-05T19:27:20.0520184Z binary: rustc
+2026-09-05T19:27:20.0520842Z commit-hash: 48a229ceaefd4985c50990b14116b6d856af0985
+2026-09-05T19:27:20.0521578Z commit-date: 2026-09-01
+2026-09-05T19:27:20.0522103Z host: x86_64-unknown-linux-gnu
+2026-09-05T19:27:20.0522667Z release: 1.98.1
+2026-09-05T19:27:20.0523101Z LLVM version: 22.1.8
+2026-09-05T19:27:20.0535239Z ##[end-action id=__dtolnay_rust-toolchain.__run_10;outcome=success;conclusion=success;duration_ms=26]
+2026-09-05T19:27:20.0650079Z ##[group]Run Swatinem/rust-cache@v2
+2026-09-05T19:27:20.0650457Z with:
+2026-09-05T19:27:20.0650695Z   prefix-key: v0-rust
+2026-09-05T19:27:20.0650965Z   add-job-id-key: true
+2026-09-05T19:27:20.0651245Z   add-rust-environment-hash-key: true
+2026-09-05T19:27:20.0651576Z   cache-targets: true
+2026-09-05T19:27:20.0651836Z   cache-all-crates: false
+2026-09-05T19:27:20.0652111Z   cache-workspace-crates: false
+2026-09-05T19:27:20.0652389Z   save-if: true
+2026-09-05T19:27:20.0652628Z   cache-provider: github
+2026-09-05T19:27:20.0652884Z   cache-bin: true
+2026-09-05T19:27:20.0653118Z   lookup-only: false
+2026-09-05T19:27:20.0653368Z   cmd-format: {0}
+2026-09-05T19:27:20.0653593Z env:
+2026-09-05T19:27:20.0653815Z   CARGO_TERM_COLOR: always
+2026-09-05T19:27:20.0654091Z   CARGO_HOME: /home/runner/.cargo
+2026-09-05T19:27:20.0654383Z   CARGO_INCREMENTAL: 0
+2026-09-05T19:27:20.0654625Z ##[endgroup]
+2026-09-05T19:27:20.3523130Z ##[group]Cache Configuration
+2026-09-05T19:27:20.3524016Z Cache Provider:
+2026-09-05T19:27:20.3524483Z     github
+2026-09-05T19:27:20.3524903Z Workspaces:
+2026-09-05T19:27:20.3525359Z     /home/runner/work/freebuff/freebuff
+2026-09-05T19:27:20.3525966Z Cache Paths:
+2026-09-05T19:27:20.3526440Z     /home/runner/.cargo/bin
+2026-09-05T19:27:20.3527418Z     /home/runner/.cargo/.crates.toml
+2026-09-05T19:27:20.3528002Z     /home/runner/.cargo/.crates2.json
+2026-09-05T19:27:20.3528859Z     /home/runner/.cargo/registry
+2026-09-05T19:27:20.3529458Z     /home/runner/.cargo/git
+2026-09-05T19:27:20.3530033Z     /home/runner/work/freebuff/freebuff/target
+2026-09-05T19:27:20.3530596Z Restore Key:
+2026-09-05T19:27:20.3531056Z     v0-rust-rust-Linux-x64-6ff13d87
+2026-09-05T19:27:20.3531639Z Cache Key:
+2026-09-05T19:27:20.3532131Z     v0-rust-rust-Linux-x64-6ff13d87-e46fddd3
+2026-09-05T19:27:20.3532741Z .. Prefix:
+2026-09-05T19:27:20.3533208Z   - v0-rust-rust-Linux-x64
+2026-09-05T19:27:20.3533762Z .. Environment considered:
+2026-09-05T19:27:20.3534285Z   - Rust Versions:
+2026-09-05T19:27:20.3535010Z     - 1.98.1 x86_64-unknown-linux-gnu 48a229ceaefd4985c50990b14116b6d856af0985
+2026-09-05T19:27:20.3535718Z   - CARGO_HOME
+2026-09-05T19:27:20.3536120Z   - CARGO_INCREMENTAL
+2026-09-05T19:27:20.3536558Z   - CARGO_TERM_COLOR
+2026-09-05T19:27:20.3537051Z .. Lockfiles considered:
+2026-09-05T19:27:20.3537635Z   - /home/runner/work/freebuff/freebuff/Cargo.lock
+2026-09-05T19:27:20.3538775Z   - /home/runner/work/freebuff/freebuff/crates/auth/Cargo.toml
+2026-09-05T19:27:20.3539720Z   - /home/runner/work/freebuff/freebuff/crates/branch-service/Cargo.toml
+2026-09-05T19:27:20.3540699Z   - /home/runner/work/freebuff/freebuff/crates/cdc-service/Cargo.toml
+2026-09-05T19:27:20.3541545Z   - /home/runner/work/freebuff/freebuff/crates/cli/Cargo.toml
+2026-09-05T19:27:20.3542489Z   - /home/runner/work/freebuff/freebuff/crates/control-plane/Cargo.toml
+2026-09-05T19:27:20.3543408Z   - /home/runner/work/freebuff/freebuff/crates/gateway/Cargo.toml
+2026-09-05T19:27:20.3544336Z   - /home/runner/work/freebuff/freebuff/crates/proxy/Cargo.toml
+2026-09-05T19:27:20.3545291Z   - /home/runner/work/freebuff/freebuff/crates/shared/Cargo.toml
+2026-09-05T19:27:20.3546279Z   - /home/runner/work/freebuff/freebuff/crates/storage-service/Cargo.toml
+2026-09-05T19:27:20.3547322Z   - /home/runner/work/freebuff/freebuff/crates/wal-service/Cargo.toml
+2026-09-05T19:27:20.3548846Z ##[endgroup]
+2026-09-05T19:27:20.3549157Z 
+2026-09-05T19:27:20.3549389Z ... Restoring cache ...
+2026-09-05T19:27:20.4074793Z No cache found.
+2026-09-05T19:27:20.4175151Z ##[group]Run cargo check --workspace
+2026-09-05T19:27:20.4175566Z [36;1mcargo check --workspace[0m
+2026-09-05T19:27:20.4215477Z shell: /usr/bin/bash -e {0}
+2026-09-05T19:27:20.4215819Z env:
+2026-09-05T19:27:20.4216075Z   CARGO_TERM_COLOR: always
+2026-09-05T19:27:20.4216372Z   CARGO_HOME: /home/runner/.cargo
+2026-09-05T19:27:20.4216679Z   CARGO_INCREMENTAL: 0
+2026-09-05T19:27:20.4216943Z   CACHE_ON_FAILURE: false
+2026-09-05T19:27:20.4217206Z ##[endgroup]
+2026-09-05T19:27:20.4699512Z [1m[92m    Updating[0m crates.io index
+2026-09-05T19:27:21.2485506Z [1m[92m     Locking[0m 32 packages to latest compatible versions
+2026-09-05T19:27:21.2486407Z [1m[92m      Adding[0m adler2 v2.0.1
+2026-09-05T19:27:21.2487299Z [1m[92m      Adding[0m colored v2.2.0 [1m[33m(available: v3.1.1)[0m
+2026-09-05T19:27:21.2491530Z [1m[92m      Adding[0m console v0.15.11 [1m[33m(available: v0.16.4)[0m
+2026-09-05T19:27:21.2493012Z [1m[92m      Adding[0m crc32fast v1.5.1
+2026-09-05T19:27:21.2498871Z [1m[92m      Adding[0m dashmap v5.5.3 [1m[33m(available: v6.2.1)[0m
+2026-09-05T19:27:21.2501459Z [1m[92m      Adding[0m dialoguer v0.11.0 [1m[33m(available: v0.12.0)[0m
+2026-09-05T19:27:21.2509448Z [1m[92m      Adding[0m dirs v5.0.1 [1m[33m(available: v7.0.0)[0m
+2026-09-05T19:27:21.2539219Z [1m[92m      Adding[0m dirs-sys v0.4.1
+2026-09-05T19:27:21.2559796Z [1m[92m      Adding[0m encode_unicode v1.0.0
+2026-09-05T19:27:21.2560519Z [1m[92m      Adding[0m flate2 v1.1.10
+2026-09-05T19:27:21.2561026Z [1m[92m      Adding[0m hashbrown v0.14.5
+2026-09-05T19:27:21.2561574Z [1m[92m      Adding[0m indicatif v0.17.11 [1m[33m(available: v0.18.6)[0m
+2026-09-05T19:27:21.2562104Z [1m[92m      Adding[0m miniz_oxide v0.9.1
+2026-09-05T19:27:21.2563119Z [1m[92m      Adding[0m number_prefix v0.4.0
+2026-09-05T19:27:21.2563571Z [1m[92m      Adding[0m option-ext v0.2.0
+2026-09-05T19:27:21.2564011Z [1m[92m      Adding[0m portable-atomic v1.15.0
+2026-09-05T19:27:21.2564460Z [1m[92m      Adding[0m redox_users v0.4.6
+2026-09-05T19:27:21.2564854Z [1m[92m      Adding[0m same-file v1.0.6
+2026-09-05T19:27:21.2565250Z [1m[92m      Adding[0m serde_spanned v0.6.9
+2026-09-05T19:27:21.2565652Z [1m[92m      Adding[0m shell-words v1.1.1
+2026-09-05T19:27:21.2566298Z [1m[92m      Adding[0m simd-adler32 v0.3.10
+2026-09-05T19:27:21.2567085Z [1m[92m      Adding[0m toml v0.8.23 [1m[33m(available: v1.1.5+spec-1.1.0)[0m
+2026-09-05T19:27:21.2567642Z [1m[92m      Adding[0m toml_datetime v0.6.11
+2026-09-05T19:27:21.2568052Z [1m[92m      Adding[0m toml_edit v0.22.27
+2026-09-05T19:27:21.2568657Z [1m[92m      Adding[0m toml_write v0.1.2
+2026-09-05T19:27:21.2569080Z [1m[92m      Adding[0m unicode-width v0.2.2
+2026-09-05T19:27:21.2569482Z [1m[92m      Adding[0m walkdir v2.5.0
+2026-09-05T19:27:21.2569884Z [1m[92m      Adding[0m web-time v1.1.0
+2026-09-05T19:27:21.2570384Z [1m[92m      Adding[0m winapi-util v0.1.11
+2026-09-05T19:27:21.2570882Z [1m[92m      Adding[0m windows-sys v0.59.0
+2026-09-05T19:27:21.2571918Z [1m[92m      Adding[0m winnow v0.7.15
+2026-09-05T19:27:21.2572780Z [1m[92m      Adding[0m zlib-rs v0.6.7
+2026-09-05T19:27:21.2796600Z [1m[92m Downloading[0m crates ...
+2026-09-05T19:27:21.3842832Z [1m[92m  Downloaded[0m num_cpus v1.17.0
+2026-09-05T19:27:21.3884394Z [1m[92m  Downloaded[0m pin-project-lite v0.2.17
+2026-09-05T19:27:21.3958071Z [1m[92m  Downloaded[0m sha1 v0.10.7
+2026-09-05T19:27:21.3978009Z [1m[92m  Downloaded[0m same-file v1.0.6
+2026-09-05T19:27:21.3998039Z [1m[92m  Downloaded[0m simple_asn1 v0.6.4
+2026-09-05T19:27:21.4034474Z [1m[92m  Downloaded[0m num-integer v0.1.47
+2026-09-05T19:27:21.4057042Z [1m[92m  Downloaded[0m phf v0.13.1
+2026-09-05T19:27:21.4070070Z [1m[92m  Downloaded[0m adler2 v2.0.1
+2026-09-05T19:27:21.4087152Z [1m[92m  Downloaded[0m num-bigint-dig v0.8.6
+2026-09-05T19:27:21.4155140Z [1m[92m  Downloaded[0m num-conv v0.2.2
+2026-09-05T19:27:21.4166908Z [1m[92m  Downloaded[0m pin-project-internal v1.1.13
+2026-09-05T19:27:21.4193266Z [1m[92m  Downloaded[0m postgres-types v0.2.14
+2026-09-05T19:27:21.4238689Z [1m[92m  Downloaded[0m pkg-config v0.3.34
+2026-09-05T19:27:21.4333282Z [1m[92m  Downloaded[0m pkcs8 v0.10.2
+2026-09-05T19:27:21.4336141Z [1m[92m  Downloaded[0m portable-atomic v1.15.0
+2026-09-05T19:27:21.4388783Z [1m[92m  Downloaded[0m num-traits v0.2.19
+2026-09-05T19:27:21.4429469Z [1m[92m  Downloaded[0m percent-encoding v2.3.2
+2026-09-05T19:27:21.4440395Z [1m[92m  Downloaded[0m phf_shared v0.13.1
+2026-09-05T19:27:21.4451615Z [1m[92m  Downloaded[0m potential_utf v0.1.6
+2026-09-05T19:27:21.4463939Z [1m[92m  Downloaded[0m regex-automata v0.4.18
+2026-09-05T19:27:21.4620886Z [1m[92m  Downloaded[0m sqlx-postgres v0.8.6
+2026-09-05T19:27:21.4707615Z [1m[92m  Downloaded[0m der v0.7.10
+2026-09-05T19:27:21.4772000Z [1m[92m  Downloaded[0m num-iter v0.1.46
+2026-09-05T19:27:21.4784635Z [1m[92m  Downloaded[0m pem-rfc7468 v0.7.0
+2026-09-05T19:27:21.4808961Z [1m[92m  Downloaded[0m pkcs1 v0.7.5
+2026-09-05T19:27:21.4839589Z [1m[92m  Downloaded[0m stringprep v0.1.5
+2026-09-05T19:27:21.4853407Z [1m[92m  Downloaded[0m option-ext v0.2.0
+2026-09-05T19:27:21.4879486Z [1m[92m  Downloaded[0m number_prefix v0.4.0
+2026-09-05T19:27:21.4884649Z [1m[92m  Downloaded[0m thiserror v2.0.20
+2026-09-05T19:27:21.4945828Z [1m[92m  Downloaded[0m parking_lot_core v0.9.12
+2026-09-05T19:27:21.4971104Z [1m[92m  Downloaded[0m powerfmt v0.2.0
+2026-09-05T19:27:21.5009071Z [1m[92m  Downloaded[0m postgres-protocol v0.6.12
+2026-09-05T19:27:21.5020917Z [1m[92m  Downloaded[0m sha1_smol v1.0.1
+2026-09-05T19:27:21.5039544Z [1m[92m  Downloaded[0m pem v3.0.6
+2026-09-05T19:27:21.5069450Z [1m[92m  Downloaded[0m pin-project v1.1.13
+2026-09-05T19:27:21.5187589Z [1m[92m  Downloaded[0m sqlx-sqlite v0.8.6
+2026-09-05T19:27:21.5239818Z [1m[92m  Downloaded[0m tinyvec_macros v0.1.1
+2026-09-05T19:27:21.5249931Z [1m[92m  Downloaded[0m ppv-lite86 v0.2.21
+2026-09-05T19:27:21.5264935Z [1m[92m  Downloaded[0m stable_deref_trait v1.2.1
+2026-09-05T19:27:21.5280473Z [1m[92m  Downloaded[0m rustversion v1.0.23
+2026-09-05T19:27:21.5308566Z [1m[92m  Downloaded[0m openssl-sys v0.9.117
+2026-09-05T19:27:21.5373636Z [1m[92m  Downloaded[0m itoa v1.0.18
+2026-09-05T19:27:21.5389311Z [1m[92m  Downloaded[0m rustls-webpki v0.103.15
+2026-09-05T19:27:21.5430093Z [1m[92m  Downloaded[0m is_terminal_polyfill v1.70.2
+2026-09-05T19:27:21.5439860Z [1m[92m  Downloaded[0m sharded-slab v0.1.7
+2026-09-05T19:27:21.5473898Z [1m[92m  Downloaded[0m colored v2.2.0
+2026-09-05T19:27:21.5509147Z [1m[92m  Downloaded[0m lazy_static v1.5.0
+2026-09-05T19:27:21.5527203Z [1m[92m  Downloaded[0m serde_json v1.0.151
+2026-09-05T19:27:21.5607148Z [1m[92m  Downloaded[0m shlex v2.0.1
+2026-09-05T19:27:21.5629818Z [1m[92m  Downloaded[0m smallvec v1.15.2
+2026-09-05T19:27:21.5654697Z [1m[92m  Downloaded[0m strsim v0.11.1
+2026-09-05T19:27:21.5679485Z [1m[92m  Downloaded[0m thiserror-impl v2.0.20
+2026-09-05T19:27:21.5680587Z [1m[92m  Downloaded[0m miniz_oxide v0.9.1
+2026-09-05T19:27:21.5699866Z [1m[92m  Downloaded[0m serde_spanned v0.6.9
+2026-09-05T19:27:21.5713456Z [1m[92m  Downloaded[0m untrusted v0.9.0
+2026-09-05T19:27:21.5736868Z [1m[92m  Downloaded[0m openssl v0.10.81
+2026-09-05T19:27:21.5840349Z [1m[92m  Downloaded[0m password-hash v0.5.0
+2026-09-05T19:27:21.5889834Z [1m[92m  Downloaded[0m rsa v0.9.10
+2026-09-05T19:27:21.5927533Z [1m[92m  Downloaded[0m ryu v1.0.23
+2026-09-05T19:27:21.5964115Z [1m[92m  Downloaded[0m signature v2.2.0
+2026-09-05T19:27:21.5980762Z [1m[92m  Downloaded[0m jsonwebtoken v9.3.1
+2026-09-05T19:27:21.6043277Z [1m[92m  Downloaded[0m native-tls v0.2.18
+2026-09-05T19:27:21.6060207Z [1m[92m  Downloaded[0m rand_core v0.6.4
+2026-09-05T19:27:21.6089562Z [1m[92m  Downloaded[0m shell-words v1.1.1
+2026-09-05T19:27:21.6094633Z [1m[92m  Downloaded[0m toml_datetime v0.6.11
+2026-09-05T19:27:21.6100623Z [1m[92m  Downloaded[0m webpki-roots v0.26.11
+2026-09-05T19:27:21.6120074Z [1m[92m  Downloaded[0m ipnet v2.12.1
+2026-09-05T19:27:21.6134611Z [1m[92m  Downloaded[0m md-5 v0.11.0
+2026-09-05T19:27:21.6168370Z [1m[92m  Downloaded[0m parking v2.2.1
+2026-09-05T19:27:21.6181154Z [1m[92m  Downloaded[0m siphasher v1.0.3
+2026-09-05T19:27:21.6197089Z [1m[92m  Downloaded[0m time-core v0.1.9
+2026-09-05T19:27:21.6210412Z [1m[92m  Downloaded[0m zerofrom v0.1.8
+2026-09-05T19:27:21.6222448Z [1m[92m  Downloaded[0m zerovec-derive v0.11.6
+2026-09-05T19:27:21.6242092Z [1m[92m  Downloaded[0m yoke v0.8.3
+2026-09-05T19:27:21.6262774Z [1m[92m  Downloaded[0m nu-ansi-term v0.50.3
+2026-09-05T19:27:21.6289377Z [1m[92m  Downloaded[0m tokio-retry v0.3.2
+2026-09-05T19:27:21.6304115Z [1m[92m  Downloaded[0m anstyle v1.0.14
+2026-09-05T19:27:21.6321011Z [1m[92m  Downloaded[0m multer v3.1.0
+2026-09-05T19:27:21.6347504Z [1m[92m  Downloaded[0m serde_urlencoded v0.7.1
+2026-09-05T19:27:21.6366387Z [1m[92m  Downloaded[0m sync_wrapper v1.0.2
+2026-09-05T19:27:21.6376609Z [1m[92m  Downloaded[0m tokio-tungstenite v0.24.0
+2026-09-05T19:27:21.6398998Z [1m[92m  Downloaded[0m tower v0.4.13
+2026-09-05T19:27:21.6509924Z [1m[92m  Downloaded[0m zerotrie v0.2.5
+2026-09-05T19:27:21.6551367Z [1m[92m  Downloaded[0m num-bigint v0.4.8
+2026-09-05T19:27:21.6603880Z [1m[92m  Downloaded[0m rand_chacha v0.3.1
+2026-09-05T19:27:21.6616345Z [1m[92m  Downloaded[0m slab v0.4.12
+2026-09-05T19:27:21.6630462Z [1m[92m  Downloaded[0m spki v0.7.3
+2026-09-05T19:27:21.6648907Z [1m[92m  Downloaded[0m time-macros v0.2.32
+2026-09-05T19:27:21.6674179Z [1m[92m  Downloaded[0m tinystr v0.8.4
+2026-09-05T19:27:21.6695664Z [1m[92m  Downloaded[0m tower-http v0.6.11
+2026-09-05T19:27:21.6794740Z [1m[92m  Downloaded[0m aho-corasick v1.1.5
+2026-09-05T19:27:21.6847881Z [1m[92m  Downloaded[0m atomic-waker v1.1.2
+2026-09-05T19:27:21.6861758Z [1m[92m  Downloaded[0m generic-array v0.14.7
+2026-09-05T19:27:21.6875851Z [1m[92m  Downloaded[0m libm v0.2.16
+2026-09-05T19:27:21.6989194Z [1m[92m  Downloaded[0m log v0.4.34
+2026-09-05T19:27:21.7014727Z [1m[92m  Downloaded[0m mio v1.2.2
+2026-09-05T19:27:21.7078451Z [1m[92m  Downloaded[0m openssl-probe v0.2.1
+2026-09-05T19:27:21.7090733Z [1m[92m  Downloaded[0m thread_local v1.1.10
+2026-09-05T19:27:21.7104325Z [1m[92m  Downloaded[0m time v0.3.55
+2026-09-05T19:27:21.7255922Z [1m[92m  Downloaded[0m tinyvec v1.12.0
+2026-09-05T19:27:21.7283079Z [1m[92m  Downloaded[0m tracing-subscriber v0.3.23
+2026-09-05T19:27:21.7368088Z [1m[92m  Downloaded[0m block-buffer v0.10.4
+2026-09-05T19:27:21.7378791Z [1m[92m  Downloaded[0m colorchoice v1.0.5
+2026-09-05T19:27:21.7389392Z [1m[92m  Downloaded[0m icu_normalizer_data v2.3.0
+2026-09-05T19:27:21.7410576Z [1m[92m  Downloaded[0m openssl-macros v0.1.1
+2026-09-05T19:27:21.7418078Z [1m[92m  Downloaded[0m scopeguard v1.2.0
+2026-09-05T19:27:21.7430606Z [1m[92m  Downloaded[0m sqlx-macros v0.8.6
+2026-09-05T19:27:21.7439438Z [1m[92m  Downloaded[0m sqlx-macros-core v0.8.6
+2026-09-05T19:27:21.7463013Z [1m[92m  Downloaded[0m subtle v2.6.1
+2026-09-05T19:27:21.7475019Z [1m[92m  Downloaded[0m synstructure v0.13.2
+2026-09-05T19:27:21.7485453Z [1m[92m  Downloaded[0m thiserror-impl v1.0.69
+2026-09-05T19:27:21.7499706Z [1m[92m  Downloaded[0m zerofrom-derive v0.1.7
+2026-09-05T19:27:21.7510428Z [1m[92m  Downloaded[0m anyhow v1.0.104
+2026-09-05T19:27:21.7552184Z [1m[92m  Downloaded[0m crc v3.4.0
+2026-09-05T19:27:21.7569487Z [1m[92m  Downloaded[0m deadpool-runtime v0.1.4
+2026-09-05T19:27:21.7578129Z [1m[92m  Downloaded[0m digest v0.11.3
+2026-09-05T19:27:21.7602783Z [1m[92m  Downloaded[0m equivalent v1.0.2
+2026-09-05T19:27:21.7612977Z [1m[92m  Downloaded[0m futures-sink v0.3.34
+2026-09-05T19:27:21.7621971Z [1m[92m  Downloaded[0m headers-core v0.3.0
+2026-09-05T19:27:21.7629323Z [1m[92m  Downloaded[0m httpdate v1.0.3
+2026-09-05T19:27:21.7641690Z [1m[92m  Downloaded[0m hyper-tls v0.6.0
+2026-09-05T19:27:21.7655668Z [1m[92m  Downloaded[0m libc v0.2.189
+2026-09-05T19:27:21.8104686Z [1m[92m  Downloaded[0m litemap v0.8.3
+2026-09-05T19:27:21.8128045Z [1m[92m  Downloaded[0m once_cell v1.21.4
+2026-09-05T19:27:21.8154768Z [1m[92m  Downloaded[0m parking_lot v0.12.5
+2026-09-05T19:27:21.8180507Z [1m[92m  Downloaded[0m quote v1.0.47
+2026-09-05T19:27:21.8207826Z [1m[92m  Downloaded[0m rand_core v0.10.1
+2026-09-05T19:27:21.8225109Z [1m[92m  Downloaded[0m rustls-pki-types v1.15.1
+2026-09-05T19:27:21.8251670Z [1m[92m  Downloaded[0m serde_path_to_error v0.1.20
+2026-09-05T19:27:21.8268124Z [1m[92m  Downloaded[0m sha2 v0.10.9
+2026-09-05T19:27:21.8294834Z [1m[92m  Downloaded[0m sha2 v0.11.0
+2026-09-05T19:27:21.8333584Z [1m[92m  Downloaded[0m signal-hook-registry v1.4.8
+2026-09-05T19:27:21.8345571Z [1m[92m  Downloaded[0m simd-adler32 v0.3.10
+2026-09-05T19:27:21.8364974Z [1m[92m  Downloaded[0m socket2 v0.5.10
+2026-09-05T19:27:21.8383898Z [1m[92m  Downloaded[0m spin v0.9.9
+2026-09-05T19:27:21.8407375Z [1m[92m  Downloaded[0m tempfile v3.27.0
+2026-09-05T19:27:21.8434713Z [1m[92m  Downloaded[0m thiserror v1.0.69
+2026-09-05T19:27:21.8493928Z [1m[92m  Downloaded[0m try-lock v0.2.5
+2026-09-05T19:27:21.8503186Z [1m[92m  Downloaded[0m utf-8 v0.7.6
+2026-09-05T19:27:21.8515459Z [1m[92m  Downloaded[0m utf8_iter v1.0.4
+2026-09-05T19:27:21.8526373Z [1m[92m  Downloaded[0m version_check v0.9.5
+2026-09-05T19:27:21.8539296Z [1m[92m  Downloaded[0m autocfg v1.5.1
+2026-09-05T19:27:21.8558021Z [1m[92m  Downloaded[0m axum-macros v0.4.2
+2026-09-05T19:27:21.8673043Z [1m[92m  Downloaded[0m chacha20 v0.10.1
+2026-09-05T19:27:21.8697465Z [1m[92m  Downloaded[0m console v0.15.11
+2026-09-05T19:27:21.8728323Z [1m[92m  Downloaded[0m crossbeam-queue v0.3.13
+2026-09-05T19:27:21.8741830Z [1m[92m  Downloaded[0m crossbeam-utils v0.8.22
+2026-09-05T19:27:21.8770986Z [1m[92m  Downloaded[0m ctutils v0.4.2
+2026-09-05T19:27:21.8790942Z [1m[92m  Downloaded[0m dashmap v5.5.3
+2026-09-05T19:27:21.8815779Z [1m[92m  Downloaded[0m deranged v0.5.8
+2026-09-05T19:27:21.8829933Z [1m[92m  Downloaded[0m encoding_rs v0.8.35
+2026-09-05T19:27:21.9027935Z [1m[92m  Downloaded[0m foldhash v0.1.5
+2026-09-05T19:27:21.9040880Z [1m[92m  Downloaded[0m futures-executor v0.3.34
+2026-09-05T19:27:21.9055106Z [1m[92m  Downloaded[0m getrandom v0.2.17
+2026-09-05T19:27:21.9085654Z [1m[92m  Downloaded[0m getrandom v0.4.3
+2026-09-05T19:27:21.9123863Z [1m[92m  Downloaded[0m hashlink v0.10.0
+2026-09-05T19:27:21.9143036Z [1m[92m  Downloaded[0m iana-time-zone v0.1.65
+2026-09-05T19:27:21.9172388Z [1m[92m  Downloaded[0m md-5 v0.10.6
+2026-09-05T19:27:21.9188884Z [1m[92m  Downloaded[0m proc-macro2 v1.0.107
+2026-09-05T19:27:21.9218901Z [1m[92m  Downloaded[0m rand v0.8.7
+2026-09-05T19:27:21.9252995Z [1m[92m  Downloaded[0m serde v1.0.229
+2026-09-05T19:27:21.9287923Z [1m[92m  Downloaded[0m serde_core v1.0.229
+2026-09-05T19:27:21.9315551Z [1m[92m  Downloaded[0m serde_derive v1.0.229
+2026-09-05T19:27:21.9346363Z [1m[92m  Downloaded[0m socket2 v0.6.5
+2026-09-05T19:27:21.9364496Z [1m[92m  Downloaded[0m sqlx-core v0.8.6
+2026-09-05T19:27:21.9445375Z [1m[92m  Downloaded[0m sqlx-mysql v0.8.6
+2026-09-05T19:27:21.9505377Z [1m[92m  Downloaded[0m atoi v2.0.0
+2026-09-05T19:27:21.9519361Z [1m[92m  Downloaded[0m blake2 v0.10.6
+2026-09-05T19:27:21.9545513Z [1m[92m  Downloaded[0m cc v1.4.4
+2026-09-05T19:27:21.9576199Z [1m[92m  Downloaded[0m cfg-if v1.0.4
+2026-09-05T19:27:21.9589544Z [1m[92m  Downloaded[0m cpufeatures v0.3.0
+2026-09-05T19:27:21.9604314Z [1m[92m  Downloaded[0m crc32fast v1.5.1
+2026-09-05T19:27:21.9625391Z [1m[92m  Downloaded[0m errno v0.3.14
+2026-09-05T19:27:21.9640903Z [1m[92m  Downloaded[0m fastrand v2.5.0
+2026-09-05T19:27:21.9654968Z [1m[92m  Downloaded[0m fnv v1.0.7
+2026-09-05T19:27:21.9664129Z [1m[92m  Downloaded[0m hmac v0.13.0
+2026-09-05T19:27:21.9685963Z [1m[92m  Downloaded[0m hyper-util v0.1.20
+2026-09-05T19:27:21.9748524Z [1m[92m  Downloaded[0m rand v0.10.2
+2026-09-05T19:27:21.9787508Z [1m[92m  Downloaded[0m writeable v0.6.4
+2026-09-05T19:27:21.9808850Z [1m[92m  Downloaded[0m const-oid v0.9.6
+2026-09-05T19:27:21.9827795Z [1m[92m  Downloaded[0m hashbrown v0.14.5
+2026-09-05T19:27:21.9876621Z [1m[92m  Downloaded[0m lock_api v0.4.14
+2026-09-05T19:27:21.9889895Z [1m[92m  Downloaded[0m reqwest v0.12.28
+2026-09-05T19:27:21.9943586Z [1m[92m  Downloaded[0m sqlx v0.8.6
+2026-09-05T19:27:22.0089943Z [1m[92m  Downloaded[0m tokio-rustls v0.26.4
+2026-09-05T19:27:22.0110970Z [1m[92m  Downloaded[0m toml_write v0.1.2
+2026-09-05T19:27:22.0124852Z [1m[92m  Downloaded[0m unicode-properties v0.1.4
+2026-09-05T19:27:22.0143862Z [1m[92m  Downloaded[0m whoami v1.6.1
+2026-09-05T19:27:22.0164168Z [1m[92m  Downloaded[0m crypto-common v0.1.7
+2026-09-05T19:27:22.0173470Z [1m[92m  Downloaded[0m home v0.5.12
+2026-09-05T19:27:22.0183664Z [1m[92m  Downloaded[0m async-trait v0.1.92
+2026-09-05T19:27:22.0222532Z [1m[92m  Downloaded[0m axum-core v0.4.5
+2026-09-05T19:27:22.0243349Z [1m[92m  Downloaded[0m heck v0.5.0
+2026-09-05T19:27:22.0256226Z [1m[92m  Downloaded[0m hmac v0.12.1
+2026-09-05T19:27:22.0276179Z [1m[92m  Downloaded[0m tower-service v0.3.3
+2026-09-05T19:27:22.0284166Z [1m[92m  Downloaded[0m tungstenite v0.24.0
+2026-09-05T19:27:22.0316628Z [1m[92m  Downloaded[0m anstyle-parse v1.0.0
+2026-09-05T19:27:22.0332977Z [1m[92m  Downloaded[0m argon2 v0.5.3
+2026-09-05T19:27:22.0349573Z [1m[92m  Downloaded[0m bitflags v2.13.1
+2026-09-05T19:27:22.0395359Z [1m[92m  Downloaded[0m block-buffer v0.12.1
+2026-09-05T19:27:22.0407776Z [1m[92m  Downloaded[0m futures-util v0.3.34
+2026-09-05T19:27:22.0545615Z [1m[92m  Downloaded[0m hashbrown v0.15.5
+2026-09-05T19:27:22.0596536Z [1m[92m  Downloaded[0m icu_locale_core v2.3.0
+2026-09-05T19:27:22.0668370Z [1m[92m  Downloaded[0m redis v0.25.5
+2026-09-05T19:27:22.0741179Z [1m[92m  Downloaded[0m bytes v1.12.1
+2026-09-05T19:27:22.0776863Z [1m[92m  Downloaded[0m flate2 v1.1.10
+2026-09-05T19:27:22.0826510Z [1m[92m  Downloaded[0m headers v0.4.1
+2026-09-05T19:27:22.0887832Z [1m[92m  Downloaded[0m mime v0.3.17
+2026-09-05T19:27:22.0901479Z [1m[92m  Downloaded[0m rustls v0.23.43
+2026-09-05T19:27:22.1022513Z [1m[92m  Downloaded[0m syn v2.0.119
+2026-09-05T19:27:22.1131872Z [1m[92m  Downloaded[0m syn v3.0.3
+2026-09-05T19:27:22.1238724Z [1m[92m  Downloaded[0m axum v0.7.9
+2026-09-05T19:27:22.1316938Z [1m[92m  Downloaded[0m combine v4.6.7
+2026-09-05T19:27:22.1371796Z [1m[92m  Downloaded[0m either v1.18.0
+2026-09-05T19:27:22.1387097Z [1m[92m  Downloaded[0m hdrhistogram v7.6.0
+2026-09-05T19:27:22.1462268Z [1m[92m  Downloaded[0m hkdf v0.12.4
+2026-09-05T19:27:22.1486723Z [1m[92m  Downloaded[0m regex-syntax v0.8.11
+2026-09-05T19:27:22.1553798Z [1m[92m  Downloaded[0m rustix v1.1.4
+2026-09-05T19:27:22.1837213Z [1m[92m  Downloaded[0m flume v0.11.1
+2026-09-05T19:27:22.1873104Z [1m[92m  Downloaded[0m hex v0.4.3
+2026-09-05T19:27:22.1889915Z [1m[92m  Downloaded[0m futures-io v0.3.34
+2026-09-05T19:27:22.1898504Z [1m[92m  Downloaded[0m hashbrown v0.17.1
+2026-09-05T19:27:22.1951805Z [1m[92m  Downloaded[0m cmov v0.5.4
+2026-09-05T19:27:22.1969718Z [1m[92m  Downloaded[0m futures v0.3.34
+2026-09-05T19:27:22.2020191Z [1m[92m  Downloaded[0m icu_normalizer v2.3.0
+2026-09-05T19:27:22.2115739Z [1m[92m  Downloaded[0m event-listener v5.4.2
+2026-09-05T19:27:22.2134015Z [1m[92m  Downloaded[0m hyper v1.11.0
+2026-09-05T19:27:22.2203579Z [1m[92m  Downloaded[0m matchers v0.2.0
+2026-09-05T19:27:22.2214696Z [1m[92m  Downloaded[0m matchit v0.7.3
+2026-09-05T19:27:22.2234482Z [1m[92m  Downloaded[0m tokio-macros v2.7.2
+2026-09-05T19:27:22.2245351Z [1m[92m  Downloaded[0m tracing-serde v0.2.0
+2026-09-05T19:27:22.2254678Z [1m[92m  Downloaded[0m byteorder v1.5.0
+2026-09-05T19:27:22.2271104Z [1m[92m  Downloaded[0m crc-catalog v2.5.0
+2026-09-05T19:27:22.2285485Z [1m[92m  Downloaded[0m icu_collections v2.3.0
+2026-09-05T19:27:22.2349397Z [1m[92m  Downloaded[0m futures-intrusive v0.5.0
+2026-09-05T19:27:22.2394295Z [1m[92m  Downloaded[0m dotenvy v0.15.7
+2026-09-05T19:27:22.2422376Z [1m[92m  Downloaded[0m futures-task v0.3.34
+2026-09-05T19:27:22.2434438Z [1m[92m  Downloaded[0m hashbrown v0.12.3
+2026-09-05T19:27:22.2472100Z [1m[92m  Downloaded[0m crypto-common v0.2.2
+2026-09-05T19:27:22.2483483Z [1m[92m  Downloaded[0m futures-core v0.3.34
+2026-09-05T19:27:22.2497338Z [1m[92m  Downloaded[0m hyper-rustls v0.27.9
+2026-09-05T19:27:22.2511980Z [1m[92m  Downloaded[0m find-msvc-tools v0.1.11
+2026-09-05T19:27:22.2527773Z [1m[92m  Downloaded[0m futures-macro v0.3.34
+2026-09-05T19:27:22.2538518Z [1m[92m  Downloaded[0m indicatif v0.17.11
+2026-09-05T19:27:22.2576290Z [1m[92m  Downloaded[0m hybrid-array v0.4.14
+2026-09-05T19:27:22.2598457Z [1m[92m  Downloaded[0m icu_provider v2.3.1
+2026-09-05T19:27:22.2624974Z [1m[92m  Downloaded[0m ring v0.17.14
+2026-09-05T19:27:22.3051532Z [1m[92m  Downloaded[0m tokio-util v0.7.19
+2026-09-05T19:27:22.3133355Z [1m[92m  Downloaded[0m tracing-log v0.2.0
+2026-09-05T19:27:22.3148136Z [1m[92m  Downloaded[0m uuid v1.25.0
+2026-09-05T19:27:22.3178704Z [1m[92m  Downloaded[0m indexmap v2.14.0
+2026-09-05T19:27:22.3222222Z [1m[92m  Downloaded[0m whoami v2.1.3
+2026-09-05T19:27:22.3244060Z [1m[92m  Downloaded[0m bb8 v0.8.6
+2026-09-05T19:27:22.3255403Z [1m[92m  Downloaded[0m dirs v5.0.1
+2026-09-05T19:27:22.3268223Z [1m[92m  Downloaded[0m displaydoc v0.2.7
+2026-09-05T19:27:22.3289901Z [1m[92m  Downloaded[0m foreign-types-shared v0.1.1
+2026-09-05T19:27:22.3297085Z [1m[92m  Downloaded[0m http-body v1.1.0
+2026-09-05T19:27:22.3307898Z [1m[92m  Downloaded[0m tracing-attributes v0.1.31
+2026-09-05T19:27:22.3335168Z [1m[92m  Downloaded[0m want v0.3.1
+2026-09-05T19:27:22.3344674Z [1m[92m  Downloaded[0m anstream v1.0.0
+2026-09-05T19:27:22.3364907Z [1m[92m  Downloaded[0m toml v0.8.23
+2026-09-05T19:27:22.3388769Z [1m[92m  Downloaded[0m foreign-types v0.3.2
+2026-09-05T19:27:22.3396338Z [1m[92m  Downloaded[0m form_urlencoded v1.2.2
+2026-09-05T19:27:22.3405205Z [1m[92m  Downloaded[0m tower-layer v0.3.3
+2026-09-05T19:27:22.3415181Z [1m[92m  Downloaded[0m yoke-derive v0.8.2
+2026-09-05T19:27:22.3427318Z [1m[92m  Downloaded[0m anstyle-query v1.1.5
+2026-09-05T19:27:22.3439082Z [1m[92m  Downloaded[0m clap_lex v1.1.0
+2026-09-05T19:27:22.3449962Z [1m[92m  Downloaded[0m utf8parse v0.2.2
+2026-09-05T19:27:22.3459930Z [1m[92m  Downloaded[0m walkdir v2.5.0
+2026-09-05T19:27:22.3478431Z [1m[92m  Downloaded[0m zeroize v1.9.0
+2026-09-05T19:27:22.3494261Z [1m[92m  Downloaded[0m dirs-sys v0.4.1
+2026-09-05T19:27:22.3506825Z [1m[92m  Downloaded[0m cpufeatures v0.2.17
+2026-09-05T19:27:22.3520809Z [1m[92m  Downloaded[0m zmij v1.0.23
+2026-09-05T19:27:22.3538783Z [1m[92m  Downloaded[0m idna_adapter v1.2.2
+2026-09-05T19:27:22.3548134Z [1m[92m  Downloaded[0m tokio-native-tls v0.3.1
+2026-09-05T19:27:22.3566574Z [1m[92m  Downloaded[0m digest v0.10.7
+2026-09-05T19:27:22.3585310Z [1m[92m  Downloaded[0m http-body-util v0.1.5
+2026-09-05T19:27:22.3605279Z [1m[92m  Downloaded[0m data-encoding v2.11.1
+2026-09-05T19:27:22.3615425Z [1m[92m  Downloaded[0m base64ct v1.8.3
+2026-09-05T19:27:22.3641546Z [1m[92m  Downloaded[0m futures-channel v0.3.34
+2026-09-05T19:27:22.3660666Z [1m[92m  Downloaded[0m tokio-stream v0.1.19
+2026-09-05T19:27:22.3713739Z [1m[92m  Downloaded[0m arc-swap v1.9.2
+2026-09-05T19:27:22.3754319Z [1m[92m  Downloaded[0m deadpool v0.12.3
+2026-09-05T19:27:22.3785446Z [1m[92m  Downloaded[0m deadpool-postgres v0.14.1
+2026-09-05T19:27:22.3799852Z [1m[92m  Downloaded[0m dialoguer v0.11.0
+2026-09-05T19:27:22.3834844Z [1m[92m  Downloaded[0m unicode-bidi v0.3.18
+2026-09-05T19:27:22.3859806Z [1m[92m  Downloaded[0m axum-extra v0.9.6
+2026-09-05T19:27:22.3895833Z [1m[92m  Downloaded[0m fallible-iterator v0.2.0
+2026-09-05T19:27:22.3907921Z [1m[92m  Downloaded[0m httparse v1.10.1
+2026-09-05T19:27:22.3933770Z [1m[92m  Downloaded[0m tower v0.5.3
+2026-09-05T19:27:22.4038501Z [1m[92m  Downloaded[0m tower-http v0.5.2
+2026-09-05T19:27:22.4122626Z [1m[92m  Downloaded[0m url v2.5.8
+2026-09-05T19:27:22.4148045Z [1m[92m  Downloaded[0m allocator-api2 v0.2.21
+2026-09-05T19:27:22.4174332Z [1m[92m  Downloaded[0m clap_derive v4.6.4
+2026-09-05T19:27:22.4196254Z [1m[92m  Downloaded[0m const-oid v0.10.2
+2026-09-05T19:27:22.4220238Z [1m[92m  Downloaded[0m tracing-core v0.1.36
+2026-09-05T19:27:22.4247169Z [1m[92m  Downloaded[0m clap v4.6.6
+2026-09-05T19:27:22.4345689Z [1m[92m  Downloaded[0m base64 v0.22.1
+2026-09-05T19:27:22.4384355Z [1m[92m  Downloaded[0m unicode-ident v1.0.24
+2026-09-05T19:27:22.4412562Z [1m[92m  Downloaded[0m toml_edit v0.22.27
+2026-09-05T19:27:22.4456679Z [1m[92m  Downloaded[0m indexmap v1.9.3
+2026-09-05T19:27:22.4488714Z [1m[92m  Downloaded[0m memchr v2.8.3
+2026-09-05T19:27:22.4545133Z [1m[92m  Downloaded[0m tokio-postgres v0.7.18
+2026-09-05T19:27:22.4598889Z [1m[92m  Downloaded[0m icu_properties v2.3.0
+2026-09-05T19:27:22.4630447Z [1m[92m  Downloaded[0m typenum v1.20.1
+2026-09-05T19:27:22.4665303Z [1m[92m  Downloaded[0m http v1.5.0
+2026-09-05T19:27:22.4702383Z [1m[92m  Downloaded[0m unicode-normalization v0.1.25
+2026-09-05T19:27:22.4736469Z [1m[92m  Downloaded[0m zerovec v0.11.8
+2026-09-05T19:27:22.4797271Z [1m[92m  Downloaded[0m idna v1.1.0
+2026-09-05T19:27:22.4832584Z [1m[92m  Downloaded[0m h2 v0.4.18
+2026-09-05T19:27:22.4897654Z [1m[92m  Downloaded[0m icu_properties_data v2.3.0
+2026-09-05T19:27:22.5008699Z [1m[92m  Downloaded[0m winnow v0.7.15
+2026-09-05T19:27:22.5106979Z [1m[92m  Downloaded[0m clap_builder v4.6.6
+2026-09-05T19:27:22.5171384Z [1m[92m  Downloaded[0m zlib-rs v0.6.7
+2026-09-05T19:27:22.5227126Z [1m[92m  Downloaded[0m webpki-roots v1.0.9
+2026-09-05T19:27:22.5258016Z [1m[92m  Downloaded[0m vcpkg v0.2.15
+2026-09-05T19:27:22.5819876Z [1m[92m  Downloaded[0m unicode-width v0.2.2
+2026-09-05T19:27:22.5875381Z [1m[92m  Downloaded[0m zerocopy v0.8.56
+2026-09-05T19:27:22.6096867Z [1m[92m  Downloaded[0m chrono v0.4.45
+2026-09-05T19:27:22.6163527Z [1m[92m  Downloaded[0m tracing v0.1.44
+2026-09-05T19:27:22.6327324Z [1m[92m  Downloaded[0m tokio v1.53.1
+2026-09-05T19:27:22.6835084Z [1m[92m  Downloaded[0m linux-raw-sys v0.12.1
+2026-09-05T19:27:22.7479450Z [1m[92m  Downloaded[0m libsqlite3-sys v0.30.1
+2026-09-05T19:27:23.0913010Z [1m[92m   Compiling[0m proc-macro2 v1.0.107
+2026-09-05T19:27:23.0914032Z [1m[92m   Compiling[0m quote v1.0.47
+2026-09-05T19:27:23.0942196Z [1m[92m   Compiling[0m unicode-ident v1.0.24
+2026-09-05T19:27:23.0975614Z [1m[92m   Compiling[0m libc v0.2.189
+2026-09-05T19:27:23.1606596Z [1m[92m   Compiling[0m serde_core v1.0.229
+2026-09-05T19:27:23.2759297Z [1m[92m    Checking[0m cfg-if v1.0.4
+2026-09-05T19:27:23.3102527Z [1m[92m   Compiling[0m serde v1.0.229
+2026-09-05T19:27:23.5106070Z [1m[92m   Compiling[0m parking_lot_core v0.9.12
+2026-09-05T19:27:23.6524276Z [1m[92m    Checking[0m bytes v1.12.1
+2026-09-05T19:27:24.1089827Z [1m[92m    Checking[0m pin-project-lite v0.2.17
+2026-09-05T19:27:24.1439942Z [1m[92m   Compiling[0m syn v3.0.3
+2026-09-05T19:27:24.2059704Z [1m[92m   Compiling[0m syn v2.0.119
+2026-09-05T19:27:24.3019781Z [1m[92m   Compiling[0m version_check v0.9.5
+2026-09-05T19:27:24.5239798Z [1m[92m   Compiling[0m generic-array v0.14.7
+2026-09-05T19:27:24.6219682Z [1m[92m    Checking[0m futures-core v0.3.34
+2026-09-05T19:27:24.6911574Z [1m[92m   Compiling[0m shlex v2.0.1
+2026-09-05T19:27:24.8209769Z [1m[92m   Compiling[0m find-msvc-tools v0.1.11
+2026-09-05T19:27:25.0080244Z [1m[92m   Compiling[0m cc v1.4.4
+2026-09-05T19:27:25.4420390Z [1m[92m    Checking[0m scopeguard v1.2.0
+2026-09-05T19:27:25.4819797Z [1m[92m    Checking[0m lock_api v0.4.14
+2026-09-05T19:27:25.6509733Z [1m[92m   Compiling[0m autocfg v1.5.1
+2026-09-05T19:27:25.9647001Z [1m[92m    Checking[0m typenum v1.20.1
+2026-09-05T19:27:26.5270740Z [1m[92m    Checking[0m errno v0.3.14
+2026-09-05T19:27:26.5909518Z [1m[92m    Checking[0m once_cell v1.21.4
+2026-09-05T19:27:26.7069832Z [1m[92m    Checking[0m itoa v1.0.18
+2026-09-05T19:27:26.8151831Z [1m[92m    Checking[0m memchr v2.8.3
+2026-09-05T19:27:26.9251249Z [1m[92m    Checking[0m signal-hook-registry v1.4.8
+2026-09-05T19:27:27.0359514Z [1m[92m    Checking[0m mio v1.2.2
+2026-09-05T19:27:27.2929756Z [1m[92m    Checking[0m socket2 v0.6.5
+2026-09-05T19:27:27.3035733Z [1m[92m    Checking[0m futures-sink v0.3.34
+2026-09-05T19:27:27.3989591Z [1m[92m    Checking[0m log v0.4.34
+2026-09-05T19:27:27.5499955Z [1m[92m    Checking[0m slab v0.4.12
+2026-09-05T19:27:27.6359760Z [1m[92m    Checking[0m futures-channel v0.3.34
+2026-09-05T19:27:27.6569281Z [1m[92m    Checking[0m futures-task v0.3.34
+2026-09-05T19:27:27.7779603Z [1m[92m    Checking[0m futures-io v0.3.34
+2026-09-05T19:27:27.7886323Z [1m[92m   Compiling[0m icu_properties_data v2.3.0
+2026-09-05T19:27:27.8906179Z [1m[92m   Compiling[0m synstructure v0.13.2
+2026-09-05T19:27:27.9530502Z [1m[92m   Compiling[0m icu_normalizer_data v2.3.0
+2026-09-05T19:27:28.0749880Z [1m[92m    Checking[0m tracing-core v0.1.36
+2026-09-05T19:27:28.5499651Z [1m[92m    Checking[0m stable_deref_trait v1.2.1
+2026-09-05T19:27:29.1359651Z [1m[92m    Checking[0m http v1.5.0
+2026-09-05T19:27:29.4440031Z [1m[92m   Compiling[0m zmij v1.0.23
+2026-09-05T19:27:29.5960270Z [1m[92m    Checking[0m subtle v2.6.1
+2026-09-05T19:27:29.6800290Z [1m[92m   Compiling[0m serde_derive v1.0.229
+2026-09-05T19:27:29.6980209Z [1m[92m   Compiling[0m zerovec-derive v0.11.6
+2026-09-05T19:27:29.7330550Z [1m[92m   Compiling[0m displaydoc v0.2.7
+2026-09-05T19:27:29.8260032Z [1m[92m   Compiling[0m zerofrom-derive v0.1.7
+2026-09-05T19:27:30.3269755Z [1m[92m   Compiling[0m yoke-derive v0.8.2
+2026-09-05T19:27:30.7480934Z [1m[92m   Compiling[0m tokio-macros v2.7.2
+2026-09-05T19:27:31.0299600Z [1m[92m   Compiling[0m tracing-attributes v0.1.31
+2026-09-05T19:27:31.2925068Z [1m[92m   Compiling[0m futures-macro v0.3.34
+2026-09-05T19:27:31.3509555Z [1m[92m    Checking[0m zerofrom v0.1.8
+2026-09-05T19:27:31.4249819Z [1m[92m    Checking[0m yoke v0.8.3
+2026-09-05T19:27:31.7709676Z [1m[92m   Compiling[0m zerocopy v0.8.56
+2026-09-05T19:27:31.9510419Z [1m[92m    Checking[0m futures-util v0.3.34
+2026-09-05T19:27:32.0359765Z [1m[92m    Checking[0m zerovec v0.11.8
+2026-09-05T19:27:32.1809748Z [1m[92m    Checking[0m tracing v0.1.44
+2026-09-05T19:27:32.3539871Z [1m[92m   Compiling[0m num-traits v0.2.19
+2026-09-05T19:27:33.1080003Z [1m[92m    Checking[0m crypto-common v0.1.7
+2026-09-05T19:27:33.1719519Z [1m[92m    Checking[0m block-buffer v0.10.4
+2026-09-05T19:27:33.2365972Z [1m[92m    Checking[0m getrandom v0.2.17
+2026-09-05T19:27:33.3299949Z [1m[92m    Checking[0m rand_core v0.10.1
+2026-09-05T19:27:33.3499752Z [1m[92m    Checking[0m smallvec v1.15.2
+2026-09-05T19:27:33.4059808Z [1m[92m    Checking[0m percent-encoding v2.3.2
+2026-09-05T19:27:33.4829749Z [1m[92m   Compiling[0m getrandom v0.4.3
+2026-09-05T19:27:33.6082958Z [1m[92m    Checking[0m equivalent v1.0.2
+2026-09-05T19:27:33.6429753Z [1m[92m   Compiling[0m serde_json v1.0.151
+2026-09-05T19:27:33.6539562Z [1m[92m    Checking[0m parking_lot v0.12.5
+2026-09-05T19:27:33.7488752Z [1m[92m    Checking[0m base64 v0.22.1
+2026-09-05T19:27:33.8106322Z [1m[92m    Checking[0m tokio v1.53.1
+2026-09-05T19:27:33.9889595Z [1m[92m    Checking[0m digest v0.10.7
+2026-09-05T19:27:34.3779492Z [1m[92m    Checking[0m tinystr v0.8.4
+2026-09-05T19:27:34.5069680Z [1m[92m    Checking[0m litemap v0.8.3
+2026-09-05T19:27:34.6319556Z [1m[92m    Checking[0m hashbrown v0.17.1
+2026-09-05T19:27:34.7388936Z [1m[92m    Checking[0m writeable v0.6.4
+2026-09-05T19:27:35.1210398Z [1m[92m    Checking[0m indexmap v2.14.0
+2026-09-05T19:27:35.6729724Z [1m[92m    Checking[0m icu_locale_core v2.3.0
+2026-09-05T19:27:35.8549639Z [1m[92m    Checking[0m potential_utf v0.1.6
+2026-09-05T19:27:35.9199549Z [1m[92m    Checking[0m zerotrie v0.2.5
+2026-09-05T19:27:36.1210501Z [1m[92m    Checking[0m bitflags v2.13.1
+2026-09-05T19:27:36.2010075Z [1m[92m   Compiling[0m thiserror v2.0.20
+2026-09-05T19:27:36.2261243Z [1m[92m    Checking[0m utf8_iter v1.0.4
+2026-09-05T19:27:36.4029917Z [1m[92m   Compiling[0m crossbeam-utils v0.8.22
+2026-09-05T19:27:36.4999913Z [1m[92m    Checking[0m icu_provider v2.3.1
+2026-09-05T19:27:36.5809783Z [1m[92m    Checking[0m icu_collections v2.3.0
+2026-09-05T19:27:36.8590113Z [1m[92m   Compiling[0m thiserror-impl v2.0.20
+2026-09-05T19:27:37.2420248Z [1m[92m   Compiling[0m httparse v1.10.1
+2026-09-05T19:27:37.5385087Z [1m[92m   Compiling[0m rustls v0.23.43
+2026-09-05T19:27:37.5730219Z [1m[92m    Checking[0m tokio-util v0.7.19
+2026-09-05T19:27:38.0269740Z [1m[92m    Checking[0m form_urlencoded v1.2.2
+2026-09-05T19:27:38.0439275Z [1m[92m    Checking[0m http-body v1.1.0
+2026-09-05T19:27:38.1199786Z [1m[92m   Compiling[0m ring v0.17.14
+2026-09-05T19:27:38.1300119Z [1m[92m    Checking[0m tower-service v0.3.3
+2026-09-05T19:27:38.1356187Z [1m[92m    Checking[0m byteorder v1.5.0
+2026-09-05T19:27:38.1520395Z [1m[92m   Compiling[0m zeroize v1.9.0
+2026-09-05T19:27:38.1679795Z [1m[92m    Checking[0m cpufeatures v0.2.17
+2026-09-05T19:27:38.2648982Z [1m[92m   Compiling[0m rustls-pki-types v1.15.1
+2026-09-05T19:27:38.3109902Z [1m[92m    Checking[0m icu_properties v2.3.0
+2026-09-05T19:27:38.3429554Z [1m[92m    Checking[0m icu_normalizer v2.3.0
+2026-09-05T19:27:38.7631535Z [1m[92m    Checking[0m rand_core v0.6.4
+2026-09-05T19:27:39.2049809Z [1m[92m    Checking[0m tinyvec_macros v0.1.1
+2026-09-05T19:27:39.3130031Z [1m[92m    Checking[0m tinyvec v1.12.0
+2026-09-05T19:27:39.3650241Z [1m[92m    Checking[0m idna_adapter v1.2.2
+2026-09-05T19:27:41.3809584Z [1m[92m   Compiling[0m untrusted v0.9.0
+2026-09-05T19:27:41.4399695Z [1m[92m    Checking[0m tower-layer v0.3.3
+2026-09-05T19:27:41.7819645Z [1m[92m    Checking[0m unicode-normalization v0.1.25
+2026-09-05T19:27:42.1319794Z [1m[92m    Checking[0m idna v1.1.0
+2026-09-05T19:27:42.6569798Z [1m[92m   Compiling[0m async-trait v0.1.92
+2026-09-05T19:27:43.8840198Z [1m[92m    Checking[0m ppv-lite86 v0.2.21
+2026-09-05T19:27:43.9299789Z [1m[92m   Compiling[0m pkg-config v0.3.34
+2026-09-05T19:27:44.2020161Z [1m[92m    Checking[0m iana-time-zone v0.1.65
+2026-09-05T19:27:44.3825313Z [1m[92m    Checking[0m try-lock v0.2.5
+2026-09-05T19:27:44.4829702Z [1m[92m    Checking[0m fnv v1.0.7
+2026-09-05T19:27:44.6479812Z [1m[92m    Checking[0m unicode-properties v0.1.4
+2026-09-05T19:27:44.6602272Z [1m[92m    Checking[0m unicode-bidi v0.3.18
+2026-09-05T19:27:44.7850198Z [1m[92m   Compiling[0m rustversion v1.0.23
+2026-09-05T19:27:44.8719596Z [1m[92m    Checking[0m httpdate v1.0.3
+2026-09-05T19:27:44.9439979Z [1m[92m    Checking[0m atomic-waker v1.1.2
+2026-09-05T19:27:44.9591226Z [1m[92m   Compiling[0m vcpkg v0.2.15
+2026-09-05T19:27:45.0227502Z [1m[92m   Compiling[0m allocator-api2 v0.2.21
+2026-09-05T19:27:45.0420001Z [1m[92m   Compiling[0m foldhash v0.1.5
+2026-09-05T19:27:45.3530136Z [1m[92m   Compiling[0m hashbrown v0.15.5
+2026-09-05T19:27:45.5209979Z [1m[92m    Checking[0m h2 v0.4.18
+2026-09-05T19:27:45.5989522Z [1m[92m   Compiling[0m openssl-sys v0.9.117
+2026-09-05T19:27:45.9060223Z [1m[92m    Checking[0m stringprep v0.1.5
+2026-09-05T19:27:46.7610012Z [1m[92m    Checking[0m want v0.3.1
+2026-09-05T19:27:46.8249630Z [1m[92m    Checking[0m chrono v0.4.45
+2026-09-05T19:27:47.2050239Z [1m[92m    Checking[0m rand_chacha v0.3.1
+2026-09-05T19:27:47.3569647Z [1m[92m   Compiling[0m rustls-webpki v0.103.15
+2026-09-05T19:27:48.1290082Z [1m[92m    Checking[0m url v2.5.8
+2026-09-05T19:27:48.9300075Z [1m[92m   Compiling[0m webpki-roots v1.0.9
+2026-09-05T19:27:48.9759645Z [1m[92m    Checking[0m http-body-util v0.1.5
+2026-09-05T19:27:49.1539716Z [1m[92m    Checking[0m uuid v1.25.0
+2026-09-05T19:27:49.4579799Z [1m[92m    Checking[0m sync_wrapper v1.0.2
+2026-09-05T19:27:49.4820764Z [1m[92m    Checking[0m cpufeatures v0.3.0
+2026-09-05T19:27:49.6604425Z [1m[92m    Checking[0m mime v0.3.17
+2026-09-05T19:27:49.8036296Z [1m[92m   Compiling[0m crc-catalog v2.5.0
+2026-09-05T19:27:49.8649756Z [1m[92m   Compiling[0m parking v2.2.1
+2026-09-05T19:27:49.8755470Z [1m[92m   Compiling[0m crc v3.4.0
+2026-09-05T19:27:49.9573717Z [1m[92m   Compiling[0m event-listener v5.4.2
+2026-09-05T19:27:50.1639925Z [1m[92m   Compiling[0m tokio-stream v0.1.19
+2026-09-05T19:27:51.0709568Z [1m[92m   Compiling[0m sha2 v0.10.9
+2026-09-05T19:27:51.4019739Z [1m[92m   Compiling[0m crossbeam-queue v0.3.13
+2026-09-05T19:27:51.8871123Z [1m[92m   Compiling[0m webpki-roots v0.26.11
+2026-09-05T19:27:51.9275420Z [1m[92m    Checking[0m hyper v1.11.0
+2026-09-05T19:27:52.6768523Z [1m[92m   Compiling[0m futures-intrusive v0.5.0
+2026-09-05T19:27:52.9759600Z [1m[92m    Checking[0m rand v0.8.7
+2026-09-05T19:27:53.1190116Z [1m[92m   Compiling[0m hashlink v0.10.0
+2026-09-05T19:27:53.5219702Z [1m[92m   Compiling[0m hmac v0.12.1
+2026-09-05T19:27:53.6459783Z [1m[92m   Compiling[0m either v1.18.0
+2026-09-05T19:27:53.6650065Z [1m[92m    Checking[0m hybrid-array v0.4.14
+2026-09-05T19:27:53.7732458Z [1m[92m   Compiling[0m heck v0.5.0
+2026-09-05T19:27:54.0189828Z [1m[92m    Checking[0m ryu v1.0.23
+2026-09-05T19:27:54.1019700Z [1m[92m    Checking[0m ipnet v2.12.1
+2026-09-05T19:27:54.1799764Z [1m[92m   Compiling[0m thiserror v1.0.69
+2026-09-05T19:27:54.6887581Z [1m[92m    Checking[0m hyper-util v0.1.20
+2026-09-05T19:27:54.9579545Z [1m[92m   Compiling[0m hkdf v0.12.4
+2026-09-05T19:27:55.2286814Z [1m[92m    Checking[0m chacha20 v0.10.1
+2026-09-05T19:27:55.3881957Z [1m[92m   Compiling[0m sqlx-core v0.8.6
+2026-09-05T19:27:55.7037777Z [1m[92m    Checking[0m tower v0.5.3
+2026-09-05T19:27:56.3159755Z [1m[92m   Compiling[0m atoi v2.0.0
+2026-09-05T19:27:56.4719675Z [1m[92m   Compiling[0m md-5 v0.10.6
+2026-09-05T19:27:56.5669765Z [1m[92m   Compiling[0m thiserror-impl v1.0.69
+2026-09-05T19:27:56.8368830Z [1m[92m   Compiling[0m dotenvy v0.15.7
+2026-09-05T19:27:57.2349820Z [1m[92m    Checking[0m cmov v0.5.4
+2026-09-05T19:27:57.3640081Z [1m[92m    Checking[0m lazy_static v1.5.0
+2026-09-05T19:27:57.3854188Z [1m[92m   Compiling[0m time-core v0.1.9
+2026-09-05T19:27:57.4556382Z [1m[92m   Compiling[0m num-conv v0.2.2
+2026-09-05T19:27:57.5549541Z [1m[92m   Compiling[0m home v0.5.12
+2026-09-05T19:27:57.5747107Z [1m[92m   Compiling[0m whoami v1.6.1
+2026-09-05T19:27:57.6809575Z [1m[92m   Compiling[0m hex v0.4.3
+2026-09-05T19:27:57.8889965Z [1m[92m   Compiling[0m time-macros v0.2.32
+2026-09-05T19:27:57.9512708Z [1m[92m   Compiling[0m sqlx-postgres v0.8.6
+2026-09-05T19:27:58.0537538Z [1m[92m    Checking[0m ctutils v0.4.2
+2026-09-05T19:27:58.6887233Z [1m[92m    Checking[0m rand v0.10.2
+2026-09-05T19:27:59.2229863Z [1m[92m    Checking[0m block-buffer v0.12.1
+2026-09-05T19:27:59.3119634Z [1m[92m    Checking[0m crypto-common v0.2.2
+2026-09-05T19:27:59.4239719Z [1m[92m    Checking[0m serde_urlencoded v0.7.1
+2026-09-05T19:27:59.9223276Z [1m[92m    Checking[0m num-integer v0.1.47
+2026-09-05T19:28:00.3871784Z [1m[92m    Checking[0m powerfmt v0.2.0
+2026-09-05T19:28:00.4809862Z [1m[92m   Compiling[0m openssl v0.10.81
+2026-09-05T19:28:00.4889513Z [1m[92m    Checking[0m foreign-types-shared v0.1.1
+2026-09-05T19:28:00.5194852Z [1m[92m    Checking[0m const-oid v0.10.2
+2026-09-05T19:28:00.7180290Z [1m[92m    Checking[0m deranged v0.5.8
+2026-09-05T19:28:00.7809552Z [1m[92m    Checking[0m digest v0.11.3
+2026-09-05T19:28:00.9089723Z [1m[92m    Checking[0m foreign-types v0.3.2
+2026-09-05T19:28:01.0097507Z [1m[92m    Checking[0m num-bigint v0.4.8
+2026-09-05T19:28:01.7969699Z [1m[92m    Checking[0m time v0.3.55
+2026-09-05T19:28:02.0385974Z [1m[92m   Compiling[0m sqlx-macros-core v0.8.6
+2026-09-05T19:28:03.0138723Z [1m[92m    Checking[0m axum-core v0.4.5
+2026-09-05T19:28:03.8889975Z [1m[92m   Compiling[0m openssl-macros v0.1.1
+2026-09-05T19:28:04.0247635Z [1m[92m   Compiling[0m axum-macros v0.4.2
+2026-09-05T19:28:04.0860199Z [1m[92m    Checking[0m serde_path_to_error v0.1.20
+2026-09-05T19:28:04.3507868Z [1m[92m   Compiling[0m native-tls v0.2.18
+2026-09-05T19:28:04.4589848Z [1m[92m    Checking[0m matchit v0.7.3
+2026-09-05T19:28:04.7639687Z [1m[92m   Compiling[0m anyhow v1.0.104
+2026-09-05T19:28:04.9520207Z [1m[92m   Compiling[0m sqlx-macros v0.8.6
+2026-09-05T19:28:05.7009728Z [1m[92m    Checking[0m axum v0.7.9
+2026-09-05T19:28:06.0470296Z [1m[92m    Checking[0m simple_asn1 v0.6.4
+2026-09-05T19:28:06.2010203Z [1m[92m    Checking[0m pem v3.0.6
+2026-09-05T19:28:06.3179851Z [1m[92m   Compiling[0m indexmap v1.9.3
+2026-09-05T19:28:06.4184233Z [1m[92m    Checking[0m encoding_rs v0.8.35
+2026-09-05T19:28:07.4269749Z [1m[92m    Checking[0m openssl-probe v0.2.1
+2026-09-05T19:28:07.4769740Z [1m[92m    Checking[0m regex-syntax v0.8.11
+2026-09-05T19:28:07.9944269Z [1m[92m    Checking[0m sqlx v0.8.6
+2026-09-05T19:28:08.0350131Z [1m[92m    Checking[0m jsonwebtoken v9.3.1
+2026-09-05T19:28:08.2349799Z [1m[92m   Compiling[0m pin-project-internal v1.1.13
+2026-09-05T19:28:08.3073157Z [1m[92m    Checking[0m regex-automata v0.4.18
+2026-09-05T19:28:08.5969727Z [1m[92m    Checking[0m hashbrown v0.12.3
+2026-09-05T19:28:09.2521055Z [1m[92m    Checking[0m pin-project v1.1.13
+2026-09-05T19:28:09.2929654Z [1m[92m    Checking[0m tokio-native-tls v0.3.1
+2026-09-05T19:28:09.3479701Z [1m[92m    Checking[0m md-5 v0.11.0
+2026-09-05T19:28:09.3779697Z [1m[92m    Checking[0m sha2 v0.11.0
+2026-09-05T19:28:09.4659714Z [1m[92m    Checking[0m hmac v0.13.0
+2026-09-05T19:28:09.5559979Z [1m[92m    Checking[0m sharded-slab v0.1.7
+2026-09-05T19:28:09.6330523Z [1m[92m    Checking[0m freebuff-shared v0.1.0 (/home/runner/work/freebuff/freebuff/crates/shared)
+2026-09-05T19:28:09.8164655Z [1m[92m    Checking[0m matchers v0.2.0
+2026-09-05T19:28:09.8789758Z [1m[92m    Checking[0m hdrhistogram v7.6.0
+2026-09-05T19:28:09.9960252Z [1m[92m    Checking[0m futures-executor v0.3.34
+2026-09-05T19:28:10.0407006Z [1m[92m    Checking[0m tracing-serde v0.2.0
+2026-09-05T19:28:10.0469897Z [1m[92m    Checking[0m tracing-log v0.2.0
+2026-09-05T19:28:10.0869601Z [1m[92m    Checking[0m thread_local v1.1.10
+2026-09-05T19:28:10.1267455Z [1m[92m    Checking[0m nu-ansi-term v0.50.3
+2026-09-05T19:28:10.1331275Z [1m[92m    Checking[0m siphasher v1.0.3
+2026-09-05T19:28:10.1999881Z [1m[92m    Checking[0m fallible-iterator v0.2.0
+2026-09-05T19:28:10.2549729Z [1m[92m    Checking[0m phf_shared v0.13.1
+2026-09-05T19:28:10.2919903Z [1m[92m    Checking[0m tracing-subscriber v0.3.23
+2026-09-05T19:28:10.4285650Z [1m[92m    Checking[0m futures v0.3.34
+2026-09-05T19:28:10.4670152Z [1m[92m    Checking[0m tower v0.4.13
+2026-09-05T19:28:10.4740027Z [1m[92m    Checking[0m postgres-protocol v0.6.12
+2026-09-05T19:28:10.6509569Z [1m[92m    Checking[0m hyper-tls v0.6.0
+2026-09-05T19:28:10.7509851Z [1m[92m    Checking[0m tower-http v0.6.11
+2026-09-05T19:28:10.7600310Z [1m[92m    Checking[0m tower-http v0.5.2
+2026-09-05T19:28:11.0064296Z [1m[92m    Checking[0m sha1 v0.10.7
+2026-09-05T19:28:11.1129784Z [1m[92m    Checking[0m fastrand v2.5.0
+2026-09-05T19:28:11.2409789Z [1m[92m    Checking[0m reqwest v0.12.28
+2026-09-05T19:28:11.3469620Z [1m[92m    Checking[0m postgres-types v0.2.14
+2026-09-05T19:28:11.4019517Z [1m[92m    Checking[0m phf v0.13.1
+2026-09-05T19:28:11.5039501Z [1m[92m   Compiling[0m multer v3.1.0
+2026-09-05T19:28:11.5989654Z [1m[92m    Checking[0m whoami v2.1.3
+2026-09-05T19:28:11.6249571Z [1m[92m    Checking[0m utf8parse v0.2.2
+2026-09-05T19:28:11.6709797Z [1m[92m    Checking[0m anstyle-parse v1.0.0
+2026-09-05T19:28:11.7569884Z [1m[92m    Checking[0m tokio-postgres v0.7.18
+2026-09-05T19:28:11.7909962Z [1m[92m    Checking[0m headers-core v0.3.0
+2026-09-05T19:28:11.8219889Z [1m[92m    Checking[0m is_terminal_polyfill v1.70.2
+2026-09-05T19:28:11.8339708Z [1m[92m    Checking[0m spin v0.9.9
+2026-09-05T19:28:11.8639885Z [1m[92m    Checking[0m anstyle v1.0.14
+2026-09-05T19:28:11.8849967Z [1m[92m    Checking[0m colorchoice v1.0.5
+2026-09-05T19:28:11.8949749Z [1m[92m    Checking[0m anstyle-query v1.1.5
+2026-09-05T19:28:11.9358605Z [1m[92m    Checking[0m headers v0.4.1
+2026-09-05T19:28:11.9899985Z [1m[92m    Checking[0m anstream v1.0.0
+2026-09-05T19:28:12.0879591Z [1m[92m    Checking[0m clap_lex v1.1.0
+2026-09-05T19:28:12.1430347Z [1m[92m   Compiling[0m crc32fast v1.5.1
+2026-09-05T19:28:12.1799761Z [1m[92m   Compiling[0m rustix v1.1.4
+2026-09-05T19:28:12.2870262Z [1m[92m    Checking[0m strsim v0.11.1
+2026-09-05T19:28:12.4096832Z [1m[92m    Checking[0m clap_builder v4.6.6
+2026-09-05T19:28:12.4098080Z [1m[92m    Checking[0m axum-extra v0.9.6
+2026-09-05T19:28:12.4899905Z [1m[92m    Checking[0m tokio-retry v0.3.2
+2026-09-05T19:28:12.5789532Z [1m[92m   Compiling[0m clap_derive v4.6.4
+2026-09-05T19:28:12.9239638Z [1m[92m    Checking[0m arc-swap v1.9.2
+2026-09-05T19:28:13.1010071Z [1m[92m    Checking[0m combine v4.6.7
+2026-09-05T19:28:13.4669862Z [1m[92m    Checking[0m socket2 v0.5.10
+2026-09-05T19:28:13.6594767Z [1m[92m    Checking[0m linux-raw-sys v0.12.1
+2026-09-05T19:28:13.8410497Z [1m[92m    Checking[0m unicode-width v0.2.2
+2026-09-05T19:28:14.0029795Z [1m[92m    Checking[0m sha1_smol v1.0.1
+2026-09-05T19:28:14.0146905Z [1m[92m    Checking[0m simd-adler32 v0.3.10
+2026-09-05T19:28:14.1010102Z [1m[92m   Compiling[0m portable-atomic v1.15.0
+2026-09-05T19:28:14.1144818Z [1m[92m    Checking[0m adler2 v2.0.1
+2026-09-05T19:28:14.1669754Z [1m[92m    Checking[0m miniz_oxide v0.9.1
+2026-09-05T19:28:14.3399770Z [1m[92m    Checking[0m clap v4.6.6
+2026-09-05T19:28:14.3759833Z [1m[92m    Checking[0m console v0.15.11
+2026-09-05T19:28:14.6230832Z [1m[92m    Checking[0m deadpool-runtime v0.1.4
+2026-09-05T19:28:14.6319518Z [1m[92m    Checking[0m serde_spanned v0.6.9
+2026-09-05T19:28:14.6940494Z [1m[92m    Checking[0m toml_datetime v0.6.11
+2026-09-05T19:28:14.6997546Z [1m[92m    Checking[0m num_cpus v1.17.0
+2026-09-05T19:28:14.7949833Z [1m[92m    Checking[0m toml_write v0.1.2
+2026-09-05T19:28:14.8240124Z [1m[92m    Checking[0m utf-8 v0.7.6
+2026-09-05T19:28:14.8969750Z [1m[92m    Checking[0m base64ct v1.8.3
+2026-09-05T19:28:14.9176700Z [1m[92m    Checking[0m same-file v1.0.6
+2026-09-05T19:28:14.9819714Z [1m[92m    Checking[0m data-encoding v2.11.1
+2026-09-05T19:28:15.0729671Z [1m[92m    Checking[0m winnow v0.7.15
+2026-09-05T19:28:15.2269551Z [1m[92m    Checking[0m option-ext v0.2.0
+2026-09-05T19:28:15.2629561Z [1m[92m    Checking[0m dirs-sys v0.4.1
+2026-09-05T19:28:15.3229716Z [1m[92m    Checking[0m tungstenite v0.24.0
+2026-09-05T19:28:15.7199764Z [1m[92m    Checking[0m password-hash v0.5.0
+2026-09-05T19:28:15.9069645Z [1m[92m    Checking[0m walkdir v2.5.0
+2026-09-05T19:28:15.9659760Z [1m[92m    Checking[0m tempfile v3.27.0
+2026-09-05T19:28:16.0119620Z [1m[92m    Checking[0m deadpool v0.12.3
+2026-09-05T19:28:16.1249692Z [1m[92m    Checking[0m flate2 v1.1.10
+2026-09-05T19:28:16.4153280Z [1m[92m    Checking[0m blake2 v0.10.6
+2026-09-05T19:28:16.5399647Z [1m[92m    Checking[0m toml_edit v0.22.27
+2026-09-05T19:28:16.6009941Z [1m[92m    Checking[0m shell-words v1.1.1
+2026-09-05T19:28:16.6519599Z [1m[92m    Checking[0m number_prefix v0.4.0
+2026-09-05T19:28:16.6639879Z [1m[92m    Checking[0m hashbrown v0.14.5
+2026-09-05T19:28:16.7149741Z [1m[92m    Checking[0m indicatif v0.17.11
+2026-09-05T19:28:16.9534606Z [1m[92m    Checking[0m redis v0.25.5
+2026-09-05T19:28:17.0259676Z [1m[92m    Checking[0m dialoguer v0.11.0
+2026-09-05T19:28:17.1339898Z [1m[92m    Checking[0m dashmap v5.5.3
+2026-09-05T19:28:17.2949580Z [1m[92m    Checking[0m argon2 v0.5.3
+2026-09-05T19:28:17.3951645Z [1m[92m    Checking[0m deadpool-postgres v0.14.1
+2026-09-05T19:28:17.5509714Z [1m[92m    Checking[0m tokio-tungstenite v0.24.0
+2026-09-05T19:28:17.7489559Z [1m[92m    Checking[0m dirs v5.0.1
+2026-09-05T19:28:17.7919583Z [1m[92m    Checking[0m colored v2.2.0
+2026-09-05T19:28:17.9337149Z [1m[92m    Checking[0m bb8 v0.8.6
+2026-09-05T19:28:17.9449610Z [1m[92m    Checking[0m toml v0.8.23
+2026-09-05T19:28:18.1450019Z [1m[92m    Checking[0m freebuff-gateway v0.1.0 (/home/runner/work/freebuff/freebuff/crates/gateway)
+2026-09-05T19:28:18.2286072Z [1m[91merror[E0432][0m[1m: unresolved import `axum::extract::ws`[0m
+2026-09-05T19:28:18.2287185Z   [1m[94m--> [0mcrates/gateway/src/routes/realtime.rs:1:20
+2026-09-05T19:28:18.2299213Z    [1m[94m|[0m
+2026-09-05T19:28:18.2329844Z [1m[94m 1[0m [1m[94m|[0m use axum::extract::ws::{Message, WebSocket, WebSocketUpgrade};
+2026-09-05T19:28:18.2349407Z    [1m[94m|[0m                    [1m[91m^^[0m [1m[91mcould not find `ws` in `extract`[0m
+2026-09-05T19:28:18.2379062Z    [1m[94m|[0m
+2026-09-05T19:28:18.2389225Z [1m[92mnote[0m: found an item that was configured out
+2026-09-05T19:28:18.2419888Z   [1m[94m--> [0m/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/axum-0.7.9/src/extract/mod.rs:11:9
+2026-09-05T19:28:18.2459457Z    [1m[94m|[0m
+2026-09-05T19:28:18.2489806Z [1m[94m10[0m [1m[94m|[0m #[cfg(feature = "ws")]
+2026-09-05T19:28:18.2519680Z    [1m[94m|[0m       [1m[94m--------------[0m [1m[94mthe item is gated behind the `ws` feature[0m
+2026-09-05T19:28:18.2549190Z [1m[94m11[0m [1m[94m|[0m pub mod ws;
+2026-09-05T19:28:18.2572913Z    [1m[94m|[0m         [1m[92m^^[0m
+2026-09-05T19:28:18.2588651Z 
+2026-09-05T19:28:18.2609663Z [1m[92m    Checking[0m freebuff-cdc-service v0.1.0 (/home/runner/work/freebuff/freebuff/crates/cdc-service)
+2026-09-05T19:28:18.2669764Z [1m[92m    Checking[0m freebuff-cli v0.1.0 (/home/runner/work/freebuff/freebuff/crates/cli)
+2026-09-05T19:28:18.3910333Z [1m[91merror[E0599][0m[1m: no method named `uri` found for struct `axum::http::Response<T>` in the current scope[0m
+2026-09-05T19:28:18.3919194Z   [1m[94m--> [0mcrates/gateway/src/middleware.rs:50:25
+2026-09-05T19:28:18.3948904Z    [1m[94m|[0m
+2026-09-05T19:28:18.3969358Z [1m[94m50[0m [1m[94m|[0m     let path = response.uri().path().to_string();
+2026-09-05T19:28:18.3999826Z    [1m[94m|[0m                         [1m[91m^^^[0m [1m[91mmethod not found in `axum::http::Response<axum::body::Body>`[0m
+2026-09-05T19:28:18.4018778Z 
+2026-09-05T19:28:18.4132472Z [1m[91merror[E0432][0m[1m: unresolved import `axum::extract::ws`[0m
+2026-09-05T19:28:18.4149262Z   [1m[94m--> [0mcrates/cdc-service/src/websocket.rs:3:9
+2026-09-05T19:28:18.4178980Z    [1m[94m|[0m
+2026-09-05T19:28:18.4189502Z [1m[94m 3[0m [1m[94m|[0m         ws::{Message, WebSocket, WebSocketUpgrade},
+2026-09-05T19:28:18.4190390Z    [1m[94m|[0m         [1m[91m^^[0m [1m[91mcould not find `ws` in `extract`[0m
+2026-09-05T19:28:18.4191024Z    [1m[94m|[0m
+2026-09-05T19:28:18.4191530Z [1m[92mnote[0m: found an item that was configured out
+2026-09-05T19:28:18.4192604Z   [1m[94m--> [0m/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/axum-0.7.9/src/extract/mod.rs:11:9
+2026-09-05T19:28:18.4193449Z    [1m[94m|[0m
+2026-09-05T19:28:18.4193909Z [1m[94m10[0m [1m[94m|[0m #[cfg(feature = "ws")]
+2026-09-05T19:28:18.4194726Z    [1m[94m|[0m       [1m[94m--------------[0m [1m[94mthe item is gated behind the `ws` feature[0m
+2026-09-05T19:28:18.4195484Z [1m[94m11[0m [1m[94m|[0m pub mod ws;
+2026-09-05T19:28:18.4195991Z    [1m[94m|[0m         [1m[92m^^[0m
+2026-09-05T19:28:18.4196276Z 
+2026-09-05T19:28:18.4239787Z [1m[91merror[E0365][0m[1m: `AuthCommands` is only public within the crate, and cannot be re-exported outside[0m
+2026-09-05T19:28:18.4240892Z   [1m[94m--> [0mcrates/cli/src/commands/mod.rs:14:17
+2026-09-05T19:28:18.4241456Z    [1m[94m|[0m
+2026-09-05T19:28:18.4242739Z [1m[94m14[0m [1m[94m|[0m pub use crate::{AuthCommands, ProjectCommands, BranchCommands, MigrationCommands, DevCommands, ConfigCommands};
+2026-09-05T19:28:18.4244175Z    [1m[94m|[0m                 [1m[91m^^^^^^^^^^^^[0m [1m[91mre-export of crate public `AuthCommands`[0m
+2026-09-05T19:28:18.4245264Z    [1m[94m|[0m
+2026-09-05T19:28:18.4246025Z    [1m[94m= [0m[1mnote[0m: consider declaring type or module `AuthCommands` with `pub`
+2026-09-05T19:28:18.4246584Z 
+2026-09-05T19:28:18.4247303Z [1m[91merror[E0365][0m[1m: `ProjectCommands` is only public within the crate, and cannot be re-exported outside[0m
+2026-09-05T19:28:18.4248644Z   [1m[94m--> [0mcrates/cli/src/commands/mod.rs:14:31
+2026-09-05T19:28:18.4249173Z    [1m[94m|[0m
+2026-09-05T19:28:18.4250342Z [1m[94m14[0m [1m[94m|[0m pub use crate::{AuthCommands, ProjectCommands, BranchCommands, MigrationCommands, DevCommands, ConfigCommands};
+2026-09-05T19:28:18.4251686Z    [1m[94m|[0m                               [1m[91m^^^^^^^^^^^^^^^[0m [1m[91mre-export of crate public `ProjectCommands`[0m
+2026-09-05T19:28:18.4252422Z    [1m[94m|[0m
+2026-09-05T19:28:18.4253056Z    [1m[94m= [0m[1mnote[0m: consider declaring type or module `ProjectCommands` with `pub`
+2026-09-05T19:28:18.4253596Z 
+2026-09-05T19:28:18.4254311Z [1m[91merror[E0365][0m[1m: `BranchCommands` is only public within the crate, and cannot be re-exported outside[0m
+2026-09-05T19:28:18.4255329Z   [1m[94m--> [0mcrates/cli/src/commands/mod.rs:14:48
+2026-09-05T19:28:18.4255870Z    [1m[94m|[0m
+2026-09-05T19:28:18.4256995Z [1m[94m14[0m [1m[94m|[0m pub use crate::{AuthCommands, ProjectCommands, BranchCommands, MigrationCommands, DevCommands, ConfigCommands};
+2026-09-05T19:28:18.4278812Z    [1m[94m|[0m                                                [1m[91m^^^^^^^^^^^^^^[0m [1m[91mre-export of crate public `BranchCommands`[0m
+2026-09-05T19:28:18.4279777Z    [1m[94m|[0m
+2026-09-05T19:28:18.4280555Z    [1m[94m= [0m[1mnote[0m: consider declaring type or module `BranchCommands` with `pub`
+2026-09-05T19:28:18.4281127Z 
+2026-09-05T19:28:18.4282242Z [1m[91merror[E0365][0m[1m: `MigrationCommands` is only public within the crate, and cannot be re-exported outside[0m
+2026-09-05T19:28:18.4283346Z   [1m[94m--> [0mcrates/cli/src/commands/mod.rs:14:64
+2026-09-05T19:28:18.4283934Z    [1m[94m|[0m
+2026-09-05T19:28:18.4285181Z [1m[94m14[0m [1m[94m|[0m pub use crate::{AuthCommands, ProjectCommands, BranchCommands, MigrationCommands, DevCommands, ConfigCommands};
+2026-09-05T19:28:18.4286830Z    [1m[94m|[0m                                                                [1m[91m^^^^^^^^^^^^^^^^^[0m [1m[91mre-export of crate public `MigrationCommands`[0m
+2026-09-05T19:28:18.4287727Z    [1m[94m|[0m
+2026-09-05T19:28:18.4308907Z    [1m[94m= [0m[1mnote[0m: consider declaring type or module `MigrationCommands` with `pub`
+2026-09-05T19:28:18.4309554Z 
+2026-09-05T19:28:18.4310321Z [1m[91merror[E0365][0m[1m: `DevCommands` is only public within the crate, and cannot be re-exported outside[0m
+2026-09-05T19:28:18.4311369Z   [1m[94m--> [0mcrates/cli/src/commands/mod.rs:14:83
+2026-09-05T19:28:18.4311958Z    [1m[94m|[0m
+2026-09-05T19:28:18.4313221Z [1m[94m14[0m [1m[94m|[0m pub use crate::{AuthCommands, ProjectCommands, BranchCommands, MigrationCommands, DevCommands, ConfigCommands};
+2026-09-05T19:28:18.4314875Z    [1m[94m|[0m                                                                                   [1m[91m^^^^^^^^^^^[0m [1m[91mre-export of crate public `DevCommands`[0m
+2026-09-05T19:28:18.4315847Z    [1m[94m|[0m
+2026-09-05T19:28:18.4316598Z    [1m[94m= [0m[1mnote[0m: consider declaring type or module `DevCommands` with `pub`
+2026-09-05T19:28:18.4317143Z 
+2026-09-05T19:28:18.4317871Z [1m[91merror[E0365][0m[1m: `ConfigCommands` is only public within the crate, and cannot be re-exported outside[0m
+2026-09-05T19:28:18.4319370Z   [1m[94m--> [0mcrates/cli/src/commands/mod.rs:14:96
+2026-09-05T19:28:18.4319956Z    [1m[94m|[0m
+2026-09-05T19:28:18.4321174Z [1m[94m14[0m [1m[94m|[0m pub use crate::{AuthCommands, ProjectCommands, BranchCommands, MigrationCommands, DevCommands, ConfigCommands};
+2026-09-05T19:28:18.4323268Z    [1m[94m|[0m                                                                                                [1m[91m^^^^^^^^^^^^^^[0m [1m[91mre-export of crate public `ConfigCommands`[0m
+2026-09-05T19:28:18.4324267Z    [1m[94m|[0m
+2026-09-05T19:28:18.4325016Z    [1m[94m= [0m[1mnote[0m: consider declaring type or module `ConfigCommands` with `pub`
+2026-09-05T19:28:18.4325594Z 
+2026-09-05T19:28:18.4408936Z [1m[33mwarning[0m[1m: unused import: `std::path::PathBuf`[0m
+2026-09-05T19:28:18.4419170Z  [1m[94m--> [0mcrates/cli/src/commands/push.rs:3:5
+2026-09-05T19:28:18.4449228Z   [1m[94m|[0m
+2026-09-05T19:28:18.4479478Z [1m[94m3[0m [1m[94m|[0m use std::path::PathBuf;
+2026-09-05T19:28:18.4509122Z   [1m[94m|[0m     [1m[33m^^^^^^^^^^^^^^^^^^[0m
+2026-09-05T19:28:18.4509716Z   [1m[94m|[0m
+2026-09-05T19:28:18.4510525Z   [1m[94m= [0m[1mnote[0m: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+2026-09-05T19:28:18.4511097Z 
+2026-09-05T19:28:18.4511733Z [1m[33mwarning[0m[1m: unused import: `crate::client::ApiClient`[0m
+2026-09-05T19:28:18.4512546Z   [1m[94m--> [0mcrates/cli/src/commands/mod.rs:12:5
+2026-09-05T19:28:18.4513137Z    [1m[94m|[0m
+2026-09-05T19:28:18.4513753Z [1m[94m12[0m [1m[94m|[0m use crate::client::ApiClient;
+2026-09-05T19:28:18.4514442Z    [1m[94m|[0m     [1m[33m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+2026-09-05T19:28:18.4514800Z 
+2026-09-05T19:28:18.4515711Z [1m[33mwarning[0m[1m: unused imports: `BranchCommands`, `ConfigCommands`, `DevCommands`, `MigrationCommands`, and `ProjectCommands`[0m
+2026-09-05T19:28:18.4516922Z   [1m[94m--> [0mcrates/cli/src/commands/mod.rs:14:31
+2026-09-05T19:28:18.4517479Z    [1m[94m|[0m
+2026-09-05T19:28:18.4549068Z [1m[94m14[0m [1m[94m|[0m pub use crate::{AuthCommands, ProjectCommands, BranchCommands, MigrationCommands, DevCommands, ConfigCommands};
+2026-09-05T19:28:18.4551372Z    [1m[94m|[0m                               [1m[33m^^^^^^^^^^^^^^^[0m  [1m[33m^^^^^^^^^^^^^^[0m  [1m[33m^^^^^^^^^^^^^^^^^[0m  [1m[33m^^^^^^^^^^^[0m  [1m[33m^^^^^^^^^^^^^^[0m
+2026-09-05T19:28:18.4552147Z 
+2026-09-05T19:28:18.4681074Z [1m[91merror[E0603][0m[1m: struct import `SubscriptionFilter` is private[0m
+2026-09-05T19:28:18.4709341Z    [1m[94m--> [0mcrates/cdc-service/src/main.rs:18:38
+2026-09-05T19:28:18.4739346Z     [1m[94m|[0m
+2026-09-05T19:28:18.4769781Z [1m[94m 18[0m [1m[94m|[0m pub use subscription::{Subscription, SubscriptionFilter};
+2026-09-05T19:28:18.4770986Z     [1m[94m|[0m                                      [1m[91m^^^^^^^^^^^^^^^^^^[0m [1m[91mprivate struct import[0m
+2026-09-05T19:28:18.4801415Z     [1m[94m|[0m
+2026-09-05T19:28:18.4829347Z [1m[92mnote[0m: the struct import `SubscriptionFilter` is defined here...
+2026-09-05T19:28:18.4859328Z    [1m[94m--> [0mcrates/cdc-service/src/subscription.rs:7:40
+2026-09-05T19:28:18.4860119Z     [1m[94m|[0m
+2026-09-05T19:28:18.4889733Z [1m[94m  7[0m [1m[94m|[0m use crate::change_event::{ChangeEvent, SubscriptionFilter};
+2026-09-05T19:28:18.4939704Z     [1m[94m|[0m                                        [1m[92m^^^^^^^^^^^^^^^^^^[0m
+2026-09-05T19:28:18.4969417Z [1m[92mnote[0m: ...and refers to the struct `SubscriptionFilter` which is defined here
+2026-09-05T19:28:18.4999190Z    [1m[94m--> [0mcrates/cdc-service/src/change_event.rs:332:1
+2026-09-05T19:28:18.5028938Z     [1m[94m|[0m
+2026-09-05T19:28:18.5059108Z [1m[94m332[0m [1m[94m|[0m pub struct SubscriptionFilter {
+2026-09-05T19:28:18.5089236Z     [1m[94m|[0m [1m[92m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m [1m[92myou could import this directly[0m
+2026-09-05T19:28:18.5118593Z 
+2026-09-05T19:28:18.5150039Z [1m[33mwarning[0m[1m: unused imports: `ReplicationMessage` and `SubscriptionFilter`[0m
+2026-09-05T19:28:18.5179290Z   [1m[94m--> [0mcrates/cdc-service/src/logical_replication.rs:10:5
+2026-09-05T19:28:18.5209022Z    [1m[94m|[0m
+2026-09-05T19:28:18.5239287Z [1m[94m10[0m [1m[94m|[0m     ReplicationMessage, SubscriptionFilter,
+2026-09-05T19:28:18.5269759Z    [1m[94m|[0m     [1m[33m^^^^^^^^^^^^^^^^^^[0m  [1m[33m^^^^^^^^^^^^^^^^^^[0m
+2026-09-05T19:28:18.5299011Z    [1m[94m|[0m
+2026-09-05T19:28:18.5309609Z    [1m[94m= [0m[1mnote[0m: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+2026-09-05T19:28:18.5358711Z 
+2026-09-05T19:28:18.5371941Z [1m[33mwarning[0m[1m: unused import: `Query`[0m
+2026-09-05T19:28:18.5372753Z  [1m[94m--> [0mcrates/cdc-service/src/subscription.rs:1:35
+2026-09-05T19:28:18.5373374Z   [1m[94m|[0m
+2026-09-05T19:28:18.5374254Z [1m[94m1[0m [1m[94m|[0m use axum::{extract::{Path, State, Query}, Json};
+2026-09-05T19:28:18.5375071Z   [1m[94m|[0m                                   [1m[33m^^^^^[0m
+2026-09-05T19:28:18.5375469Z 
+2026-09-05T19:28:18.5375915Z [1m[33mwarning[0m[1m: unused import: `std::sync::Arc`[0m
+2026-09-05T19:28:18.5376743Z  [1m[94m--> [0mcrates/cdc-service/src/subscription.rs:3:5
+2026-09-05T19:28:18.5377349Z   [1m[94m|[0m
+2026-09-05T19:28:18.5377923Z [1m[94m3[0m [1m[94m|[0m use std::sync::Arc;
+2026-09-05T19:28:18.5393135Z   [1m[94m|[0m     [1m[33m^^^^^^^^^^^^^^[0m
+2026-09-05T19:28:18.5393486Z 
+2026-09-05T19:28:18.5393975Z [1m[33mwarning[0m[1m: unused import: `std::collections::HashMap`[0m
+2026-09-05T19:28:18.5394701Z  [1m[94m--> [0mcrates/cdc-service/src/presence.rs:4:5
+2026-09-05T19:28:18.5395213Z   [1m[94m|[0m
+2026-09-05T19:28:18.5395721Z [1m[94m4[0m [1m[94m|[0m use std::collections::HashMap;
+2026-09-05T19:28:18.5396282Z   [1m[94m|[0m     [1m[33m^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+2026-09-05T19:28:18.5396562Z 
+2026-09-05T19:28:18.5396809Z [1m[33mwarning[0m[1m: unused import: `Query`[0m
+2026-09-05T19:28:18.5397399Z  [1m[94m--> [0mcrates/cdc-service/src/broadcast.rs:1:35
+2026-09-05T19:28:18.5397920Z   [1m[94m|[0m
+2026-09-05T19:28:18.5398933Z [1m[94m1[0m [1m[94m|[0m use axum::{extract::{Path, State, Query}, Json};
+2026-09-05T19:28:18.5400111Z   [1m[94m|[0m                                   [1m[33m^^^^^[0m
+2026-09-05T19:28:18.5400489Z 
+2026-09-05T19:28:18.5401136Z [1m[33mwarning[0m[1m: unused import: `std::collections::HashMap`[0m
+2026-09-05T19:28:18.5401914Z  [1m[94m--> [0mcrates/cdc-service/src/broadcast.rs:4:5
+2026-09-05T19:28:18.5402468Z   [1m[94m|[0m
+2026-09-05T19:28:18.5403014Z [1m[94m4[0m [1m[94m|[0m use std::collections::HashMap;
+2026-09-05T19:28:18.5403649Z   [1m[94m|[0m     [1m[33m^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+2026-09-05T19:28:18.5404000Z 
+2026-09-05T19:28:18.5404902Z [1m[91merror[E0277][0m[1m: the trait bound `fn({type error}, State<...>) -> ... {websocket_handler}: Handler<_, _>` is not satisfied[0m
+2026-09-05T19:28:18.5405917Z     [1m[94m--> [0mcrates/gateway/src/main.rs:47:46
+2026-09-05T19:28:18.5406428Z      [1m[94m|[0m
+2026-09-05T19:28:18.5407338Z [1m[94m  47[0m [1m[94m|[0m         .route("/realtime/v1/websocket", get(routes::realtime::websocket_handler))
+2026-09-05T19:28:18.5409700Z      [1m[94m|[0m                                          [1m[94m---[0m [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m [1m[91mthe trait `Handler<_, _>` is not implemented for fn item `fn({type error}, State<GatewayState>) -> ... {websocket_handler}`[0m
+2026-09-05T19:28:18.5411292Z      [1m[94m|[0m                                          [1m[94m|[0m
+2026-09-05T19:28:18.5412217Z      [1m[94m|[0m                                          [1m[94mrequired by a bound introduced by this call[0m
+2026-09-05T19:28:18.5412921Z      [1m[94m|[0m
+2026-09-05T19:28:18.5414127Z      [1m[94m= [0m[1mnote[0m: Consider using `#[axum::debug_handler]` to improve the error message
+2026-09-05T19:28:18.5415039Z [1m[96mhelp[0m: the following other types implement trait `Handler<T, S>`
+2026-09-05T19:28:18.5416143Z     [1m[94m--> [0m/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/axum-0.7.9/src/handler/mod.rs:303:1
+2026-09-05T19:28:18.5416971Z      [1m[94m|[0m
+2026-09-05T19:28:18.5417573Z [1m[94m 303[0m [1m[94m|[0m [1m[96m/[0m impl<H, S, T, L> Handler<T, S> for Layered<L, H, T, S>
+2026-09-05T19:28:18.5418757Z [1m[94m 304[0m [1m[94m|[0m [1m[96m|[0m where
+2026-09-05T19:28:18.5419603Z [1m[94m 305[0m [1m[94m|[0m [1m[96m|[0m     L: Layer<HandlerService<H, T, S>> + Clone + Send + 'static,
+2026-09-05T19:28:18.5420420Z [1m[94m 306[0m [1m[94m|[0m [1m[96m|[0m     H: Handler<T, S>,
+2026-09-05T19:28:18.5420992Z [1m[94m...[0m    [1m[96m|[0m
+2026-09-05T19:28:18.5421524Z [1m[94m 310[0m [1m[94m|[0m [1m[96m|[0m     T: 'static,
+2026-09-05T19:28:18.5422120Z [1m[94m 311[0m [1m[94m|[0m [1m[96m|[0m     S: 'static,
+2026-09-05T19:28:18.5423167Z      [1m[94m|[0m [1m[96m|_______________^[0m [1m[96m`axum::handler::Layered<L, H, T, S>` implements `Handler<T, S>`[0m
+2026-09-05T19:28:18.5423881Z      [1m[94m|[0m
+2026-09-05T19:28:18.5424868Z     [1m[94m::: [0m/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/axum-0.7.9/src/routing/method_routing.rs:1309:1
+2026-09-05T19:28:18.5425795Z      [1m[94m|[0m
+2026-09-05T19:28:18.5426386Z [1m[94m1309[0m [1m[94m|[0m [1m[96m/[0m impl<S> Handler<(), S> for MethodRouter<S>
+2026-09-05T19:28:18.5427073Z [1m[94m1310[0m [1m[94m|[0m [1m[96m|[0m where
+2026-09-05T19:28:18.5427687Z [1m[94m1311[0m [1m[94m|[0m [1m[96m|[0m     S: Clone + 'static,
+2026-09-05T19:28:18.5428975Z      [1m[94m|[0m [1m[96m|_______________________^[0m [1m[96m`MethodRouter<S>` implements `Handler<(), S>`[0m
+2026-09-05T19:28:18.5429749Z      [1m[94m|[0m
+2026-09-05T19:28:18.5430730Z     [1m[94m::: [0m/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/axum-extra-0.9.6/src/handler/mod.rs:169:1
+2026-09-05T19:28:18.5431578Z      [1m[94m|[0m
+2026-09-05T19:28:18.5432201Z [1m[94m 169[0m [1m[94m|[0m [1m[96m/[0m impl<H, T, S> Handler<T, S> for IntoHandler<H, T, S>
+2026-09-05T19:28:18.5433018Z [1m[94m 170[0m [1m[94m|[0m [1m[96m|[0m where
+2026-09-05T19:28:18.5434058Z [1m[94m 171[0m [1m[94m|[0m [1m[96m|[0m     H: HandlerCallWithExtractors<T, S> + Clone + Send + 'static,
+2026-09-05T19:28:18.5434962Z [1m[94m 172[0m [1m[94m|[0m [1m[96m|[0m     T: FromRequest<S> + Send + 'static,
+2026-09-05T19:28:18.5435738Z [1m[94m 173[0m [1m[94m|[0m [1m[96m|[0m     T::Rejection: Send,
+2026-09-05T19:28:18.5436427Z [1m[94m 174[0m [1m[94m|[0m [1m[96m|[0m     S: Send + Sync + 'static,
+2026-09-05T19:28:18.5437545Z      [1m[94m|[0m [1m[96m|_____________________________^[0m [1m[96m`axum_extra::handler::IntoHandler<H, T, S>` implements `Handler<T, S>`[0m
+2026-09-05T19:28:18.5438602Z      [1m[94m|[0m
+2026-09-05T19:28:18.5439535Z     [1m[94m::: [0m/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/axum-extra-0.9.6/src/handler/or.rs:55:1
+2026-09-05T19:28:18.5440386Z      [1m[94m|[0m
+2026-09-05T19:28:18.5441059Z [1m[94m  55[0m [1m[94m|[0m [1m[96m/[0m impl<S, L, R, Lt, Rt, M> Handler<(M, Lt, Rt), S> for Or<L, R, Lt, Rt, S>
+2026-09-05T19:28:18.5441812Z [1m[94m  56[0m [1m[94m|[0m [1m[96m|[0m where
+2026-09-05T19:28:18.5442627Z [1m[94m  57[0m [1m[94m|[0m [1m[96m|[0m     L: HandlerCallWithExtractors<Lt, S> + Clone + Send + 'static,
+2026-09-05T19:28:18.5443654Z [1m[94m  58[0m [1m[94m|[0m [1m[96m|[0m     R: HandlerCallWithExtractors<Rt, S> + Clone + Send + 'static,
+2026-09-05T19:28:18.5444356Z [1m[94m...[0m    [1m[96m|[0m
+2026-09-05T19:28:18.5444959Z [1m[94m  62[0m [1m[94m|[0m [1m[96m|[0m     Rt::Rejection: Send,
+2026-09-05T19:28:18.5445632Z [1m[94m  63[0m [1m[94m|[0m [1m[96m|[0m     S: Send + Sync + 'static,
+2026-09-05T19:28:18.5446770Z      [1m[94m|[0m [1m[96m|_____________________________^[0m [1m[96m`axum_extra::handler::Or<L, R, Lt, Rt, S>` implements `Handler<(M, Lt, Rt), S>`[0m
+2026-09-05T19:28:18.5447813Z [1m[92mnote[0m: required by a bound in `axum::routing::get`
+2026-09-05T19:28:18.5449295Z     [1m[94m--> [0m/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/axum-0.7.9/src/routing/method_routing.rs:166:16
+2026-09-05T19:28:18.5450241Z      [1m[94m|[0m
+2026-09-05T19:28:18.5450931Z [1m[94m 166[0m [1m[94m|[0m             H: Handler<T, S>,
+2026-09-05T19:28:18.5451699Z      [1m[94m|[0m                [1m[92m^^^^^^^^^^^^^[0m [1m[92mrequired by this bound in `get`[0m
+2026-09-05T19:28:18.5452291Z [1m[94m...[0m
+2026-09-05T19:28:18.5452780Z [1m[94m 439[0m [1m[94m|[0m top_level_handler_fn!(get, GET);
+2026-09-05T19:28:18.5453406Z      [1m[94m|[0m [1m[94m-------------------------------[0m
+2026-09-05T19:28:18.5454019Z      [1m[94m|[0m [1m[94m|[0m                     [1m[94m|[0m
+2026-09-05T19:28:18.5454770Z      [1m[94m|[0m [1m[94m|[0m                     [1m[94mrequired by a bound in this function[0m
+2026-09-05T19:28:18.5455477Z      [1m[94m|[0m [1m[94min this macro invocation[0m
+2026-09-05T19:28:18.5456929Z      [1m[94m= [0m[1mnote[0m: the full name for the type has been written to '/home/runner/work/freebuff/freebuff/target/debug/deps/freebuff_gateway-39ab1d121585637a.long-type-17482700812392172097.txt'
+2026-09-05T19:28:18.5458711Z      [1m[94m= [0m[1mnote[0m: consider using `--verbose` to print the full type name to the console
+2026-09-05T19:28:18.5460047Z      [1m[94m= [0m[1mnote[0m: this error originates in the macro `top_level_handler_fn` (in Nightly builds, run with -Z macro-backtrace for more info)
+2026-09-05T19:28:18.5460892Z 
+2026-09-05T19:28:18.5461249Z [1mSome errors have detailed explanations: E0277, E0432, E0599.[0m
+2026-09-05T19:28:18.5462032Z [1mFor more information about an error, try `rustc --explain E0277`.[0m
+2026-09-05T19:28:18.5463196Z [1m[91merror[0m: could not compile `freebuff-gateway` (bin "freebuff-gateway") due to 3 previous errors
+2026-09-05T19:28:18.5469254Z [1m[33mwarning[0m: build failed, waiting for other jobs to finish...
+2026-09-05T19:28:18.5738885Z [1m[91merror[E0277][0m[1m: the trait bound `Project: serde::Serialize` is not satisfied[0m
+2026-09-05T19:28:18.5740229Z     [1m[94m--> [0mcrates/cli/src/commands/project.rs:104:53
+2026-09-05T19:28:18.5740839Z      [1m[94m|[0m
+2026-09-05T19:28:18.5741847Z [1m[94m 104[0m [1m[94m|[0m         println!("{}", serde_json::to_string_pretty(&projects)?);
+2026-09-05T19:28:18.5743106Z      [1m[94m|[0m                        [1m[94m----------------------------[0m [1m[91m^^^^^^^^^[0m [1m[91munsatisfied trait bound[0m
+2026-09-05T19:28:18.5744052Z      [1m[94m|[0m                        [1m[94m|[0m
+2026-09-05T19:28:18.5744888Z      [1m[94m|[0m                        [1m[94mrequired by a bound introduced by this call[0m
+2026-09-05T19:28:18.5745606Z      [1m[94m|[0m
+2026-09-05T19:28:18.5746232Z [1m[96mhelp[0m: the trait `Serialize` is not implemented for `Project`
+2026-09-05T19:28:18.5747046Z     [1m[94m--> [0mcrates/cli/src/commands/project.rs:8:1
+2026-09-05T19:28:18.5747633Z      [1m[94m|[0m
+2026-09-05T19:28:18.5748105Z [1m[94m   8[0m [1m[94m|[0m struct Project {
+2026-09-05T19:28:18.5748899Z      [1m[94m|[0m [1m[96m^^^^^^^^^^^^^^[0m
+2026-09-05T19:28:18.5749873Z      [1m[94m= [0m[1mnote[0m: for local types consider adding `#[derive(serde::Serialize)]` to your `Project` type
+2026-09-05T19:28:18.5751021Z      [1m[94m= [0m[1mnote[0m: for types from other crates check whether the crate offers a `serde` feature flag
+2026-09-05T19:28:18.5751996Z      [1m[94m= [0m[1mhelp[0m: the following other types implement trait `Serialize`:
+2026-09-05T19:28:18.5752591Z                &'a T
+2026-09-05T19:28:18.5752902Z                &'a mut T
+2026-09-05T19:28:18.5753203Z                ()
+2026-09-05T19:28:18.5753471Z                (T,)
+2026-09-05T19:28:18.5753757Z                (T0, T1)
+2026-09-05T19:28:18.5754070Z                (T0, T1, T2)
+2026-09-05T19:28:18.5754397Z                (T0, T1, T2, T3)
+2026-09-05T19:28:18.5754732Z                (T0, T1, T2, T3, T4)
+2026-09-05T19:28:18.5755115Z              and 151 others
+2026-09-05T19:28:18.5755758Z      [1m[94m= [0m[1mnote[0m: required for `Vec<Project>` to implement `Serialize`
+2026-09-05T19:28:18.5756980Z [1m[92mnote[0m: required by a bound in `serde_json::to_string_pretty`
+2026-09-05T19:28:18.5758852Z     [1m[94m--> [0m/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_json-1.0.151/src/ser.rs:2266:17
+2026-09-05T19:28:18.5759863Z      [1m[94m|[0m
+2026-09-05T19:28:18.5760538Z [1m[94m2264[0m [1m[94m|[0m pub fn to_string_pretty<T>(value: &T) -> Result<String>
+2026-09-05T19:28:18.5761563Z      [1m[94m|[0m        [1m[94m----------------[0m [1m[94mrequired by a bound in this function[0m
+2026-09-05T19:28:18.5762401Z [1m[94m2265[0m [1m[94m|[0m where
+2026-09-05T19:28:18.5763026Z [1m[94m2266[0m [1m[94m|[0m     T: ?Sized + Serialize,
+2026-09-05T19:28:18.5763978Z      [1m[94m|[0m                 [1m[92m^^^^^^^^^[0m [1m[92mrequired by this bound in `to_string_pretty`[0m
+2026-09-05T19:28:18.5764550Z 
+2026-09-05T19:28:18.5774005Z [1m[91merror[E0615][0m[1m: attempted to take value of method `bold` on type `ColoredString`[0m
+2026-09-05T19:28:18.5789785Z    [1m[94m--> [0mcrates/cli/src/commands/project.rs:108:40
+2026-09-05T19:28:18.5792245Z     [1m[94m|[0m
+2026-09-05T19:28:18.5793097Z [1m[94m108[0m [1m[94m|[0m     println!("{}", "📋 Projects".cyan().bold);
+2026-09-05T19:28:18.5794206Z     [1m[94m|[0m                                         [1m[91m^^^^[0m [1m[91mmethod, not a field[0m
+2026-09-05T19:28:18.5795043Z     [1m[94m|[0m
+2026-09-05T19:28:18.5795717Z [1m[96mhelp[0m: use parentheses to call the method
+2026-09-05T19:28:18.5796431Z     [1m[94m|[0m
+2026-09-05T19:28:18.5797240Z [1m[94m108[0m [1m[94m| [0m    println!("{}", "📋 Projects".cyan().bold[92m()[0m);
+2026-09-05T19:28:18.5798482Z     [1m[94m|[0m                                             [92m++[0m
+2026-09-05T19:28:18.5799074Z 
+2026-09-05T19:28:18.5810114Z [1m[91merror[E0277][0m[1m: the trait bound `Project: serde::Serialize` is not satisfied[0m
+2026-09-05T19:28:18.5811748Z     [1m[94m--> [0mcrates/cli/src/commands/project.rs:149:53
+2026-09-05T19:28:18.5812606Z      [1m[94m|[0m
+2026-09-05T19:28:18.5813688Z [1m[94m 149[0m [1m[94m|[0m         println!("{}", serde_json::to_string_pretty(&project)?);
+2026-09-05T19:28:18.5815271Z      [1m[94m|[0m                        [1m[94m----------------------------[0m [1m[91m^^^^^^^^[0m [1m[91munsatisfied trait bound[0m
+2026-09-05T19:28:18.5816564Z      [1m[94m|[0m                        [1m[94m|[0m
+2026-09-05T19:28:18.5817687Z      [1m[94m|[0m                        [1m[94mrequired by a bound introduced by this call[0m
+2026-09-05T19:28:18.5819012Z      [1m[94m|[0m
+2026-09-05T19:28:18.5819922Z [1m[96mhelp[0m: the trait `Serialize` is not implemented for `Project`
+2026-09-05T19:28:18.5821058Z     [1m[94m--> [0mcrates/cli/src/commands/project.rs:8:1
+2026-09-05T19:28:18.5821879Z      [1m[94m|[0m
+2026-09-05T19:28:18.5822650Z [1m[94m   8[0m [1m[94m|[0m struct Project {
+2026-09-05T19:28:18.5823496Z      [1m[94m|[0m [1m[96m^^^^^^^^^^^^^^[0m
+2026-09-05T19:28:18.5824901Z      [1m[94m= [0m[1mnote[0m: for local types consider adding `#[derive(serde::Serialize)]` to your `Project` type
+2026-09-05T19:28:18.5826549Z      [1m[94m= [0m[1mnote[0m: for types from other crates check whether the crate offers a `serde` feature flag
+2026-09-05T19:28:18.5827937Z      [1m[94m= [0m[1mhelp[0m: the following other types implement trait `Serialize`:
+2026-09-05T19:28:18.5828956Z                &'a T
+2026-09-05T19:28:18.5829402Z                &'a mut T
+2026-09-05T19:28:18.5829870Z                ()
+2026-09-05T19:28:18.5830350Z                (T,)
+2026-09-05T19:28:18.5830880Z                (T0, T1)
+2026-09-05T19:28:18.5831459Z                (T0, T1, T2)
+2026-09-05T19:28:18.5832063Z                (T0, T1, T2, T3)
+2026-09-05T19:28:18.5832675Z                (T0, T1, T2, T3, T4)
+2026-09-05T19:28:18.5833318Z              and 151 others
+2026-09-05T19:28:18.5834309Z [1m[92mnote[0m: required by a bound in `serde_json::to_string_pretty`
+2026-09-05T19:28:18.5836109Z     [1m[94m--> [0m/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_json-1.0.151/src/ser.rs:2266:17
+2026-09-05T19:28:18.5837383Z      [1m[94m|[0m
+2026-09-05T19:28:18.5838498Z [1m[94m2264[0m [1m[94m|[0m pub fn to_string_pretty<T>(value: &T) -> Result<String>
+2026-09-05T19:28:18.5839764Z      [1m[94m|[0m        [1m[94m----------------[0m [1m[94mrequired by a bound in this function[0m
+2026-09-05T19:28:18.5840711Z [1m[94m2265[0m [1m[94m|[0m where
+2026-09-05T19:28:18.5841508Z [1m[94m2266[0m [1m[94m|[0m     T: ?Sized + Serialize,
+2026-09-05T19:28:18.5842614Z      [1m[94m|[0m                 [1m[92m^^^^^^^^^[0m [1m[92mrequired by this bound in `to_string_pretty`[0m
+2026-09-05T19:28:18.5843348Z 
+2026-09-05T19:28:18.5979123Z [1m[91merror[E0277][0m[1m: the trait bound `Branch: serde::Serialize` is not satisfied[0m
+2026-09-05T19:28:18.5980652Z     [1m[94m--> [0mcrates/cli/src/commands/branch.rs:46:53
+2026-09-05T19:28:18.5981496Z      [1m[94m|[0m
+2026-09-05T19:28:18.5982517Z [1m[94m  46[0m [1m[94m|[0m         println!("{}", serde_json::to_string_pretty(&branches)?);
+2026-09-05T19:28:18.5983957Z      [1m[94m|[0m                        [1m[94m----------------------------[0m [1m[91m^^^^^^^^^[0m [1m[91munsatisfied trait bound[0m
+2026-09-05T19:28:18.5985147Z      [1m[94m|[0m                        [1m[94m|[0m
+2026-09-05T19:28:18.5986266Z      [1m[94m|[0m                        [1m[94mrequired by a bound introduced by this call[0m
+2026-09-05T19:28:18.5987266Z      [1m[94m|[0m
+2026-09-05T19:28:18.5988143Z [1m[96mhelp[0m: the trait `Serialize` is not implemented for `Branch`
+2026-09-05T19:28:18.5989447Z     [1m[94m--> [0mcrates/cli/src/commands/branch.rs:8:1
+2026-09-05T19:28:18.5990245Z      [1m[94m|[0m
+2026-09-05T19:28:18.5990947Z [1m[94m   8[0m [1m[94m|[0m struct Branch {
+2026-09-05T19:28:18.5992139Z      [1m[94m|[0m [1m[96m^^^^^^^^^^^^^[0m
+2026-09-05T19:28:18.5993393Z      [1m[94m= [0m[1mnote[0m: for local types consider adding `#[derive(serde::Serialize)]` to your `Branch` type
+2026-09-05T19:28:18.5994861Z      [1m[94m= [0m[1mnote[0m: for types from other crates check whether the crate offers a `serde` feature flag
+2026-09-05T19:28:18.5996200Z      [1m[94m= [0m[1mhelp[0m: the following other types implement trait `Serialize`:
+2026-09-05T19:28:18.5997019Z                &'a T
+2026-09-05T19:28:18.5997541Z                &'a mut T
+2026-09-05T19:28:18.5998060Z                ()
+2026-09-05T19:28:18.5998795Z                (T,)
+2026-09-05T19:28:18.5999266Z                (T0, T1)
+2026-09-05T19:28:18.5999802Z                (T0, T1, T2)
+2026-09-05T19:28:18.6000380Z                (T0, T1, T2, T3)
+2026-09-05T19:28:18.6000988Z                (T0, T1, T2, T3, T4)
+2026-09-05T19:28:18.6001615Z              and 151 others
+2026-09-05T19:28:18.6002574Z      [1m[94m= [0m[1mnote[0m: required for `Vec<Branch>` to implement `Serialize`
+2026-09-05T19:28:18.6003838Z [1m[92mnote[0m: required by a bound in `serde_json::to_string_pretty`
+2026-09-05T19:28:18.6005336Z     [1m[94m--> [0m/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_json-1.0.151/src/ser.rs:2266:17
+2026-09-05T19:28:18.6006555Z      [1m[94m|[0m
+2026-09-05T19:28:18.6007638Z [1m[94m2264[0m [1m[94m|[0m pub fn to_string_pretty<T>(value: &T) -> Result<String>
+2026-09-05T19:28:18.6009178Z      [1m[94m|[0m        [1m[94m----------------[0m [1m[94mrequired by a bound in this function[0m
+2026-09-05T19:28:18.6010215Z [1m[94m2265[0m [1m[94m|[0m where
+2026-09-05T19:28:18.6010894Z [1m[94m2266[0m [1m[94m|[0m     T: ?Sized + Serialize,
+2026-09-05T19:28:18.6012006Z      [1m[94m|[0m                 [1m[92m^^^^^^^^^[0m [1m[92mrequired by this bound in `to_string_pretty`[0m
+2026-09-05T19:28:18.6012799Z 
+2026-09-05T19:28:18.6393104Z [1m[33mwarning[0m[1m: variable does not need to be mutable[0m
+2026-09-05T19:28:18.6394713Z   [1m[94m--> [0mcrates/cdc-service/src/logical_replication.rs:55:22
+2026-09-05T19:28:18.6395522Z    [1m[94m|[0m
+2026-09-05T19:28:18.6397173Z [1m[94m55[0m [1m[94m|[0m         let (client, mut connection) = tokio_postgres::connect(database_url, NoTls).await?;
+2026-09-05T19:28:18.6398591Z    [1m[94m|[0m                      [1m[94m----[0m[1m[33m^^^^^^^^^^[0m
+2026-09-05T19:28:18.6399424Z    [1m[94m|[0m                      [1m[94m|[0m
+2026-09-05T19:28:18.6400226Z    [1m[94m|[0m                      [1m[94mhelp: remove this `mut`[0m
+2026-09-05T19:28:18.6400931Z    [1m[94m|[0m
+2026-09-05T19:28:18.6401816Z    [1m[94m= [0m[1mnote[0m: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
+2026-09-05T19:28:18.6402610Z 
+2026-09-05T19:28:18.6437619Z [1m[91merror[E0599][0m[1m: no method named `context` found for enum `Result<T, E>` in the current scope[0m
+2026-09-05T19:28:18.6439794Z    [1m[94m--> [0mcrates/cli/src/commands/push.rs:21:14
+2026-09-05T19:28:18.6440667Z     [1m[94m|[0m
+2026-09-05T19:28:18.6441735Z [1m[94m 20[0m [1m[94m|[0m [1m[94m/[0m         std::fs::read_to_string(path)
+2026-09-05T19:28:18.6443032Z [1m[94m 21[0m [1m[94m|[0m [1m[94m|[0m             .context(format!("Failed to read SQL file: {}", path))?
+2026-09-05T19:28:18.6444188Z     [1m[94m|[0m [1m[94m|_____________-[0m[1m[91m^^^^^^^[0m
+2026-09-05T19:28:18.6445058Z     [1m[94m|[0m
+2026-09-05T19:28:18.6446283Z    [1m[94m::: [0m/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/anyhow-1.0.104/src/lib.rs:618:8
+2026-09-05T19:28:18.6447387Z     [1m[94m|[0m
+2026-09-05T19:28:18.6448549Z [1m[94m618[0m [1m[94m|[0m       fn context<C>(self, context: C) -> Result<T, Error>
+2026-09-05T19:28:18.6450185Z     [1m[94m|[0m          [1m[94m-------[0m [1m[94mthe method is available for `Result<std::string::String, std::io::Error>` here[0m
+2026-09-05T19:28:18.6451360Z     [1m[94m|[0m
+2026-09-05T19:28:18.6452688Z     [1m[94m= [0m[1mhelp[0m: items from traits can only be used if the trait is in scope
+2026-09-05T19:28:18.6454200Z [1m[96mhelp[0m: trait `Context` which provides `context` is implemented but not in scope; perhaps you want to import it
+2026-09-05T19:28:18.6455353Z     [1m[94m|[0m
+2026-09-05T19:28:18.6456132Z [1m[94m  1[0m [92m+ use anyhow::Context;[0m
+2026-09-05T19:28:18.6456877Z     [1m[94m|[0m
+2026-09-05T19:28:18.6457649Z [1m[96mhelp[0m: there is a method `with_context` with a similar name
+2026-09-05T19:28:18.6458629Z     [1m[94m|[0m
+2026-09-05T19:28:18.6459536Z [1m[94m 21[0m [1m[94m| [0m            .[92mwith_[0mcontext(format!("Failed to read SQL file: {}", path))?
+2026-09-05T19:28:18.6460526Z     [1m[94m|[0m              [92m+++++[0m
+2026-09-05T19:28:18.6461095Z 
+2026-09-05T19:28:18.6562384Z [1m[91merror[E0277][0m[1m: the trait bound `SchemaDiff: serde::Serialize` is not satisfied[0m
+2026-09-05T19:28:18.6564602Z     [1m[94m--> [0mcrates/cli/src/commands/diff.rs:70:53
+2026-09-05T19:28:18.6565525Z      [1m[94m|[0m
+2026-09-05T19:28:18.6566585Z [1m[94m  70[0m [1m[94m|[0m         println!("{}", serde_json::to_string_pretty(&diff)?);
+2026-09-05T19:28:18.6568026Z      [1m[94m|[0m                        [1m[94m----------------------------[0m [1m[91m^^^^^[0m [1m[91munsatisfied trait bound[0m
+2026-09-05T19:28:18.6569473Z      [1m[94m|[0m                        [1m[94m|[0m
+2026-09-05T19:28:18.6570516Z      [1m[94m|[0m                        [1m[94mrequired by a bound introduced by this call[0m
+2026-09-05T19:28:18.6571446Z      [1m[94m|[0m
+2026-09-05T19:28:18.6572327Z [1m[96mhelp[0m: the trait `Serialize` is not implemented for `SchemaDiff`
+2026-09-05T19:28:18.6573403Z     [1m[94m--> [0mcrates/cli/src/commands/diff.rs:7:1
+2026-09-05T19:28:18.6574195Z      [1m[94m|[0m
+2026-09-05T19:28:18.6574910Z [1m[94m   7[0m [1m[94m|[0m struct SchemaDiff {
+2026-09-05T19:28:18.6575734Z      [1m[94m|[0m [1m[96m^^^^^^^^^^^^^^^^^[0m
+2026-09-05T19:28:18.6577256Z      [1m[94m= [0m[1mnote[0m: for local types consider adding `#[derive(serde::Serialize)]` to your `SchemaDiff` type
+2026-09-05T19:28:18.6579490Z      [1m[94m= [0m[1mnote[0m: for types from other crates check whether the crate offers a `serde` feature flag
+2026-09-05T19:28:18.6580964Z      [1m[94m= [0m[1mhelp[0m: the following other types implement trait `Serialize`:
+2026-09-05T19:28:18.6581860Z                &'a T
+2026-09-05T19:28:18.6582421Z                &'a mut T
+2026-09-05T19:28:18.6582970Z                ()
+2026-09-05T19:28:18.6583505Z                (T,)
+2026-09-05T19:28:18.6584085Z                (T0, T1)
+2026-09-05T19:28:18.6584647Z                (T0, T1, T2)
+2026-09-05T19:28:18.6585226Z                (T0, T1, T2, T3)
+2026-09-05T19:28:18.6585844Z                (T0, T1, T2, T3, T4)
+2026-09-05T19:28:18.6586487Z              and 151 others
+2026-09-05T19:28:18.6587516Z [1m[92mnote[0m: required by a bound in `serde_json::to_string_pretty`
+2026-09-05T19:28:18.6589333Z     [1m[94m--> [0m/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_json-1.0.151/src/ser.rs:2266:17
+2026-09-05T19:28:18.6590547Z      [1m[94m|[0m
+2026-09-05T19:28:18.6591522Z [1m[94m2264[0m [1m[94m|[0m pub fn to_string_pretty<T>(value: &T) -> Result<String>
+2026-09-05T19:28:18.6592820Z      [1m[94m|[0m        [1m[94m----------------[0m [1m[94mrequired by a bound in this function[0m
+2026-09-05T19:28:18.6593858Z [1m[94m2265[0m [1m[94m|[0m where
+2026-09-05T19:28:18.6594684Z [1m[94m2266[0m [1m[94m|[0m     T: ?Sized + Serialize,
+2026-09-05T19:28:18.6595839Z      [1m[94m|[0m                 [1m[92m^^^^^^^^^[0m [1m[92mrequired by this bound in `to_string_pretty`[0m
+2026-09-05T19:28:18.6596607Z 
+2026-09-05T19:28:18.6616333Z [1m[91merror[E0277][0m[1m: `PhantomPinned` cannot be unpinned[0m
+2026-09-05T19:28:18.6617827Z    [1m[94m--> [0mcrates/cdc-service/src/logical_replication.rs:142:39
+2026-09-05T19:28:18.6619416Z     [1m[94m|[0m
+2026-09-05T19:28:18.6620485Z [1m[94m142[0m [1m[94m|[0m         while let Some(data) = stream.next().await {
+2026-09-05T19:28:18.6622185Z     [1m[94m|[0m                                       [1m[91m^^^^[0m [1m[91mwithin `(PhantomData<&()>, PhantomPinned)`, the trait `Unpin` is not implemented for `PhantomPinned`[0m
+2026-09-05T19:28:18.6623529Z     [1m[94m|[0m
+2026-09-05T19:28:18.6624315Z     [1m[94m= [0m[1mnote[0m: consider using the `pin!` macro
+2026-09-05T19:28:18.6625411Z             consider using `Box::pin` if you need to access the pinned value outside of the current scope
+2026-09-05T19:28:18.6626887Z     [1m[94m= [0m[1mnote[0m: required because it appears within the type `(PhantomData<&()>, PhantomPinned)`
+2026-09-05T19:28:18.6628177Z     [1m[94m= [0m[1mnote[0m: required for `CopyOutStream` to implement `Unpin`
+2026-09-05T19:28:18.6629662Z [1m[92mnote[0m: required by a bound in `futures::StreamExt::next`
+2026-09-05T19:28:18.6631175Z    [1m[94m--> [0m/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/futures-util-0.3.34/src/stream/stream/mod.rs:275:15
+2026-09-05T19:28:18.6632692Z     [1m[94m|[0m
+2026-09-05T19:28:18.6633475Z [1m[94m273[0m [1m[94m|[0m     fn next(&mut self) -> Next<'_, Self>
+2026-09-05T19:28:18.6634651Z     [1m[94m|[0m        [1m[94m----[0m [1m[94mrequired by a bound in this associated function[0m
+2026-09-05T19:28:18.6635676Z [1m[94m274[0m [1m[94m|[0m     where
+2026-09-05T19:28:18.6636479Z [1m[94m275[0m [1m[94m|[0m         Self: Unpin,
+2026-09-05T19:28:18.6637712Z     [1m[94m|[0m               [1m[92m^^^^^[0m [1m[92mrequired by this bound in `StreamExt::next`[0m
+2026-09-05T19:28:18.6638743Z 
+2026-09-05T19:28:18.6639334Z [1m[91merror[E0277][0m[1m: `PhantomPinned` cannot be unpinned[0m
+2026-09-05T19:28:18.6640363Z    [1m[94m--> [0mcrates/cdc-service/src/logical_replication.rs:142:46
+2026-09-05T19:28:18.6641288Z     [1m[94m|[0m
+2026-09-05T19:28:18.6642105Z [1m[94m142[0m [1m[94m|[0m         while let Some(data) = stream.next().await {
+2026-09-05T19:28:18.6644046Z     [1m[94m|[0m                                              [1m[91m^^^^^[0m [1m[91mwithin `(PhantomData<&()>, PhantomPinned)`, the trait `Unpin` is not implemented for `PhantomPinned`[0m
+2026-09-05T19:28:18.6645445Z     [1m[94m|[0m
+2026-09-05T19:28:18.6646249Z     [1m[94m= [0m[1mnote[0m: consider using the `pin!` macro
+2026-09-05T19:28:18.6647355Z             consider using `Box::pin` if you need to access the pinned value outside of the current scope
+2026-09-05T19:28:18.6649195Z     [1m[94m= [0m[1mnote[0m: required because it appears within the type `(PhantomData<&()>, PhantomPinned)`
+2026-09-05T19:28:18.6650598Z     [1m[94m= [0m[1mnote[0m: required for `CopyOutStream` to implement `Unpin`
+2026-09-05T19:28:18.6652128Z     [1m[94m= [0m[1mnote[0m: required for `futures::stream::Next<'_, CopyOutStream>` to implement `futures::Future`
+2026-09-05T19:28:18.6653869Z     [1m[94m= [0m[1mnote[0m: required for `futures::stream::Next<'_, CopyOutStream>` to implement `std::future::IntoFuture`
+2026-09-05T19:28:18.6655101Z [1m[96mhelp[0m: remove the `.await`
+2026-09-05T19:28:18.6655802Z     [1m[94m|[0m
+2026-09-05T19:28:18.6656691Z [1m[94m142[0m [91m- [0m        while let Some(data) = stream.next()[91m.await[0m {
+2026-09-05T19:28:18.6657832Z [1m[94m142[0m [92m+ [0m        while let Some(data) = stream.next() {
+2026-09-05T19:28:18.6658927Z     [1m[94m|[0m
+2026-09-05T19:28:18.6659303Z 
+2026-09-05T19:28:18.6706489Z [1m[91merror[E0277][0m[1m: the trait bound `Migration: serde::Serialize` is not satisfied[0m
+2026-09-05T19:28:18.6708691Z     [1m[94m--> [0mcrates/cli/src/commands/migrations.rs:43:53
+2026-09-05T19:28:18.6709592Z      [1m[94m|[0m
+2026-09-05T19:28:18.6710693Z [1m[94m  43[0m [1m[94m|[0m         println!("{}", serde_json::to_string_pretty(&migrations)?);
+2026-09-05T19:28:18.6712161Z      [1m[94m|[0m                        [1m[94m----------------------------[0m [1m[91m^^^^^^^^^^^[0m [1m[91munsatisfied trait bound[0m
+2026-09-05T19:28:18.6713653Z      [1m[94m|[0m                        [1m[94m|[0m
+2026-09-05T19:28:18.6714718Z      [1m[94m|[0m                        [1m[94mrequired by a bound introduced by this call[0m
+2026-09-05T19:28:18.6715617Z      [1m[94m|[0m
+2026-09-05T19:28:18.6716450Z [1m[96mhelp[0m: the trait `Serialize` is not implemented for `Migration`
+2026-09-05T19:28:18.6717603Z     [1m[94m--> [0mcrates/cli/src/commands/migrations.rs:8:1
+2026-09-05T19:28:18.6718724Z      [1m[94m|[0m
+2026-09-05T19:28:18.6719513Z [1m[94m   8[0m [1m[94m|[0m struct Migration {
+2026-09-05T19:28:18.6720336Z      [1m[94m|[0m [1m[96m^^^^^^^^^^^^^^^^[0m
+2026-09-05T19:28:18.6721728Z      [1m[94m= [0m[1mnote[0m: for local types consider adding `#[derive(serde::Serialize)]` to your `Migration` type
+2026-09-05T19:28:18.6723304Z      [1m[94m= [0m[1mnote[0m: for types from other crates check whether the crate offers a `serde` feature flag
+2026-09-05T19:28:18.6724603Z      [1m[94m= [0m[1mhelp[0m: the following other types implement trait `Serialize`:
+2026-09-05T19:28:18.6725410Z                &'a T
+2026-09-05T19:28:18.6725916Z                &'a mut T
+2026-09-05T19:28:18.6726430Z                ()
+2026-09-05T19:28:18.6726913Z                (T,)
+2026-09-05T19:28:18.6727385Z                (T0, T1)
+2026-09-05T19:28:18.6727909Z                (T0, T1, T2)
+2026-09-05T19:28:18.6728740Z                (T0, T1, T2, T3)
+2026-09-05T19:28:18.6729311Z                (T0, T1, T2, T3, T4)
+2026-09-05T19:28:18.6729882Z              and 151 others
+2026-09-05T19:28:18.6730752Z      [1m[94m= [0m[1mnote[0m: required for `Vec<Migration>` to implement `Serialize`
+2026-09-05T19:28:18.6732020Z [1m[92mnote[0m: required by a bound in `serde_json::to_string_pretty`
+2026-09-05T19:28:18.6733494Z     [1m[94m--> [0m/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_json-1.0.151/src/ser.rs:2266:17
+2026-09-05T19:28:18.6734708Z      [1m[94m|[0m
+2026-09-05T19:28:18.6735658Z [1m[94m2264[0m [1m[94m|[0m pub fn to_string_pretty<T>(value: &T) -> Result<String>
+2026-09-05T19:28:18.6737263Z      [1m[94m|[0m        [1m[94m----------------[0m [1m[94mrequired by a bound in this function[0m
+2026-09-05T19:28:18.6738553Z [1m[94m2265[0m [1m[94m|[0m where
+2026-09-05T19:28:18.6739347Z [1m[94m2266[0m [1m[94m|[0m     T: ?Sized + Serialize,
+2026-09-05T19:28:18.6740526Z      [1m[94m|[0m                 [1m[92m^^^^^^^^^[0m [1m[92mrequired by this bound in `to_string_pretty`[0m
+2026-09-05T19:28:18.6741329Z 
+2026-09-05T19:28:18.7793054Z [1m[91merror[E0277][0m[1m: the trait bound `Credentials: Default` is not satisfied[0m
+2026-09-05T19:28:18.7794989Z   [1m[94m--> [0mcrates/cli/src/client.rs:32:41
+2026-09-05T19:28:18.7795810Z    [1m[94m|[0m
+2026-09-05T19:28:18.7796900Z [1m[94m32[0m [1m[94m|[0m         let creds = Credentials::load().unwrap_or_default();
+2026-09-05T19:28:18.7798888Z    [1m[94m|[0m                                         [1m[91m^^^^^^^^^^^^^^^^^[0m [1m[91mthe trait `Default` is not implemented for `Credentials`[0m
+2026-09-05T19:28:18.7800098Z    [1m[94m|[0m
+2026-09-05T19:28:18.7801125Z [1m[92mnote[0m: required by a bound in `Result::<T, E>::unwrap_or_default`
+2026-09-05T19:28:18.7802326Z   [1m[94m--> [0m/rustc/48a229ceaefd4985c50990b14116b6d856af0985/library/core/src/result.rs:1263:4
+2026-09-05T19:28:18.7803386Z [1m[96mhelp[0m: consider annotating `Credentials` with `#[derive(Default)]`
+2026-09-05T19:28:18.7804205Z   [1m[94m--> [0mcrates/cli/src/config.rs:30:1
+2026-09-05T19:28:18.7804787Z    [1m[94m|[0m
+2026-09-05T19:28:18.7805337Z [1m[94m30[0m [92m+ #[derive(Default)][0m
+2026-09-05T19:28:18.7806017Z [1m[94m31[0m [1m[94m|[0m pub struct Credentials {
+2026-09-05T19:28:18.7806620Z    [1m[94m|[0m
+2026-09-05T19:28:18.7806930Z 
+2026-09-05T19:28:18.7810699Z [1m[91merror[E0599][0m[1m: no method named `clone` found for enum `WsMessage` in the current scope[0m
+2026-09-05T19:28:18.7812046Z    [1m[94m--> [0mcrates/cdc-service/src/websocket.rs:373:64
+2026-09-05T19:28:18.7812820Z     [1m[94m|[0m
+2026-09-05T19:28:18.7813541Z [1m[94m 49[0m [1m[94m|[0m pub enum WsMessage {
+2026-09-05T19:28:18.7814650Z     [1m[94m|[0m [1m[94m------------------[0m [1m[94mmethod `clone` not found for this enum[0m
+2026-09-05T19:28:18.7815609Z [1m[94m...[0m
+2026-09-05T19:28:18.7816471Z [1m[94m373[0m [1m[94m|[0m                         let _ = conn.sender.send(broadcast_msg.clone()).await;
+2026-09-05T19:28:18.7817705Z     [1m[94m|[0m                                                                [1m[91m^^^^^[0m [1m[91mmethod not found in `WsMessage`[0m
+2026-09-05T19:28:18.7818834Z     [1m[94m|[0m
+2026-09-05T19:28:18.7819528Z [1m[92mnote[0m: the method `clone` exists on the type `DateTime<Utc>`
+2026-09-05T19:28:18.7820635Z    [1m[94m--> [0m/rustc/48a229ceaefd4985c50990b14116b6d856af0985/library/core/src/clone.rs:236:4
+2026-09-05T19:28:18.7821979Z     [1m[94m= [0m[1mhelp[0m: items from traits can only be used if the trait is implemented and in scope
+2026-09-05T19:28:18.7823347Z     [1m[94m= [0m[1mnote[0m: the following trait defines an item `clone`, perhaps you need to implement it:
+2026-09-05T19:28:18.7824257Z             candidate #1: `Clone`
+2026-09-05T19:28:18.7824671Z 
+2026-09-05T19:28:18.8051154Z [1m[91merror[E0599][0m[1m: no method named `context` found for opaque type `impl Future<Output = Result<Response, reqwest::Error>>` in the current scope[0m
+2026-09-05T19:28:18.8067976Z   [1m[94m--> [0mcrates/cli/src/client.rs:60:39
+2026-09-05T19:28:18.8069848Z    [1m[94m|[0m
+2026-09-05T19:28:18.8070708Z [1m[94m60[0m [1m[94m|[0m         let response = request.send().context("Failed to send request")?;
+2026-09-05T19:28:18.8072694Z    [1m[94m|[0m                                       [1m[91m^^^^^^^[0m [1m[91mmethod not found in `impl Future<Output = Result<Response, reqwest::Error>>`[0m
+2026-09-05T19:28:18.8073589Z 
+2026-09-05T19:28:18.8074357Z [1m[91merror[E0599][0m[1m: no method named `clone` found for enum `WsMessage` in the current scope[0m
+2026-09-05T19:28:18.8075913Z    [1m[94m--> [0mcrates/cdc-service/src/websocket.rs:402:63
+2026-09-05T19:28:18.8076795Z     [1m[94m|[0m
+2026-09-05T19:28:18.8077551Z [1m[94m 49[0m [1m[94m|[0m pub enum WsMessage {
+2026-09-05T19:28:18.8079026Z     [1m[94m|[0m [1m[94m------------------[0m [1m[94mmethod `clone` not found for this enum[0m
+2026-09-05T19:28:18.8079900Z [1m[94m...[0m
+2026-09-05T19:28:18.8080746Z [1m[94m402[0m [1m[94m|[0m                         let _ = conn.sender.send(presence_msg.clone()).await;
+2026-09-05T19:28:18.8081941Z     [1m[94m|[0m                                                               [1m[91m^^^^^[0m [1m[91mmethod not found in `WsMessage`[0m
+2026-09-05T19:28:18.8082807Z     [1m[94m|[0m
+2026-09-05T19:28:18.8083520Z [1m[92mnote[0m: the method `clone` exists on the type `DateTime<Utc>`
+2026-09-05T19:28:18.8084733Z    [1m[94m--> [0m/rustc/48a229ceaefd4985c50990b14116b6d856af0985/library/core/src/clone.rs:236:4
+2026-09-05T19:28:18.8086061Z     [1m[94m= [0m[1mhelp[0m: items from traits can only be used if the trait is implemented and in scope
+2026-09-05T19:28:18.8087411Z     [1m[94m= [0m[1mnote[0m: the following trait defines an item `clone`, perhaps you need to implement it:
+2026-09-05T19:28:18.8088567Z             candidate #1: `Clone`
+2026-09-05T19:28:18.8089012Z 
+2026-09-05T19:28:18.8306901Z [1m[91merror[E0599][0m[1m: no method named `context` found for opaque type `impl Future<Output = Result<Response, reqwest::Error>>` in the current scope[0m
+2026-09-05T19:28:18.8309442Z   [1m[94m--> [0mcrates/cli/src/client.rs:86:39
+2026-09-05T19:28:18.8313693Z    [1m[94m|[0m
+2026-09-05T19:28:18.8314680Z [1m[94m86[0m [1m[94m|[0m         let response = request.send().context("Failed to send request")?;
+2026-09-05T19:28:18.8316499Z    [1m[94m|[0m                                       [1m[91m^^^^^^^[0m [1m[91mmethod not found in `impl Future<Output = Result<Response, reqwest::Error>>`[0m
+2026-09-05T19:28:18.8317823Z 
+2026-09-05T19:28:18.8367690Z [1m[91merror[E0599][0m[1m: no method named `clone` found for enum `WsMessage` in the current scope[0m
+2026-09-05T19:28:18.8369366Z    [1m[94m--> [0mcrates/cdc-service/src/websocket.rs:422:63
+2026-09-05T19:28:18.8370094Z     [1m[94m|[0m
+2026-09-05T19:28:18.8370693Z [1m[94m 49[0m [1m[94m|[0m pub enum WsMessage {
+2026-09-05T19:28:18.8371645Z     [1m[94m|[0m [1m[94m------------------[0m [1m[94mmethod `clone` not found for this enum[0m
+2026-09-05T19:28:18.8372461Z [1m[94m...[0m
+2026-09-05T19:28:18.8373303Z [1m[94m422[0m [1m[94m|[0m                         let _ = conn.sender.send(presence_msg.clone()).await;
+2026-09-05T19:28:18.8374524Z     [1m[94m|[0m                                                               [1m[91m^^^^^[0m [1m[91mmethod not found in `WsMessage`[0m
+2026-09-05T19:28:18.8375367Z     [1m[94m|[0m
+2026-09-05T19:28:18.8376096Z [1m[92mnote[0m: the method `clone` exists on the type `DateTime<Utc>`
+2026-09-05T19:28:18.8377235Z    [1m[94m--> [0m/rustc/48a229ceaefd4985c50990b14116b6d856af0985/library/core/src/clone.rs:236:4
+2026-09-05T19:28:18.8378758Z     [1m[94m= [0m[1mhelp[0m: items from traits can only be used if the trait is implemented and in scope
+2026-09-05T19:28:18.8380105Z     [1m[94m= [0m[1mnote[0m: the following trait defines an item `clone`, perhaps you need to implement it:
+2026-09-05T19:28:18.8380986Z             candidate #1: `Clone`
+2026-09-05T19:28:18.8381441Z 
+2026-09-05T19:28:18.8454498Z [1m[91merror[E0599][0m[1m: no method named `context` found for opaque type `impl Future<Output = Result<Response, reqwest::Error>>` in the current scope[0m
+2026-09-05T19:28:18.8456481Z    [1m[94m--> [0mcrates/cli/src/client.rs:111:39
+2026-09-05T19:28:18.8457295Z     [1m[94m|[0m
+2026-09-05T19:28:18.8458477Z [1m[94m111[0m [1m[94m|[0m         let response = request.send().context("Failed to send request")?;
+2026-09-05T19:28:18.8460586Z     [1m[94m|[0m                                       [1m[91m^^^^^^^[0m [1m[91mmethod not found in `impl Future<Output = Result<Response, reqwest::Error>>`[0m
+2026-09-05T19:28:18.8461623Z 
+2026-09-05T19:28:18.8645860Z [1m[91merror[E0599][0m[1m: no method named `context` found for opaque type `impl Future<Output = Result<Response, reqwest::Error>>` in the current scope[0m
+2026-09-05T19:28:18.8648051Z    [1m[94m--> [0mcrates/cli/src/client.rs:136:39
+2026-09-05T19:28:18.8649106Z     [1m[94m|[0m
+2026-09-05T19:28:18.8650094Z [1m[94m136[0m [1m[94m|[0m         let response = request.send().context("Failed to send request")?;
+2026-09-05T19:28:18.8651799Z     [1m[94m|[0m                                       [1m[91m^^^^^^^[0m [1m[91mmethod not found in `impl Future<Output = Result<Response, reqwest::Error>>`[0m
+2026-09-05T19:28:18.8652778Z 
+2026-09-05T19:28:18.8867088Z [1m[91merror[E0599][0m[1m: no method named `context` found for enum `Result<T, E>` in the current scope[0m
+2026-09-05T19:28:18.8869299Z    [1m[94m--> [0mcrates/cli/src/commands/push.rs:115:18
+2026-09-05T19:28:18.8870034Z     [1m[94m|[0m
+2026-09-05T19:28:18.8871017Z [1m[94m114[0m [1m[94m|[0m               return std::fs::read_to_string(candidate)
+2026-09-05T19:28:18.8871993Z     [1m[94m|[0m [1m[94m ____________________-[0m
+2026-09-05T19:28:18.8873027Z [1m[94m115[0m [1m[94m|[0m [1m[94m|[0m                 .context(format!("Failed to read {}", candidate));
+2026-09-05T19:28:18.8874058Z     [1m[94m|[0m [1m[94m|_________________-[0m[1m[91m^^^^^^^[0m
+2026-09-05T19:28:18.8874759Z     [1m[94m|[0m
+2026-09-05T19:28:18.8875818Z    [1m[94m::: [0m/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/anyhow-1.0.104/src/lib.rs:618:8
+2026-09-05T19:28:18.8876848Z     [1m[94m|[0m
+2026-09-05T19:28:18.8877647Z [1m[94m618[0m [1m[94m|[0m       fn context<C>(self, context: C) -> Result<T, Error>
+2026-09-05T19:28:18.8879700Z     [1m[94m|[0m          [1m[94m-------[0m [1m[94mthe method is available for `Result<std::string::String, std::io::Error>` here[0m
+2026-09-05T19:28:18.8880723Z     [1m[94m|[0m
+2026-09-05T19:28:18.8881541Z     [1m[94m= [0m[1mhelp[0m: items from traits can only be used if the trait is in scope
+2026-09-05T19:28:18.8882928Z [1m[96mhelp[0m: trait `Context` which provides `context` is implemented but not in scope; perhaps you want to import it
+2026-09-05T19:28:18.8883973Z     [1m[94m|[0m
+2026-09-05T19:28:18.8884602Z [1m[94m  1[0m [92m+ use anyhow::Context;[0m
+2026-09-05T19:28:18.8894024Z     [1m[94m|[0m
+2026-09-05T19:28:18.8894928Z [1m[96mhelp[0m: there is a method `with_context` with a similar name
+2026-09-05T19:28:18.8895702Z     [1m[94m|[0m
+2026-09-05T19:28:18.8896583Z [1m[94m115[0m [1m[94m| [0m                .[92mwith_[0mcontext(format!("Failed to read {}", candidate));
+2026-09-05T19:28:18.8897549Z     [1m[94m|[0m                  [92m+++++[0m
+2026-09-05T19:28:18.8898046Z 
+2026-09-05T19:28:18.8951372Z [1m[91merror[E0599][0m[1m: no method named `context` found for enum `Result<T, E>` in the current scope[0m
+2026-09-05T19:28:18.8953481Z    [1m[94m--> [0mcrates/cli/src/commands/push.rs:121:10
+2026-09-05T19:28:18.8954254Z     [1m[94m|[0m
+2026-09-05T19:28:18.8955171Z [1m[94m120[0m [1m[94m|[0m       let entries: Vec<_> = std::fs::read_dir(".")
+2026-09-05T19:28:18.8956053Z     [1m[94m|[0m [1m[94m ___________________________-[0m
+2026-09-05T19:28:18.8957010Z [1m[94m121[0m [1m[94m|[0m [1m[94m|[0m         .context("Failed to read current directory")?
+2026-09-05T19:28:18.8958018Z     [1m[94m|[0m [1m[94m|_________-[0m[1m[91m^^^^^^^[0m
+2026-09-05T19:28:18.8958990Z     [1m[94m|[0m
+2026-09-05T19:28:18.8960074Z    [1m[94m::: [0m/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/anyhow-1.0.104/src/lib.rs:618:8
+2026-09-05T19:28:18.8961059Z     [1m[94m|[0m
+2026-09-05T19:28:18.8961809Z [1m[94m618[0m [1m[94m|[0m       fn context<C>(self, context: C) -> Result<T, Error>
+2026-09-05T19:28:18.8963519Z     [1m[94m|[0m          [1m[94m-------[0m [1m[94mthe method is available for `Result<std::fs::ReadDir, std::io::Error>` here[0m
+2026-09-05T19:28:18.8964566Z     [1m[94m|[0m
+2026-09-05T19:28:18.8965363Z     [1m[94m= [0m[1mhelp[0m: items from traits can only be used if the trait is in scope
+2026-09-05T19:28:18.8966742Z [1m[96mhelp[0m: trait `Context` which provides `context` is implemented but not in scope; perhaps you want to import it
+2026-09-05T19:28:18.8967760Z     [1m[94m|[0m
+2026-09-05T19:28:18.8968623Z [1m[94m  1[0m [92m+ use anyhow::Context;[0m
+2026-09-05T19:28:18.8969288Z     [1m[94m|[0m
+2026-09-05T19:28:18.8970010Z [1m[96mhelp[0m: there is a method `with_context` with a similar name
+2026-09-05T19:28:18.8970757Z     [1m[94m|[0m
+2026-09-05T19:28:18.8971581Z [1m[94m121[0m [1m[94m| [0m        .[92mwith_[0mcontext("Failed to read current directory")?
+2026-09-05T19:28:18.8972485Z     [1m[94m|[0m          [92m+++++[0m
+2026-09-05T19:28:18.8972982Z 
+2026-09-05T19:28:18.9021068Z [1m[91merror[E0599][0m[1m: no method named `clone` found for enum `WsMessage` in the current scope[0m
+2026-09-05T19:28:18.9022551Z    [1m[94m--> [0mcrates/cdc-service/src/presence.rs:194:51
+2026-09-05T19:28:18.9023241Z     [1m[94m|[0m
+2026-09-05T19:28:18.9024015Z [1m[94m194[0m [1m[94m|[0m             let _ = conn.sender.send(presence_msg.clone()).await;
+2026-09-05T19:28:18.9025170Z     [1m[94m|[0m                                                   [1m[91m^^^^^[0m [1m[91mmethod not found in `WsMessage`[0m
+2026-09-05T19:28:18.9025974Z     [1m[94m|[0m
+2026-09-05T19:28:18.9026761Z    [1m[94m::: [0mcrates/cdc-service/src/websocket.rs:49:1
+2026-09-05T19:28:18.9027517Z     [1m[94m|[0m
+2026-09-05T19:28:18.9028185Z [1m[94m 49[0m [1m[94m|[0m pub enum WsMessage {
+2026-09-05T19:28:18.9029473Z     [1m[94m|[0m [1m[94m------------------[0m [1m[94mmethod `clone` not found for this enum[0m
+2026-09-05T19:28:18.9030940Z     [1m[94m|[0m
+2026-09-05T19:28:18.9031761Z [1m[92mnote[0m: the method `clone` exists on the type `DateTime<Utc>`
+2026-09-05T19:28:18.9033066Z    [1m[94m--> [0m/rustc/48a229ceaefd4985c50990b14116b6d856af0985/library/core/src/clone.rs:236:4
+2026-09-05T19:28:18.9034520Z     [1m[94m= [0m[1mhelp[0m: items from traits can only be used if the trait is implemented and in scope
+2026-09-05T19:28:18.9036067Z     [1m[94m= [0m[1mnote[0m: the following trait defines an item `clone`, perhaps you need to implement it:
+2026-09-05T19:28:18.9037098Z             candidate #1: `Clone`
+2026-09-05T19:28:18.9037666Z 
+2026-09-05T19:28:18.9038781Z [1m[91merror[E0599][0m[1m: no method named `context` found for enum `Result<T, E>` in the current scope[0m
+2026-09-05T19:28:18.9039987Z    [1m[94m--> [0mcrates/cli/src/commands/push.rs:130:14
+2026-09-05T19:28:18.9040683Z     [1m[94m|[0m
+2026-09-05T19:28:18.9041542Z [1m[94m129[0m [1m[94m|[0m           return std::fs::read_to_string(&path)
+2026-09-05T19:28:18.9042398Z     [1m[94m|[0m [1m[94m ________________-[0m
+2026-09-05T19:28:18.9043403Z [1m[94m130[0m [1m[94m|[0m [1m[94m|[0m             .context(format!("Failed to read {}", path.display()));
+2026-09-05T19:28:18.9044425Z     [1m[94m|[0m [1m[94m|_____________-[0m[1m[91m^^^^^^^[0m
+2026-09-05T19:28:18.9045113Z     [1m[94m|[0m
+2026-09-05T19:28:18.9046116Z    [1m[94m::: [0m/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/anyhow-1.0.104/src/lib.rs:618:8
+2026-09-05T19:28:18.9047086Z     [1m[94m|[0m
+2026-09-05T19:28:18.9047812Z [1m[94m618[0m [1m[94m|[0m       fn context<C>(self, context: C) -> Result<T, Error>
+2026-09-05T19:28:18.9049392Z     [1m[94m|[0m          [1m[94m-------[0m [1m[94mthe method is available for `Result<std::string::String, std::io::Error>` here[0m
+2026-09-05T19:28:18.9050388Z     [1m[94m|[0m
+2026-09-05T19:28:18.9051164Z     [1m[94m= [0m[1mhelp[0m: items from traits can only be used if the trait is in scope
+2026-09-05T19:28:18.9052492Z [1m[96mhelp[0m: trait `Context` which provides `context` is implemented but not in scope; perhaps you want to import it
+2026-09-05T19:28:18.9053796Z     [1m[94m|[0m
+2026-09-05T19:28:18.9054442Z [1m[94m  1[0m [92m+ use anyhow::Context;[0m
+2026-09-05T19:28:18.9055065Z     [1m[94m|[0m
+2026-09-05T19:28:18.9055744Z [1m[96mhelp[0m: there is a method `with_context` with a similar name
+2026-09-05T19:28:18.9056470Z     [1m[94m|[0m
+2026-09-05T19:28:18.9057327Z [1m[94m130[0m [1m[94m| [0m            .[92mwith_[0mcontext(format!("Failed to read {}", path.display()));
+2026-09-05T19:28:18.9058510Z     [1m[94m|[0m              [92m+++++[0m
+2026-09-05T19:28:18.9058971Z 
+2026-09-05T19:28:18.9309839Z [1m[91merror[E0599][0m[1m: no method named `clone` found for enum `WsMessage` in the current scope[0m
+2026-09-05T19:28:18.9311728Z    [1m[94m--> [0mcrates/cdc-service/src/presence.rs:230:51
+2026-09-05T19:28:18.9312620Z     [1m[94m|[0m
+2026-09-05T19:28:18.9313605Z [1m[94m230[0m [1m[94m|[0m             let _ = conn.sender.send(presence_msg.clone()).await;
+2026-09-05T19:28:18.9314989Z     [1m[94m|[0m                                                   [1m[91m^^^^^[0m [1m[91mmethod not found in `WsMessage`[0m
+2026-09-05T19:28:18.9315972Z     [1m[94m|[0m
+2026-09-05T19:28:18.9316948Z    [1m[94m::: [0mcrates/cdc-service/src/websocket.rs:49:1
+2026-09-05T19:28:18.9317762Z     [1m[94m|[0m
+2026-09-05T19:28:18.9318717Z [1m[94m 49[0m [1m[94m|[0m pub enum WsMessage {
+2026-09-05T19:28:18.9319728Z     [1m[94m|[0m [1m[94m------------------[0m [1m[94mmethod `clone` not found for this enum[0m
+2026-09-05T19:28:18.9320643Z     [1m[94m|[0m
+2026-09-05T19:28:18.9321410Z [1m[92mnote[0m: the method `clone` exists on the type `DateTime<Utc>`
+2026-09-05T19:28:18.9322656Z    [1m[94m--> [0m/rustc/48a229ceaefd4985c50990b14116b6d856af0985/library/core/src/clone.rs:236:4
+2026-09-05T19:28:18.9324037Z     [1m[94m= [0m[1mhelp[0m: items from traits can only be used if the trait is implemented and in scope
+2026-09-05T19:28:18.9325806Z     [1m[94m= [0m[1mnote[0m: the following trait defines an item `clone`, perhaps you need to implement it:
+2026-09-05T19:28:18.9326762Z             candidate #1: `Clone`
+2026-09-05T19:28:18.9327292Z 
+2026-09-05T19:28:18.9697449Z [1m[91merror[E0599][0m[1m: no method named `clone` found for enum `WsMessage` in the current scope[0m
+2026-09-05T19:28:18.9699825Z    [1m[94m--> [0mcrates/cdc-service/src/broadcast.rs:173:52
+2026-09-05T19:28:18.9700734Z     [1m[94m|[0m
+2026-09-05T19:28:18.9701691Z [1m[94m173[0m [1m[94m|[0m             let _ = conn.sender.send(broadcast_msg.clone()).await;
+2026-09-05T19:28:18.9703062Z     [1m[94m|[0m                                                    [1m[91m^^^^^[0m [1m[91mmethod not found in `WsMessage`[0m
+2026-09-05T19:28:18.9704046Z     [1m[94m|[0m
+2026-09-05T19:28:18.9704966Z    [1m[94m::: [0mcrates/cdc-service/src/websocket.rs:49:1
+2026-09-05T19:28:18.9705794Z     [1m[94m|[0m
+2026-09-05T19:28:18.9706512Z [1m[94m 49[0m [1m[94m|[0m pub enum WsMessage {
+2026-09-05T19:28:18.9707628Z     [1m[94m|[0m [1m[94m------------------[0m [1m[94mmethod `clone` not found for this enum[0m
+2026-09-05T19:28:18.9708902Z     [1m[94m|[0m
+2026-09-05T19:28:18.9709716Z [1m[92mnote[0m: the method `clone` exists on the type `DateTime<Utc>`
+2026-09-05T19:28:18.9711020Z    [1m[94m--> [0m/rustc/48a229ceaefd4985c50990b14116b6d856af0985/library/core/src/clone.rs:236:4
+2026-09-05T19:28:18.9712376Z     [1m[94m= [0m[1mhelp[0m: items from traits can only be used if the trait is implemented and in scope
+2026-09-05T19:28:18.9713749Z     [1m[94m= [0m[1mnote[0m: the following trait defines an item `clone`, perhaps you need to implement it:
+2026-09-05T19:28:18.9714722Z             candidate #1: `Clone`
+2026-09-05T19:28:18.9715243Z 
+2026-09-05T19:28:18.9974695Z [1m[91merror[E0382][0m[1m: use of moved value: `creds.token`[0m
+2026-09-05T19:28:18.9976484Z   [1m[94m--> [0mcrates/cli/src/auth.rs:97:74
+2026-09-05T19:28:18.9977282Z    [1m[94m|[0m
+2026-09-05T19:28:18.9979150Z [1m[94m97[0m [1m[94m|[0m     println!("  Token: {}...", &creds.token.unwrap_or_default()[..20.min(creds.token.unwrap_or_default().len())]);
+2026-09-05T19:28:18.9981009Z    [1m[94m|[0m                                             [1m[94m-------------------[0m          [1m[91m^^^^^^^^^^^[0m [1m[91mvalue used here after move[0m
+2026-09-05T19:28:18.9982266Z    [1m[94m|[0m                                             [1m[94m|[0m
+2026-09-05T19:28:18.9983447Z    [1m[94m|[0m                                             [1m[94m`creds.token` moved due to this method call[0m
+2026-09-05T19:28:18.9984435Z    [1m[94m|[0m
+2026-09-05T19:28:18.9985854Z [1m[92mnote[0m: `std::option::Option::<T>::unwrap_or_default` takes ownership of the receiver `self`, which moves `creds.token`
+2026-09-05T19:28:18.9987584Z   [1m[94m--> [0m/rustc/48a229ceaefd4985c50990b14116b6d856af0985/library/core/src/option.rs:1091:35
+2026-09-05T19:28:18.9989889Z    [1m[94m= [0m[1mnote[0m: move occurs because `creds.token` has type `std::option::Option<std::string::String>`, which does not implement the `Copy` trait
+2026-09-05T19:28:18.9991542Z [1m[96mhelp[0m: consider calling `.as_ref()` to borrow the value's contents
+2026-09-05T19:28:18.9992440Z    [1m[94m|[0m
+2026-09-05T19:28:18.9993771Z [1m[94m97[0m [1m[94m| [0m    println!("  Token: {}...", &creds.token[92m.as_ref()[0m.unwrap_or_default()[..20.min(creds.token.unwrap_or_default().len())]);
+2026-09-05T19:28:18.9995254Z    [1m[94m|[0m                                            [92m+++++++++[0m
+2026-09-05T19:28:18.9996367Z [1m[96mhelp[0m: consider calling `.as_mut()` to mutably borrow the value's contents
+2026-09-05T19:28:18.9997314Z    [1m[94m|[0m
+2026-09-05T19:28:18.9998895Z [1m[94m97[0m [1m[94m| [0m    println!("  Token: {}...", &creds.token[92m.as_mut()[0m.unwrap_or_default()[..20.min(creds.token.unwrap_or_default().len())]);
+2026-09-05T19:28:19.0000808Z    [1m[94m|[0m                                            [92m+++++++++[0m
+2026-09-05T19:28:19.0002059Z [1m[96mhelp[0m: you can `clone` the value and consume it, but this might not be your desired behavior
+2026-09-05T19:28:19.0002976Z    [1m[94m|[0m
+2026-09-05T19:28:19.0004170Z [1m[94m97[0m [1m[94m| [0m    println!("  Token: {}...", &creds.token[92m.clone()[0m.unwrap_or_default()[..20.min(creds.token.unwrap_or_default().len())]);
+2026-09-05T19:28:19.0005408Z    [1m[94m|[0m                                            [92m++++++++[0m
+2026-09-05T19:28:19.0005926Z 
+2026-09-05T19:28:19.0303499Z [1m[33mwarning[0m[1m: unused variable: `output`[0m
+2026-09-05T19:28:19.0305235Z   [1m[94m--> [0mcrates/cli/src/commands/project.rs:25:5
+2026-09-05T19:28:19.0306067Z    [1m[94m|[0m
+2026-09-05T19:28:19.0306727Z [1m[94m25[0m [1m[94m|[0m     output: &str,
+2026-09-05T19:28:19.0307927Z    [1m[94m|[0m     [1m[33m^^^^^^[0m [1m[33mhelp: if this is intentional, prefix it with an underscore: `_output`[0m
+2026-09-05T19:28:19.0309637Z    [1m[94m|[0m
+2026-09-05T19:28:19.0310595Z    [1m[94m= [0m[1mnote[0m: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+2026-09-05T19:28:19.0311359Z 
+2026-09-05T19:28:19.0458960Z [1m[33mwarning[0m[1m: unused variable: `config`[0m
+2026-09-05T19:28:19.0460539Z   [1m[94m--> [0mcrates/cli/src/commands/branch.rs:96:9
+2026-09-05T19:28:19.0461351Z    [1m[94m|[0m
+2026-09-05T19:28:19.0462449Z [1m[94m96[0m [1m[94m|[0m     let config = crate::config::Config::load(None)?;
+2026-09-05T19:28:19.0463856Z    [1m[94m|[0m         [1m[33m^^^^^^[0m [1m[33mhelp: if this is intentional, prefix it with an underscore: `_config`[0m
+2026-09-05T19:28:19.0464743Z 
+2026-09-05T19:28:19.0539744Z [1m[33mwarning[0m[1m: variable does not need to be mutable[0m
+2026-09-05T19:28:19.0543038Z    [1m[94m--> [0mcrates/cli/src/commands/push.rs:152:9
+2026-09-05T19:28:19.0543944Z     [1m[94m|[0m
+2026-09-05T19:28:19.0544700Z [1m[94m152[0m [1m[94m|[0m     let mut in_comment = false;
+2026-09-05T19:28:19.0545690Z     [1m[94m|[0m         [1m[94m----[0m[1m[33m^^^^^^^^^^[0m
+2026-09-05T19:28:19.0546856Z     [1m[94m|[0m         [1m[94m|[0m
+2026-09-05T19:28:19.0547809Z     [1m[94m|[0m         [1m[94mhelp: remove this `mut`[0m
+2026-09-05T19:28:19.0548826Z     [1m[94m|[0m
+2026-09-05T19:28:19.0549747Z     [1m[94m= [0m[1mnote[0m: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
+2026-09-05T19:28:19.0550619Z 
+2026-09-05T19:28:19.0551205Z [1m[33mwarning[0m[1m: variable does not need to be mutable[0m
+2026-09-05T19:28:19.0552189Z    [1m[94m--> [0mcrates/cli/src/commands/push.rs:153:9
+2026-09-05T19:28:19.0552990Z     [1m[94m|[0m
+2026-09-05T19:28:19.0553729Z [1m[94m153[0m [1m[94m|[0m     let mut in_string = false;
+2026-09-05T19:28:19.0554646Z     [1m[94m|[0m         [1m[94m----[0m[1m[33m^^^^^^^^^[0m
+2026-09-05T19:28:19.0555470Z     [1m[94m|[0m         [1m[94m|[0m
+2026-09-05T19:28:19.0556253Z     [1m[94m|[0m         [1m[94mhelp: remove this `mut`[0m
+2026-09-05T19:28:19.0556813Z 
+2026-09-05T19:28:19.0557324Z [1m[33mwarning[0m[1m: unused variable: `in_comment`[0m
+2026-09-05T19:28:19.0558486Z    [1m[94m--> [0mcrates/cli/src/commands/push.rs:152:9
+2026-09-05T19:28:19.0559276Z     [1m[94m|[0m
+2026-09-05T19:28:19.0560020Z [1m[94m152[0m [1m[94m|[0m     let mut in_comment = false;
+2026-09-05T19:28:19.0561360Z     [1m[94m|[0m         [1m[33m^^^^^^^^^^^^^^[0m [1m[33mhelp: if this is intentional, prefix it with an underscore: `_in_comment`[0m
+2026-09-05T19:28:19.0562281Z 
+2026-09-05T19:28:19.0562845Z [1m[33mwarning[0m[1m: unused variable: `in_string`[0m
+2026-09-05T19:28:19.0563807Z    [1m[94m--> [0mcrates/cli/src/commands/push.rs:153:9
+2026-09-05T19:28:19.0564601Z     [1m[94m|[0m
+2026-09-05T19:28:19.0565294Z [1m[94m153[0m [1m[94m|[0m     let mut in_string = false;
+2026-09-05T19:28:19.0567023Z     [1m[94m|[0m         [1m[33m^^^^^^^^^^^^^[0m [1m[33mhelp: if this is intentional, prefix it with an underscore: `_in_string`[0m
+2026-09-05T19:28:19.0567914Z 
+2026-09-05T19:28:19.0773868Z [1m[33mwarning[0m[1m: unused variable: `output`[0m
+2026-09-05T19:28:19.0776415Z    [1m[94m--> [0mcrates/cli/src/commands/migrations.rs:123:60
+2026-09-05T19:28:19.0777307Z     [1m[94m|[0m
+2026-09-05T19:28:19.0778657Z [1m[94m123[0m [1m[94m|[0m async fn run_migrations(client: &ApiClient, dry_run: bool, output: &str) -> Result<()> {
+2026-09-05T19:28:19.0780459Z     [1m[94m|[0m                                                            [1m[33m^^^^^^[0m [1m[33mhelp: if this is intentional, prefix it with an underscore: `_output`[0m
+2026-09-05T19:28:19.0781436Z 
+2026-09-05T19:28:19.0781991Z [1m[33mwarning[0m[1m: unused variable: `project_id`[0m
+2026-09-05T19:28:19.0782940Z    [1m[94m--> [0mcrates/cli/src/commands/migrations.rs:124:9
+2026-09-05T19:28:19.0783711Z     [1m[94m|[0m
+2026-09-05T19:28:19.0784565Z [1m[94m124[0m [1m[94m|[0m     let project_id = resolve_project(client).await?;
+2026-09-05T19:28:19.0786064Z     [1m[94m|[0m         [1m[33m^^^^^^^^^^[0m [1m[33mhelp: if this is intentional, prefix it with an underscore: `_project_id`[0m
+2026-09-05T19:28:19.0786996Z 
+2026-09-05T19:28:19.0803307Z [1m[33mwarning[0m[1m: unused variable: `project_id`[0m
+2026-09-05T19:28:19.0804804Z    [1m[94m--> [0mcrates/cli/src/commands/migrations.rs:182:9
+2026-09-05T19:28:19.0805687Z     [1m[94m|[0m
+2026-09-05T19:28:19.0806551Z [1m[94m182[0m [1m[94m|[0m     let project_id = resolve_project(client).await?;
+2026-09-05T19:28:19.0808006Z     [1m[94m|[0m         [1m[33m^^^^^^^^^^[0m [1m[33mhelp: if this is intentional, prefix it with an underscore: `_project_id`[0m
+2026-09-05T19:28:19.0809243Z 
+2026-09-05T19:28:19.0924465Z [1m[33mwarning[0m[1m: unused variable: `key_type`[0m
+2026-09-05T19:28:19.0926208Z    [1m[94m--> [0mcrates/cli/src/commands/status.rs:104:25
+2026-09-05T19:28:19.0927259Z     [1m[94m|[0m
+2026-09-05T19:28:19.0928533Z [1m[94m104[0m [1m[94m|[0m                     let key_type = key["key_type"].as_str().unwrap_or("unknown");
+2026-09-05T19:28:19.0930507Z     [1m[94m|[0m                         [1m[33m^^^^^^^^[0m [1m[33mhelp: if this is intentional, prefix it with an underscore: `_key_type`[0m
+2026-09-05T19:28:19.0931492Z 
+2026-09-05T19:28:19.1785539Z [1mSome errors have detailed explanations: E0277, E0365, E0382, E0599, E0615.[0m
+2026-09-05T19:28:19.1827453Z [1m[33mwarning[0m: `freebuff-cli` (bin "freebuff") generated 13 warnings
+2026-09-05T19:28:19.1829584Z [1m[91merror[0m: could not compile `freebuff-cli` (bin "freebuff") due to 22 previous errors; 13 warnings emitted
+2026-09-05T19:28:19.2470833Z [1m[91merror[E0277][0m[1m: the trait bound `fn({type error}, Query<...>, ...) -> ... {ws_handler}: Handler<_, _>` is not satisfied[0m
+2026-09-05T19:28:19.2472084Z     [1m[94m--> [0mcrates/cdc-service/src/main.rs:105:46
+2026-09-05T19:28:19.2472718Z      [1m[94m|[0m
+2026-09-05T19:28:19.2473700Z [1m[94m 105[0m [1m[94m|[0m         .route("/realtime/v1/websocket", get(websocket::ws_handler))
+2026-09-05T19:28:19.2475611Z      [1m[94m|[0m                                          [1m[94m---[0m [1m[91m^^^^^^^^^^^^^^^^^^^^^[0m [1m[91mthe trait `Handler<_, _>` is not implemented for fn item `fn({type error}, Query<WsQuery>, State<CdcState>) -> ... {ws_handler}`[0m
+2026-09-05T19:28:19.2477188Z      [1m[94m|[0m                                          [1m[94m|[0m
+2026-09-05T19:28:19.2478070Z      [1m[94m|[0m                                          [1m[94mrequired by a bound introduced by this call[0m
+2026-09-05T19:28:19.2479017Z      [1m[94m|[0m
+2026-09-05T19:28:19.2479854Z      [1m[94m= [0m[1mnote[0m: Consider using `#[axum::debug_handler]` to improve the error message
+2026-09-05T19:28:19.2480900Z [1m[96mhelp[0m: the following other types implement trait `Handler<T, S>`
+2026-09-05T19:28:19.2482549Z     [1m[94m--> [0m/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/axum-0.7.9/src/handler/mod.rs:303:1
+2026-09-05T19:28:19.2483472Z      [1m[94m|[0m
+2026-09-05T19:28:19.2484194Z [1m[94m 303[0m [1m[94m|[0m [1m[96m/[0m impl<H, S, T, L> Handler<T, S> for Layered<L, H, T, S>
+2026-09-05T19:28:19.2485020Z [1m[94m 304[0m [1m[94m|[0m [1m[96m|[0m where
+2026-09-05T19:28:19.2485926Z [1m[94m 305[0m [1m[94m|[0m [1m[96m|[0m     L: Layer<HandlerService<H, T, S>> + Clone + Send + 'static,
+2026-09-05T19:28:19.2486861Z [1m[94m 306[0m [1m[94m|[0m [1m[96m|[0m     H: Handler<T, S>,
+2026-09-05T19:28:19.2487497Z [1m[94m...[0m    [1m[96m|[0m
+2026-09-05T19:28:19.2488109Z [1m[94m 310[0m [1m[94m|[0m [1m[96m|[0m     T: 'static,
+2026-09-05T19:28:19.2489225Z [1m[94m 311[0m [1m[94m|[0m [1m[96m|[0m     S: 'static,
+2026-09-05T19:28:19.2490394Z      [1m[94m|[0m [1m[96m|_______________^[0m [1m[96m`axum::handler::Layered<L, H, T, S>` implements `Handler<T, S>`[0m
+2026-09-05T19:28:19.2491279Z      [1m[94m|[0m
+2026-09-05T19:28:19.2492420Z     [1m[94m::: [0m/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/axum-0.7.9/src/routing/method_routing.rs:1309:1
+2026-09-05T19:28:19.2493465Z      [1m[94m|[0m
+2026-09-05T19:28:19.2494135Z [1m[94m1309[0m [1m[94m|[0m [1m[96m/[0m impl<S> Handler<(), S> for MethodRouter<S>
+2026-09-05T19:28:19.2494937Z [1m[94m1310[0m [1m[94m|[0m [1m[96m|[0m where
+2026-09-05T19:28:19.2495654Z [1m[94m1311[0m [1m[94m|[0m [1m[96m|[0m     S: Clone + 'static,
+2026-09-05T19:28:19.2496724Z      [1m[94m|[0m [1m[96m|_______________________^[0m [1m[96m`MethodRouter<S>` implements `Handler<(), S>`[0m
+2026-09-05T19:28:19.2497586Z      [1m[94m|[0m
+2026-09-05T19:28:19.2498988Z     [1m[94m::: [0m/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/axum-extra-0.9.6/src/handler/mod.rs:169:1
+2026-09-05T19:28:19.2500107Z      [1m[94m|[0m
+2026-09-05T19:28:19.2500905Z [1m[94m 169[0m [1m[94m|[0m [1m[96m/[0m impl<H, T, S> Handler<T, S> for IntoHandler<H, T, S>
+2026-09-05T19:28:19.2501750Z [1m[94m 170[0m [1m[94m|[0m [1m[96m|[0m where
+2026-09-05T19:28:19.2502985Z [1m[94m 171[0m [1m[94m|[0m [1m[96m|[0m     H: HandlerCallWithExtractors<T, S> + Clone + Send + 'static,
+2026-09-05T19:28:19.2504071Z [1m[94m 172[0m [1m[94m|[0m [1m[96m|[0m     T: FromRequest<S> + Send + 'static,
+2026-09-05T19:28:19.2505024Z [1m[94m 173[0m [1m[94m|[0m [1m[96m|[0m     T::Rejection: Send,
+2026-09-05T19:28:19.2505879Z [1m[94m 174[0m [1m[94m|[0m [1m[96m|[0m     S: Send + Sync + 'static,
+2026-09-05T19:28:19.2507229Z      [1m[94m|[0m [1m[96m|_____________________________^[0m [1m[96m`axum_extra::handler::IntoHandler<H, T, S>` implements `Handler<T, S>`[0m
+2026-09-05T19:28:19.2509377Z      [1m[94m|[0m
+2026-09-05T19:28:19.2510565Z     [1m[94m::: [0m/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/axum-extra-0.9.6/src/handler/or.rs:55:1
+2026-09-05T19:28:19.2511568Z      [1m[94m|[0m
+2026-09-05T19:28:19.2512437Z [1m[94m  55[0m [1m[94m|[0m [1m[96m/[0m impl<S, L, R, Lt, Rt, M> Handler<(M, Lt, Rt), S> for Or<L, R, Lt, Rt, S>
+2026-09-05T19:28:19.2513375Z [1m[94m  56[0m [1m[94m|[0m [1m[96m|[0m where
+2026-09-05T19:28:19.2514453Z [1m[94m  57[0m [1m[94m|[0m [1m[96m|[0m     L: HandlerCallWithExtractors<Lt, S> + Clone + Send + 'static,
+2026-09-05T19:28:19.2515781Z [1m[94m  58[0m [1m[94m|[0m [1m[96m|[0m     R: HandlerCallWithExtractors<Rt, S> + Clone + Send + 'static,
+2026-09-05T19:28:19.2516645Z [1m[94m...[0m    [1m[96m|[0m
+2026-09-05T19:28:19.2517409Z [1m[94m  62[0m [1m[94m|[0m [1m[96m|[0m     Rt::Rejection: Send,
+2026-09-05T19:28:19.2518501Z [1m[94m  63[0m [1m[94m|[0m [1m[96m|[0m     S: Send + Sync + 'static,
+2026-09-05T19:28:19.2519899Z      [1m[94m|[0m [1m[96m|_____________________________^[0m [1m[96m`axum_extra::handler::Or<L, R, Lt, Rt, S>` implements `Handler<(M, Lt, Rt), S>`[0m
+2026-09-05T19:28:19.2521443Z [1m[92mnote[0m: required by a bound in `axum::routing::get`
+2026-09-05T19:28:19.2522792Z     [1m[94m--> [0m/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/axum-0.7.9/src/routing/method_routing.rs:166:16
+2026-09-05T19:28:19.2523871Z      [1m[94m|[0m
+2026-09-05T19:28:19.2524418Z [1m[94m 166[0m [1m[94m|[0m             H: Handler<T, S>,
+2026-09-05T19:28:19.2525336Z      [1m[94m|[0m                [1m[92m^^^^^^^^^^^^^[0m [1m[92mrequired by this bound in `get`[0m
+2026-09-05T19:28:19.2526036Z [1m[94m...[0m
+2026-09-05T19:28:19.2526597Z [1m[94m 439[0m [1m[94m|[0m top_level_handler_fn!(get, GET);
+2026-09-05T19:28:19.2527328Z      [1m[94m|[0m [1m[94m-------------------------------[0m
+2026-09-05T19:28:19.2528052Z      [1m[94m|[0m [1m[94m|[0m                     [1m[94m|[0m
+2026-09-05T19:28:19.2529216Z      [1m[94m|[0m [1m[94m|[0m                     [1m[94mrequired by a bound in this function[0m
+2026-09-05T19:28:19.2530057Z      [1m[94m|[0m [1m[94min this macro invocation[0m
+2026-09-05T19:28:19.2531775Z      [1m[94m= [0m[1mnote[0m: the full name for the type has been written to '/home/runner/work/freebuff/freebuff/target/debug/deps/freebuff_cdc_service-081473f72cceae70.long-type-12363486731973241492.txt'
+2026-09-05T19:28:19.2533619Z      [1m[94m= [0m[1mnote[0m: consider using `--verbose` to print the full type name to the console
+2026-09-05T19:28:19.2535087Z      [1m[94m= [0m[1mnote[0m: this error originates in the macro `top_level_handler_fn` (in Nightly builds, run with -Z macro-backtrace for more info)
+2026-09-05T19:28:19.2535937Z 
+2026-09-05T19:28:19.2536455Z [1m[91merror[E0425][0m[1m: cannot find function `delete` in this scope[0m
+2026-09-05T19:28:19.2537259Z    [1m[94m--> [0mcrates/cdc-service/src/main.rs:108:50
+2026-09-05T19:28:19.2537825Z     [1m[94m|[0m
+2026-09-05T19:28:19.2539147Z [1m[94m108[0m [1m[94m|[0m         .route("/realtime/v1/channels/:channel", delete(subscription::remove_subscription))
+2026-09-05T19:28:19.2540417Z     [1m[94m|[0m                                                  [1m[91m^^^^^^[0m [1m[91mnot found in this scope[0m
+2026-09-05T19:28:19.2540966Z 
+2026-09-05T19:28:19.2948528Z [1m[33mwarning[0m[1m: unused variable: `data`[0m
+2026-09-05T19:28:19.2949964Z    [1m[94m--> [0mcrates/cdc-service/src/logical_replication.rs:486:38
+2026-09-05T19:28:19.2950960Z     [1m[94m|[0m
+2026-09-05T19:28:19.2952325Z [1m[94m486[0m [1m[94m|[0m     fn parse_truncate_message(&self, data: &[u8]) -> Result<ChangeEvent> {
+2026-09-05T19:28:19.2953751Z     [1m[94m|[0m                                      [1m[33m^^^^[0m [1m[33mhelp: if this is intentional, prefix it with an underscore: `_data`[0m
+2026-09-05T19:28:19.2954671Z     [1m[94m|[0m
+2026-09-05T19:28:19.2955452Z     [1m[94m= [0m[1mnote[0m: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+2026-09-05T19:28:19.2956060Z 
+2026-09-05T19:28:19.3359645Z [1m[91merror[E0004][0m[1m: non-exhaustive patterns: `&FilterCondition::GreaterThanOrEqual(_)` and `&FilterCondition::LessThanOrEqual(_)` not covered[0m
+2026-09-05T19:28:19.3361433Z    [1m[94m--> [0mcrates/cdc-service/src/change_event.rs:258:31
+2026-09-05T19:28:19.3362596Z     [1m[94m|[0m
+2026-09-05T19:28:19.3363252Z [1m[94m258[0m [1m[94m|[0m                         match &col_filter.condition {
+2026-09-05T19:28:19.3364895Z     [1m[94m|[0m                               [1m[91m^^^^^^^^^^^^^^^^^^^^^[0m [1m[91mpatterns `&FilterCondition::GreaterThanOrEqual(_)` and `&FilterCondition::LessThanOrEqual(_)` not covered[0m
+2026-09-05T19:28:19.3366065Z     [1m[94m|[0m
+2026-09-05T19:28:19.3366551Z [1m[92mnote[0m: `FilterCondition` defined here
+2026-09-05T19:28:19.3367265Z    [1m[94m--> [0mcrates/cdc-service/src/change_event.rs:313:10
+2026-09-05T19:28:19.3367875Z     [1m[94m|[0m
+2026-09-05T19:28:19.3368640Z [1m[94m313[0m [1m[94m|[0m pub enum FilterCondition {
+2026-09-05T19:28:19.3369307Z     [1m[94m|[0m          [1m[92m^^^^^^^^^^^^^^^[0m
+2026-09-05T19:28:19.3370173Z [1m[94m...[0m
+2026-09-05T19:28:19.3370875Z [1m[94m321[0m [1m[94m|[0m     GreaterThanOrEqual(serde_json::Value),
+2026-09-05T19:28:19.3371679Z     [1m[94m|[0m     [1m[94m------------------[0m [1m[94mnot covered[0m
+2026-09-05T19:28:19.3372303Z [1m[94m...[0m
+2026-09-05T19:28:19.3372954Z [1m[94m325[0m [1m[94m|[0m     LessThanOrEqual(serde_json::Value),
+2026-09-05T19:28:19.3373758Z     [1m[94m|[0m     [1m[94m---------------[0m [1m[94mnot covered[0m
+2026-09-05T19:28:19.3374656Z     [1m[94m= [0m[1mnote[0m: the matched value is of type `&FilterCondition`
+2026-09-05T19:28:19.3376347Z [1m[96mhelp[0m: ensure that all possible cases are being handled by adding a match arm with a wildcard pattern, a match arm with multiple or-patterns as shown, or multiple match arms
+2026-09-05T19:28:19.3377640Z     [1m[94m|[0m
+2026-09-05T19:28:19.3378405Z [1m[94m297[0m [92m~ [0m                            }[92m,[0m
+2026-09-05T19:28:19.3379756Z [1m[94m298[0m [92m+                             &FilterCondition::GreaterThanOrEqual(_) | &FilterCondition::LessThanOrEqual(_) => todo!()[0m
+2026-09-05T19:28:19.3380736Z     [1m[94m|[0m
+2026-09-05T19:28:19.3380953Z 
+2026-09-05T19:28:19.4094701Z [1m[33mwarning[0m[1m: unused variable: `broadcast_msg`[0m
+2026-09-05T19:28:19.4095896Z   [1m[94m--> [0mcrates/cdc-service/src/broadcast.rs:53:13
+2026-09-05T19:28:19.4096991Z    [1m[94m|[0m
+2026-09-05T19:28:19.4097895Z [1m[94m53[0m [1m[94m|[0m         let broadcast_msg = WsMessage::Broadcast {
+2026-09-05T19:28:19.4099390Z    [1m[94m|[0m             [1m[33m^^^^^^^^^^^^^[0m [1m[33mhelp: if this is intentional, prefix it with an underscore: `_broadcast_msg`[0m
+2026-09-05T19:28:19.4100130Z 
+2026-09-05T19:28:19.4594404Z [1m[33mwarning[0m[1m: unused variable: `project_id_clone`[0m
+2026-09-05T19:28:19.4595273Z    [1m[94m--> [0mcrates/cdc-service/src/main.rs:163:9
+2026-09-05T19:28:19.4595860Z     [1m[94m|[0m
+2026-09-05T19:28:19.4596541Z [1m[94m163[0m [1m[94m|[0m     let project_id_clone = project_id.clone();
+2026-09-05T19:28:19.4598433Z     [1m[94m|[0m         [1m[33m^^^^^^^^^^^^^^^^[0m [1m[33mhelp: if this is intentional, prefix it with an underscore: `_project_id_clone`[0m
+2026-09-05T19:28:19.4599263Z 
+2026-09-05T19:28:19.4616560Z [1m[33mwarning[0m[1m: unused variable: `project_id`[0m
+2026-09-05T19:28:19.4617489Z    [1m[94m--> [0mcrates/cdc-service/src/main.rs:197:14
+2026-09-05T19:28:19.4618379Z     [1m[94m|[0m
+2026-09-05T19:28:19.4619174Z [1m[94m197[0m [1m[94m|[0m         for (project_id, conns) in connections.iter() {
+2026-09-05T19:28:19.4620519Z     [1m[94m|[0m              [1m[33m^^^^^^^^^^[0m [1m[33mhelp: if this is intentional, prefix it with an underscore: `_project_id`[0m
+2026-09-05T19:28:19.4621390Z 
+2026-09-05T19:28:19.4728821Z [1mSome errors have detailed explanations: E0004, E0277, E0425, E0432, E0599, E0603.[0m
+2026-09-05T19:28:19.4730127Z [1mFor more information about an error, try `rustc --explain E0004`.[0m
+2026-09-05T19:28:19.4777913Z [1m[33mwarning[0m: `freebuff-cdc-service` (bin "freebuff-cdc-service") generated 11 warnings
+2026-09-05T19:28:19.4779383Z [1m[91merror[0m: could not compile `freebuff-cdc-service` (bin "freebuff-cdc-service") due to 13 previous errors; 11 warnings emitted
+2026-09-05T19:28:19.8295256Z ##[error]Process completed with exit code 101.
+2026-09-05T19:28:19.8452723Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-09-05T19:28:19.8454013Z Post job cleanup.
+2026-09-05T19:28:19.9340514Z [command]/usr/bin/git version
+2026-09-05T19:28:19.9387497Z git version 2.55.0
+2026-09-05T19:28:19.9430879Z Temporarily overriding HOME='/home/runner/work/_temp/9cf477c3-9c3c-4244-9772-34a68b5c5f00' before making global git config changes
+2026-09-05T19:28:19.9432706Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-05T19:28:19.9437688Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/freebuff/freebuff
+2026-09-05T19:28:19.9486602Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-05T19:28:19.9530414Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-09-05T19:28:19.9793493Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-05T19:28:19.9829971Z http.https://github.com/.extraheader
+2026-09-05T19:28:19.9843294Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-09-05T19:28:19.9882183Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-09-05T19:28:20.0162405Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-09-05T19:28:20.0204854Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-09-05T19:28:20.0654097Z Cleaning up orphan processes
+2026-09-05T19:28:20.1094125Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

@@ -1,0 +1,197 @@
+{
+  "total_count": 2,
+  "jobs": [
+    {
+      "id": 101362722382,
+      "run_id": 33987144358,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/legacy-king/freebuff/actions/runs/33987144358",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUPjr1s8AAAAXmbBmTg",
+      "head_sha": "94ae8cbd50a6bdacffb7a8051674c4ffa839bf0f",
+      "url": "https://api.github.com/repos/legacy-king/freebuff/actions/jobs/101362722382",
+      "html_url": "https://github.com/legacy-king/freebuff/actions/runs/33987144358/job/101362722382",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-09-05T19:27:06Z",
+      "started_at": "2026-09-05T19:27:08Z",
+      "completed_at": "2026-09-05T19:28:21Z",
+      "name": "Rust (check + test build)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-09-05T19:27:09Z",
+          "completed_at": "2026-09-05T19:27:10Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-09-05T19:27:10Z",
+          "completed_at": "2026-09-05T19:27:10Z"
+        },
+        {
+          "name": "Run dtolnay/rust-toolchain@stable",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-09-05T19:27:10Z",
+          "completed_at": "2026-09-05T19:27:20Z"
+        },
+        {
+          "name": "Run Swatinem/rust-cache@v2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-09-05T19:27:20Z",
+          "completed_at": "2026-09-05T19:27:20Z"
+        },
+        {
+          "name": "cargo check --workspace",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 5,
+          "started_at": "2026-09-05T19:27:20Z",
+          "completed_at": "2026-09-05T19:28:19Z"
+        },
+        {
+          "name": "cargo test --no-run",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 6,
+          "started_at": "2026-09-05T19:28:19Z",
+          "completed_at": "2026-09-05T19:28:19Z"
+        },
+        {
+          "name": "Post Run Swatinem/rust-cache@v2",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 11,
+          "started_at": "2026-09-05T19:28:19Z",
+          "completed_at": "2026-09-05T19:28:19Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-09-05T19:28:19Z",
+          "completed_at": "2026-09-05T19:28:20Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-09-05T19:28:20Z",
+          "completed_at": "2026-09-05T19:28:20Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/legacy-king/freebuff/check-runs/101362722382",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000000142,
+      "runner_name": "GitHub Actions 1000000142",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 101362722473,
+      "run_id": 33987144358,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/legacy-king/freebuff/actions/runs/33987144358",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUPjr1s8AAAAXmbBmqQ",
+      "head_sha": "94ae8cbd50a6bdacffb7a8051674c4ffa839bf0f",
+      "url": "https://api.github.com/repos/legacy-king/freebuff/actions/jobs/101362722473",
+      "html_url": "https://github.com/legacy-king/freebuff/actions/runs/33987144358/job/101362722473",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-09-05T19:27:07Z",
+      "started_at": "2026-09-05T19:27:09Z",
+      "completed_at": "2026-09-05T19:27:51Z",
+      "name": "Dashboard (build)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-09-05T19:27:10Z",
+          "completed_at": "2026-09-05T19:27:11Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-09-05T19:27:11Z",
+          "completed_at": "2026-09-05T19:27:12Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-09-05T19:27:12Z",
+          "completed_at": "2026-09-05T19:27:19Z"
+        },
+        {
+          "name": "npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-09-05T19:27:19Z",
+          "completed_at": "2026-09-05T19:27:28Z"
+        },
+        {
+          "name": "npm run build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-09-05T19:27:28Z",
+          "completed_at": "2026-09-05T19:27:49Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-09-05T19:27:49Z",
+          "completed_at": "2026-09-05T19:27:49Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-09-05T19:27:49Z",
+          "completed_at": "2026-09-05T19:27:49Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-09-05T19:27:49Z",
+          "completed_at": "2026-09-05T19:27:49Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/legacy-king/freebuff/check-runs/101362722473",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000000143,
+      "runner_name": "GitHub Actions 1000000143",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ]
+}

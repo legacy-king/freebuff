@@ -130,7 +130,7 @@ impl ReplicationClient {
 
         tracing::debug!("Starting replication: {}", query);
 
-        let mut stream = client.copy_out(&query).await?;
+        let mut stream = Box::pin(client.copy_out(&query).await?);
 
         tracing::info!(
             "Replication stream started for project {} at LSN {}",

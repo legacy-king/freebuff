@@ -4,7 +4,7 @@ use colored::*;
 use crate::client::ApiClient;
 use crate::MigrationCommands;
 
-#[derive(serde::Deserialize)]
+#[derive(serde::Deserialize, serde::Serialize)]
 struct Migration {
     id: String,
     name: String,

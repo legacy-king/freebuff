@@ -4,7 +4,7 @@ use colored::*;
 use crate::client::ApiClient;
 use crate::ProjectCommands;
 
-#[derive(serde::Deserialize)]
+#[derive(serde::Deserialize, serde::Serialize)]
 struct Project {
     id: String,
     name: String,
@@ -105,7 +105,7 @@ async fn list_projects(client: &ApiClient, output: &str) -> Result<()> {
         return Ok(());
     }
 
-    println!("{}", "📋 Projects".cyan().bold);
+    println!("{}", "📋 Projects".cyan().bold());
     println!();
 
     // Table header
