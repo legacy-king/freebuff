@@ -1,0 +1,89 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/shared",
+    "crates/proxy",
+    "crates/gateway",
+    "crates/auth",
+    "crates/control-plane",
+    "crates/storage-service",
+    "crates/wal-service",
+    "crates/branch-service",
+    "crates/cli",
+    "crates/cdc-service",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+repository = "https://github.com/freebuff/freebuff"
+
+[workspace.dependencies]
+# Async runtime
+tokio = { version = "1", features = ["full"] }
+async-trait = "0.1"
+futures = "0.3"
+
+# Web framework
+axum = { version = "0.7", features = ["macros"] }
+axum-extra = { version = "0.9", features = ["typed-header"] }
+tower = { version = "0.4", features = ["full"] }
+tower-http = { version = "0.5", features = ["cors", "trace", "limit"] }
+
+# Serialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Database
+sqlx = { version = "0.8", features = ["runtime-tokio", "tls-rustls", "postgres", "uuid", "chrono", "json"] }
+redis = { version = "0.25", features = ["tokio-comp", "connection-manager"] }
+
+# Auth
+jsonwebtoken = "9"
+argon2 = "0.5"
+rand = "0.8"
+
+# UUIDs
+uuid = { version = "1", features = ["v4", "serde"] }
+
+# Time
+chrono = { version = "0.4", features = ["serde"] }
+
+# Error handling
+thiserror = "1"
+anyhow = "1"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+
+# Networking
+reqwest = { version = "0.12", features = ["json"] }
+tokio-tungstenite = "0.24"
+
+# Postgres protocol (for proxy)
+tokio-postgres = { version = "0.7", features = ["with-uuid-1", "with-chrono-0_4"] }
+postgres-protocol = "0.6"
+
+# Connection pooling
+deadpool-postgres = { version = "0.14" }
+bb8 = "0.8"
+
+# Config
+dotenvy = "0.15"
+
+# Crypto
+sha2 = "0.10"
+hex = "0.4"
+hmac = "0.12"
+
+# CLI
+clap = { version = "4", features = ["derive"] }
+
+# WAL & branching
+flate2 = "1"
+bytes = "1"
+tar = "0.4"
+zstd = "0.13"
+walkdir = "2"

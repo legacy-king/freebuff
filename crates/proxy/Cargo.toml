@@ -1,0 +1,34 @@
+[package]
+name = "freebuff-proxy"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "freebuff-proxy"
+path = "src/main.rs"
+
+[dependencies]
+freebuff-shared = { path = "../shared" }
+tokio.workspace = true
+tokio-postgres.workspace = true
+postgres-protocol.workspace = true
+deadpool-postgres.workspace = true
+bb8.workspace = true
+axum.workspace = true
+tower.workspace = true
+tower-http.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+uuid.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+anyhow.workspace = true
+thiserror.workspace = true
+dotenvy.workspace = true
+clap.workspace = true
+sha2.workspace = true
+hex.workspace = true
+redis.workspace = true
+jsonwebtoken.workspace = true
+chrono.workspace = true

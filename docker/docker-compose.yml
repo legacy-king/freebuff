@@ -1,0 +1,177 @@
+version: "3.8"
+
+services:
+  # ── Control Plane Database ────────────────────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    container_name: freebuff-postgres
+    environment:
+      POSTGRES_USER: freebuff
+      POSTGRES_PASSWORD: freebuff
+      POSTGRES_DB: freebuff
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ../migrations/init.sql:/docker-entrypoint-initdb.d/01-init.sql
+      - ./postgresql-wal.conf:/etc/postgresql/postgresql.conf
+    command: postgres -c config_file=/etc/postgresql/postgresql.conf
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U freebuff"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ── Redis (caching, rate limiting, sessions) ──────────────────────────
+  redis:
+    image: redis:7-alpine
+    container_name: freebuff-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ── MinIO (S3-compatible object storage) ──────────────────────────────
+  minio:
+    image: minio/minio:latest
+    container_name: freebuff-minio
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+
+  # ── WAL Service ──────────────────────────────────────────────────────
+  wal-service:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      args:
+        CRATE: freebuff-wal-service
+    container_name: freebuff-wal-service
+    environment:
+      WAL_HOST: "0.0.0.0"
+      WAL_PORT: "5001"
+      WAL_DIR: /data/wal
+      S3_ENDPOINT: http://minio:9000
+      S3_BUCKET: freebuff-wal
+      S3_ACCESS_KEY: minioadmin
+      S3_SECRET_KEY: minioadmin
+      RUST_LOG: freebuff_wal_service=debug
+    ports:
+      - "5001:5001"
+    volumes:
+      - wal_data:/data/wal
+    depends_on:
+      - minio
+
+  # ── Branch Service ───────────────────────────────────────────────────
+  branch-service:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      args:
+        CRATE: freebuff-branch-service
+    container_name: freebuff-branch-service
+    environment:
+      DATABASE_URL: postgres://freebuff:freebuff@postgres:5432/freebuff
+      BRANCH_DATA_DIR: /data/branches
+      RUST_LOG: freebuff_branch_service=debug
+    ports:
+      - "5002:5002"
+    volumes:
+      - branch_data:/data/branches
+      - pg_binaries:/usr/lib/postgresql
+    depends_on:
+      - postgres
+
+  # ── Control Plane ────────────────────────────────────────────────────
+  control-plane:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      args:
+        CRATE: freebuff-control-plane
+    container_name: freebuff-control-plane
+    environment:
+      DATABASE_URL: postgres://freebuff:freebuff@postgres:5432/freebuff
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: dev-secret-change-in-production
+      API_HOST: "0.0.0.0"
+      API_PORT: "3001"
+      S3_ENDPOINT: http://minio:9000
+      WAL_SERVICE_URL: http://wal-service:5001
+      BRANCH_SERVICE_URL: http://branch-service:5002
+      RUST_LOG: freebuff_control_plane=debug
+    ports:
+      - "3001:3001"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  # ── API Gateway ──────────────────────────────────────────────────────
+  gateway:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      args:
+        CRATE: freebuff-gateway
+    container_name: freebuff-gateway
+    environment:
+      GATEWAY_HOST: "0.0.0.0"
+      GATEWAY_PORT: "8000"
+      CONTROL_PLANE_URL: http://control-plane:3001
+      RUST_LOG: freebuff_gateway=debug
+    ports:
+      - "8000:8000"
+    depends_on:
+      - control-plane
+
+  # ── Database Proxy ───────────────────────────────────────────────────
+  proxy:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      args:
+        CRATE: freebuff-proxy
+    container_name: freebuff-proxy
+    environment:
+      PROXY_HOST: "0.0.0.0"
+      PROXY_PORT: "5433"
+      CONTROL_PLANE_URL: http://control-plane:3001
+      RUST_LOG: freebuff_proxy=debug
+    ports:
+      - "5433:5433"
+    depends_on:
+      - control-plane
+
+  # ── Dashboard ────────────────────────────────────────────────────────
+  dashboard:
+    build:
+      context: ../dashboard
+    container_name: freebuff-dashboard
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:3001
+    ports:
+      - "3000:3000"
+    depends_on:
+      - control-plane
+
+volumes:
+  postgres_data:
+  redis_data:
+  minio_data:
+  wal_data:
+  branch_data:
+  pg_binaries:

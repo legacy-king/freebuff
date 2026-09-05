@@ -1,0 +1,26 @@
+[package]
+name = "freebuff-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Freebuff CLI — manage serverless PostgreSQL from the command line"
+
+[[bin]]
+name = "freebuff"
+path = "src/main.rs"
+
+[dependencies]
+freebuff-shared = { path = "../shared" }
+tokio = { workspace = true }
+clap = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+reqwest = { workspace = true }
+anyhow = { workspace = true }
+colored = "2"
+dirs = "5"
+toml = "0.8"
+dialoguer = "0.11"
+console = "0.15"
+indicatif = "0.17"
+chrono = { workspace = true }

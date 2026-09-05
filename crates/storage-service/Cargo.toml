@@ -1,0 +1,27 @@
+[package]
+name = "freebuff-storage"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "freebuff-storage"
+path = "src/main.rs"
+
+[dependencies]
+freebuff-shared = { path = "../shared" }
+tokio.workspace = true
+axum.workspace = true
+tower.workspace = true
+tower-http.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+sqlx.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+anyhow.workspace = true
+thiserror.workspace = true
+dotenvy.workspace = true
+reqwest.workspace = true
