@@ -1,6 +1,6 @@
 use axum::{
-    extract::{Extensions, Path, Query, State},
-    http::StatusCode,
+    extract::{Path, Query, State},
+    http::{Extensions, StatusCode},
     Json,
 };
 use serde_json::Value;
@@ -151,8 +151,8 @@ pub async fn list_rows(
 pub async fn insert_rows(
     State(state): State<GatewayState>,
     Path(table): Path<String>,
-    Json(body): Json<Value>,
     extensions: Extensions,
+    Json(body): Json<Value>,
 ) -> Result<Json<RestResponse>, AppError> {
     tracing::info!("POST /rest/v1/{} body=..", table);
 
