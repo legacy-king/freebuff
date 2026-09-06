@@ -1,7 +1,6 @@
 use axum::{
-    extract::{Path, Query, State},
+    extract::{Extensions, Path, Query, State},
     http::StatusCode,
-    Extension,
     Json,
 };
 use serde_json::Value;
@@ -14,7 +13,6 @@ use freebuff_shared::AppError;
 /// control plane.
 #[derive(Debug, Clone)]
 pub struct ForwardedToken(pub String);
-
 
 #[derive(Debug, serde::Deserialize)]
 pub struct RestQuery {
@@ -40,16 +38,16 @@ pub struct RestResponse {
 }
 
 /// Reverse-proxy the REST request to the control plane's real `/v1/projects`
-/// (and future org-scoped tables). Currently only `projects` is wired; every other
-/// table returns 501 so the unimplemented surface is explicit rather than returning
-/// empty arrays.
+/// (and future org-scoped tables). Currently only `projects` is wired; every
+/// other table returns 501 so the unimplemented surface is explicit rather than
+/// returning empty arrays.
 async fn proxy_to_control_plane(
     state: &GatewayState,
     verb: reqwest::Method,
     table: &str,
     query: Option<RestQuery>,
     body: Option<Value>,
-    request: &axum::http::Request<axum::body::Body>,
+    extensions: &Extensions,
 ) -> Result<Json<RestResponse>, AppError> {
     if table != "projects" {
         return Err(AppError::BadRequest(format!(
@@ -65,9 +63,9 @@ async fn proxy_to_control_plane(
     let client = reqwest::Client::new();
     let url = format!("{}/v1/projects", state.config.control_plane_url);
 
-    let mut req = match verb {
-        reqwest::Method::GET => client.get(&url),
-        reqwest::Method::POST => client.post(&url).json(&body),
+    let mut req = match (verb, body) {
+        (reqwest::Method::GET, _) => client.get(&url),
+        (reqwest::Method::POST, Some(b)) => client.post(&url).json(&b),
         _ => {
             return Err(AppError::BadRequest(format!(
                 "REST verb not supported for /rest/v1/{}",
@@ -80,7 +78,7 @@ async fn proxy_to_control_plane(
         req = req.header(axum::http::header::AUTHORIZATION, t);
     }
 
-    // Forward pagination/filter query params the control plane already supports
+    // Forward pagination query params the control plane already supports.
     if let Some(q) = query {
         if let Some(limit) = q.limit {
             req = req.query(&[("per_page", limit.to_string())]);
@@ -109,26 +107,26 @@ async fn proxy_to_control_plane(
         AppError::Internal(format!("control plane returned non-JSON: {}", e))
     })?;
 
-    let count = data.get("total").and_then(|v| v.as_i64());
-    let rows: Vec<Value> = data
-        .get("data")
-        .and_then(|v| v.as_array())
-        .cloned()
-        .unwrap_or_default();
+    // The control plane returns either a bare array (GET /v1/projects) or an
+    // envelope with a `data` field (POST /v1/projects -> ApiResponse<Project>).
+    let rows: Vec<Value> = match &data {
+        Value::Array(items) => items.clone(),
+        Value::Object(map) => match map.get("data") {
+            Some(Value::Array(items)) => items.clone(),
+            Some(Value::Object(_)) => vec![map["data"].clone()],
+            _ => Vec::new(),
+        },
+        _ => Vec::new(),
+    };
+    let count = match &data {
+        Value::Array(items) => Some(items.len() as i64),
+        _ => data
+            .get("total")
+            .and_then(|v| v.as_i64())
+            .or(Some(rows.len() as i64)),
+    };
 
     Ok(Json(RestResponse { data: rows, count }))
-}
-
-fn method_not_allowed() -> AppError {
-    AppError::BadRequest("REST verb not supported".into())
-}
-
-fn not_implemented(msg: &str) -> AppError {
-    AppError::BadRequest(msg.into())
-}
-
-fn bad_gateway(msg: impl Into<String>) -> AppError {
-    AppError::Internal(msg.into())
 }
 
 pub async fn list_rows(
@@ -137,7 +135,7 @@ pub async fn list_rows(
     Query(query): Query<RestQuery>,
     extensions: Extensions,
 ) -> Result<Json<RestResponse>, AppError> {
-    tracing::info!("GET /rest/v1/{} org=? query", table);
+    tracing::info!("GET /rest/v1/{} query", table);
 
     proxy_to_control_plane(
         &state,
@@ -156,7 +154,7 @@ pub async fn insert_rows(
     Json(body): Json<Value>,
     extensions: Extensions,
 ) -> Result<Json<RestResponse>, AppError> {
-    tracing::info!("POST /rest/v1/{} org=? body=..", table);
+    tracing::info!("POST /rest/v1/{} body=..", table);
 
     proxy_to_control_plane(
         &state,
@@ -174,12 +172,12 @@ pub async fn update_rows(
     Path(_table): Path<String>,
     Json(_body): Json<Value>,
 ) -> Result<Json<RestResponse>, AppError> {
-    Err(not_implemented("REST PATCH (update) is not implemented yet"))
+    Err(AppError::BadRequest("REST PATCH (update) is not implemented yet".into()))
 }
 
 pub async fn delete_rows(
     State(_state): State<GatewayState>,
     Path(_table): Path<String>,
 ) -> Result<Json<RestResponse>, AppError> {
-    Err(not_implemented("REST DELETE is not implemented yet"))
+    Err(AppError::BadRequest("REST DELETE is not implemented yet".into()))
 }

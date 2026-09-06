@@ -32,8 +32,9 @@ pub async fn auth_middleware(
     };
 
     if let Some(token) = forwarded_token {
+        let prefix: String = token.chars().take(12).collect();
         request.extensions_mut().insert(ForwardedToken(token));
-        tracing::debug!("Forwarded Bearer token to control plane (prefix: {:?})", &forwarded_token.as_deref()[..forwarded_token.as_deref().len().min(12)]);
+        tracing::debug!("Forwarded Bearer token to control plane (prefix: {:?})", prefix);
     } else {
         tracing::debug!("No Bearer token to forward");
     }
