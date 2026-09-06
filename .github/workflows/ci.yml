@@ -23,8 +23,10 @@ jobs:
         # --keep-going: report errors from every crate instead of aborting at the first failure
         run: cargo check --workspace --keep-going
 
-      - name: cargo test --no-run
-        run: cargo test --no-run
+      - name: cargo test
+        # Runs the workspace's unit tests (billing webhook/identifier/meter
+        # math). --keep-going reports failures from every crate.
+        run: cargo test --workspace --keep-going
 
   dashboard:
     name: Dashboard (build)
