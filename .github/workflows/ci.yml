@@ -10,7 +10,7 @@ env:
 
 jobs:
   rust:
-    name: Rust (check + test build)
+    name: Rust (check + test)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
