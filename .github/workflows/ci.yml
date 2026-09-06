@@ -25,8 +25,8 @@ jobs:
 
       - name: cargo test
         # Runs the workspace's unit tests (billing webhook/identifier/meter
-        # math). --keep-going reports failures from every crate.
-        run: cargo test --workspace --keep-going
+        # math).
+        run: cargo test --workspace
 
   dashboard:
     name: Dashboard (build)
