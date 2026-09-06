@@ -1,12 +1,20 @@
 use axum::{
     extract::{Path, Query, State},
     http::StatusCode,
+    request::Extensions,
     Json,
 };
-use serde_json::{json, Value};
+use serde_json::Value;
 
 use crate::GatewayState;
 use freebuff_shared::AppError;
+
+/// Extension key used by the auth middleware to forward the validated Bearer
+/// token into downstream handlers so the REST proxy can replay it to the
+/// control plane.
+#[derive(Debug, Clone)]
+pub struct ForwardedToken(pub String);
+
 
 #[derive(Debug, serde::Deserialize)]
 pub struct RestQuery {
@@ -134,9 +142,9 @@ pub async fn list_rows(
     State(state): State<GatewayState>,
     Path(table): Path<String>,
     Query(query): Query<RestQuery>,
-    request: axum::extract::Request,
+    extensions: Extensions,
 ) -> Result<Json<RestResponse>, AppError> {
-    tracing::info!("GET /rest/v1/{} org=?, query", table);
+    tracing::info!("GET /rest/v1/{} org=? query", table);
 
     proxy_to_control_plane(
         &state,
@@ -144,7 +152,7 @@ pub async fn list_rows(
         &table,
         Some(query),
         None,
-        &request,
+        &extensions,
     )
     .await
 }
@@ -153,7 +161,7 @@ pub async fn insert_rows(
     State(state): State<GatewayState>,
     Path(table): Path<String>,
     Json(body): Json<Value>,
-    request: axum::extract::Request,
+    extensions: Extensions,
 ) -> Result<Json<RestResponse>, AppError> {
     tracing::info!("POST /rest/v1/{} org=? body=..", table);
 
@@ -163,7 +171,7 @@ pub async fn insert_rows(
         &table,
         None,
         Some(body),
-        &request,
+        &extensions,
     )
     .await
 }

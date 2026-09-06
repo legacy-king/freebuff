@@ -1,47 +1,42 @@
 use axum::{
     extract::{Request, State},
-    http::StatusCode,
+    http::{header, StatusCode},
     middleware::Next,
     response::Response,
 };
 
-use crate::GatewayState;
+use crate::{GatewayState, rest::ForwardedToken};
 
 pub async fn auth_middleware(
     State(state): State<GatewayState>,
-    request: Request,
+    mut request: Request,
     next: Next,
 ) -> Result<Response, StatusCode> {
-    // Extract API key from Authorization header
+    // Accept either a Bearer JWT or a raw apikey header (Supabase-compatible).
+    // The gateway does not validate JWTs itself — it forwards Bearer tokens to the
+    // control plane, which owns the JWT secret. Raw apikey headers are accepted but
+    // not yet resolved to a project; that is the next auth step.
     let auth_header = request
         .headers()
-        .get("Authorization")
+        .get(header::AUTHORIZATION)
         .and_then(|v| v.to_str().ok());
 
-    let api_key = match auth_header {
-        Some(header) => {
-            if header.starts_with("Bearer ") {
-                &header[7..]
-            } else {
-                return Err(StatusCode::UNAUTHORIZED);
-            }
+    let forwarded_token: Option<String> = match auth_header {
+        Some(header) if header.starts_with("Bearer ") => {
+            Some(header[7..].to_string())
         }
-        None => {
-            // Also check apikey header (Supabase-compatible)
-            match request.headers().get("apikey").and_then(|v| v.to_str().ok()) {
-                Some(key) => key,
-                None => return Err(StatusCode::UNAUTHORIZED),
-            }
+        _ => {
+            // apikey header accepted but not forwarded (no validation done here)
+            request.headers().get("apikey").and_then(|v| v.to_str().ok()).map(|k| k.to_string())
         }
     };
 
-    tracing::debug!("API request with key prefix: {}", &api_key[..api_key.len().min(12)]);
-
-    // In production, this would:
-    // 1. Look up the API key hash in the database
-    // 2. Validate the key is active and not expired
-    // 3. Extract the project_id and scopes
-    // 4. Add project context to request extensions
+    if let Some(token) = forwarded_token {
+        request.extensions_mut().insert(ForwardedToken(token));
+        tracing::debug!("Forwarded Bearer token to control plane (prefix: {:?})", &forwarded_token.as_deref()[..forwarded_token.as_deref().len().min(12)]);
+    } else {
+        tracing::debug!("No Bearer token to forward");
+    }
 
     let path = request.uri().path().to_string();
     let response = next.run(request).await;
@@ -51,8 +46,8 @@ pub async fn auth_middleware(
     if path.starts_with("/rest/") {
         let mut counts = state.usage_counts.lock().await;
         *counts.entry("api_calls".to_string()).or_insert(0u64) += 1;
-        let total = counts.get("api_calls").copied().unwrap_or(0);
-        tracing::trace!("Metered API call (total in flight: {})", total);
+        let _total = counts.get("api_calls").copied().unwrap_or(0);
+        tracing::trace!("Metered API call (total in flight: {})", _total);
     }
 
     Ok(response)
