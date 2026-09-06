@@ -116,7 +116,7 @@ pub async fn get_user(
     )
     .map_err(|_| AppError::Unauthorized("Invalid token".into()))?;
 
-    let user = crate::db::get_user_by_id(&state.db, &claims.user_id()).await?;
+    let user = crate::db::get_user_by_id(&state.db, claims.user_id()).await?;
 
     Ok(Json(UserPublic {
         id: user.id,
@@ -137,7 +137,7 @@ pub async fn update_user(
     )
     .map_err(|_| AppError::Unauthorized("Invalid token".into()))?;
 
-    let user = crate::db::update_user(&state.db, &claims.user_id(), input.email.as_deref(), input.password.as_deref()).await?;
+    let user = crate::db::update_user(&state.db, claims.user_id(), input.email.as_deref(), input.password.as_deref()).await?;
 
     Ok(Json(UserPublic {
         id: user.id,

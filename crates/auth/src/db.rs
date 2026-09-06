@@ -47,7 +47,9 @@ pub async fn verify_password(pool: &PgPool, email: &str, password: &str) -> Resu
     let parsed_hash = argon2::password_hash::PasswordHash::new(&user.password_hash)
         .map_err(|e| AppError::Internal(format!("Invalid hash: {}", e)))?;
 
-    argon2::password_hash::PasswordHash::verify_password(password.as_bytes(), &parsed_hash)
+    use argon2::password_hash::PasswordVerifier;
+    argon2::Argon2::default()
+        .verify_password(password.as_bytes(), &parsed_hash)
         .map_err(|_| AppError::Unauthorized("Invalid credentials".into()))?;
 
     Ok(user)

@@ -20,7 +20,8 @@ jobs:
       - uses: Swatinem/rust-cache@v2
 
       - name: cargo check --workspace
-        run: cargo check --workspace
+        # --keep-going: report errors from every crate instead of aborting at the first failure
+        run: cargo check --workspace --keep-going
 
       - name: cargo test --no-run
         run: cargo test --no-run
