@@ -5,7 +5,7 @@ use axum::{
     response::Response,
 };
 
-use crate::{GatewayState, rest::ForwardedToken};
+use crate::{GatewayState, routes::rest::ForwardedToken};
 
 pub async fn auth_middleware(
     State(state): State<GatewayState>,

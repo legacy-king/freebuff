@@ -1,7 +1,7 @@
 use axum::{
     extract::{Path, Query, State},
     http::StatusCode,
-    request::Extensions,
+    Extension,
     Json,
 };
 use serde_json::Value;
@@ -39,16 +39,6 @@ pub struct RestResponse {
     pub count: Option<i64>,
 }
 
-/// Resolve the requesting org from the Bearer JWT forwarded from the gateway's
-/// auth middleware. The control plane validates the token; here we forward it on
-/// every proxied request and let the control plane reject invalid/expired tokens.
-fn extract_forwarded_token(req: &axum::http::Request<axum::body::Body>) -> Option<String> {
-    req.headers()
-        .get(axum::http::header::AUTHORIZATION)
-        .and_then(|v| v.to_str().ok())
-        .map(|h| h.to_string())
-}
-
 /// Reverse-proxy the REST request to the control plane's real `/v1/projects`
 /// (and future org-scoped tables). Currently only `projects` is wired; every other
 /// table returns 501 so the unimplemented surface is explicit rather than returning
@@ -68,13 +58,16 @@ async fn proxy_to_control_plane(
         )));
     }
 
-    let token = extract_forwarded_token(request);
+    let token = extensions
+        .get::<ForwardedToken>()
+        .map(|t| t.0.clone());
+
     let client = reqwest::Client::new();
     let url = format!("{}/v1/projects", state.config.control_plane_url);
 
-    let mut req = match (verb, body) {
-        ("GET", None) => client.get(&url),
-        ("POST", Some(b)) => client.post(&url).json(&b),
+    let mut req = match verb {
+        reqwest::Method::GET => client.get(&url),
+        reqwest::Method::POST => client.post(&url).json(&body),
         _ => {
             return Err(AppError::BadRequest(format!(
                 "REST verb not supported for /rest/v1/{}",
