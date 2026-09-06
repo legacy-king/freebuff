@@ -4,9 +4,9 @@ use axum::{
     http::HeaderMap,
     Json,
 };
-use axum_extra::headers::authorization::Bearer;
+use axum_extra::headers::authorization::{Authorization, Bearer};
 use axum_extra::TypedHeader;
-use chrono::{DateTime, Utc};
+use chrono::{DateTime, Datelike, Utc};
 use serde::Deserialize;
 use uuid::Uuid;
 
@@ -43,6 +43,13 @@ fn bearer_email(bearer: Option<&str>, state: &AppState) -> Option<String> {
     })
 }
 
+/// Extract the bearer token string from the optional typed auth header.
+fn bearer_token(bearer: &Option<TypedHeader<Authorization<Bearer>>>) -> Option<&str> {
+    bearer
+        .as_ref()
+        .map(|TypedHeader(Authorization(b))| b.token())
+}
+
 #[derive(Debug, Deserialize)]
 pub struct UsageQuery {
     pub from: Option<DateTime<Utc>>,
@@ -51,16 +58,16 @@ pub struct UsageQuery {
 
 pub async fn get_account(
     State(state): State<AppState>,
-    bearer: Option<TypedHeader<Bearer>>,
+    bearer: Option<TypedHeader<Authorization<Bearer>>>,
 ) -> Result<Json<ApiResponse<BillingAccountPublic>>, AppError> {
-    let org_id = resolve_org(&state, bearer.as_deref().map(|b| b.token()));
+    let org_id = resolve_org(&state, bearer_token(&bearer));
     let account = crate::db::billing::ensure_billing_account(&state.db, org_id).await?;
     Ok(Json(ApiResponse::new(account.into())))
 }
 
 pub async fn create_checkout_session(
     State(state): State<AppState>,
-    bearer: Option<TypedHeader<Bearer>>,
+    bearer: Option<TypedHeader<Authorization<Bearer>>>,
     Json(input): Json<StripeSessionRequest>,
 ) -> Result<Json<ApiResponse<StripeSessionResponse>>, AppError> {
     if !state.config.stripe_enabled() {
@@ -74,8 +81,8 @@ pub async fn create_checkout_session(
         ));
     }
 
-    let org_id = resolve_org(&state, bearer.as_deref().map(|b| b.token()));
-    let email = bearer_email(bearer.as_deref().map(|b| b.token()), &state);
+    let org_id = resolve_org(&state, bearer_token(&bearer));
+    let email = bearer_email(bearer_token(&bearer), &state);
     let account = crate::db::billing::ensure_billing_account(&state.db, org_id).await?;
 
     // Create a Stripe customer on first checkout.
@@ -90,7 +97,7 @@ pub async fn create_checkout_session(
                 "Freebuff Org",
             )
             .await?;
-            crate::db::billing::set_stripe_customer(&state.db, org_id, &id, email.as_deref())
+            crate::db::billing::set_stripe_customer(&state.db, org_id, &id, Some(email))
                 .await?;
             id
         }
@@ -120,7 +127,7 @@ pub async fn create_checkout_session(
 
 pub async fn create_portal_session(
     State(state): State<AppState>,
-    bearer: Option<TypedHeader<Bearer>>,
+    bearer: Option<TypedHeader<Authorization<Bearer>>>,
     Json(input): Json<StripeSessionRequest>,
 ) -> Result<Json<ApiResponse<StripeSessionResponse>>, AppError> {
     if !state.config.stripe_enabled() {
@@ -129,7 +136,7 @@ pub async fn create_portal_session(
         ));
     }
 
-    let org_id = resolve_org(&state, bearer.as_deref().map(|b| b.token()));
+    let org_id = resolve_org(&state, bearer_token(&bearer));
     let account = crate::db::billing::ensure_billing_account(&state.db, org_id).await?;
 
     let customer_id = account.stripe_customer_id.as_deref().unwrap_or_default();
@@ -157,9 +164,9 @@ pub async fn create_portal_session(
 
 pub async fn cancel_subscription(
     State(state): State<AppState>,
-    bearer: Option<TypedHeader<Bearer>>,
+    bearer: Option<TypedHeader<Authorization<Bearer>>>,
 ) -> Result<Json<ApiResponse<BillingAccountPublic>>, AppError> {
-    let org_id = resolve_org(&state, bearer.as_deref().map(|b| b.token()));
+    let org_id = resolve_org(&state, bearer_token(&bearer));
     let account = crate::db::billing::ensure_billing_account(&state.db, org_id).await?;
 
     let subscription_id = account.stripe_subscription_id.as_deref().unwrap_or_default();
@@ -180,10 +187,10 @@ pub async fn cancel_subscription(
 
 pub async fn get_usage(
     State(state): State<AppState>,
-    bearer: Option<TypedHeader<Bearer>>,
+    bearer: Option<TypedHeader<Authorization<Bearer>>>,
     Query(query): Query<UsageQuery>,
 ) -> Result<Json<ApiResponse<UsageSummary>>, AppError> {
-    let org_id = resolve_org(&state, bearer.as_deref().map(|b| b.token()));
+    let org_id = resolve_org(&state, bearer_token(&bearer));
 
     let now = Utc::now();
     let period_start = query.from.unwrap_or_else(|| {

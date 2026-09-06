@@ -39,6 +39,7 @@ pub async fn create_endpoint(
     branch_id: Uuid,
 ) -> Result<ComputeEndpoint, AppError> {
     let compute_size = ComputeSize::Small;
+    let max_connections = compute_size.max_connections();
 
     let endpoint = sqlx::query_as::<_, ComputeEndpoint>(
         r#"
@@ -50,7 +51,7 @@ pub async fn create_endpoint(
     .bind(branch_id)
     .bind(project_id)
     .bind(compute_size)
-    .bind(compute_size.max_connections())
+    .bind(max_connections)
     .fetch_one(pool)
     .await?;
 

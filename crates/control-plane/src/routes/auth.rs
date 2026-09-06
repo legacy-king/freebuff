@@ -1,5 +1,5 @@
 use axum::{extract::State, Json};
-use axum_extra::headers::authorization::Bearer;
+use axum_extra::headers::authorization::{Authorization, Bearer};
 use axum_extra::TypedHeader;
 
 use crate::AppState;
@@ -61,7 +61,7 @@ pub async fn login(
 
 pub async fn me(
     State(state): State<AppState>,
-    TypedHeader(bearer): TypedHeader<Bearer>,
+    TypedHeader(Authorization(bearer)): TypedHeader<Authorization<Bearer>>,
 ) -> Result<Json<UserPublic>, AppError> {
     let claims = freebuff_shared::auth::decode_access_token(
         bearer.token(),

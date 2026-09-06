@@ -1,4 +1,4 @@
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize)]
 pub struct ApiResponse<T: Serialize> {
@@ -22,7 +22,7 @@ pub struct ApiErrorDetail {
     pub message: String,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct IdResponse {
     pub id: String,
 }

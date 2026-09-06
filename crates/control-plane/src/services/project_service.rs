@@ -14,7 +14,7 @@ pub async fn create_project(state: &AppState, input: CreateProject) -> Result<Pr
     let org_id = Uuid::parse_str("00000000-0000-0000-0000-000000000001")
         .map_err(|_| AppError::Internal("Invalid default org ID".into()))?;
 
-    let slug = input.slug.unwrap_or_else(|| {
+    let slug = input.slug.clone().unwrap_or_else(|| {
         input
             .name
             .to_lowercase()

@@ -345,7 +345,7 @@ pub async fn create_branch_timeline(
     drop(timelines);
 
     // Create the new timeline — it starts with the parent's WAL up to the fork point
-    let new_timeline = Arc::new(Timeline::new(
+    let mut new_timeline = Arc::new(Timeline::new(
         input.branch_timeline_id.clone(),
         Some(input.parent_timeline_id.clone()),
         Some(fork_lsn),

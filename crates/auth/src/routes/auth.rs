@@ -1,5 +1,5 @@
 use axum::{extract::State, Json};
-use axum_extra::headers::authorization::Bearer;
+use axum_extra::headers::authorization::{Authorization, Bearer};
 use axum_extra::TypedHeader;
 use serde::{Deserialize, Serialize};
 
@@ -108,7 +108,7 @@ pub async fn token(
 
 pub async fn get_user(
     State(state): State<AuthState>,
-    TypedHeader(bearer): TypedHeader<Bearer>,
+    TypedHeader(Authorization(bearer)): TypedHeader<Authorization<Bearer>>,
 ) -> Result<Json<UserPublic>, AppError> {
     let claims = freebuff_shared::auth::decode_access_token(
         bearer.token(),
@@ -128,7 +128,7 @@ pub async fn get_user(
 
 pub async fn update_user(
     State(state): State<AuthState>,
-    TypedHeader(bearer): TypedHeader<Bearer>,
+    TypedHeader(Authorization(bearer)): TypedHeader<Authorization<Bearer>>,
     Json(input): Json<UpdateUserRequest>,
 ) -> Result<Json<UserPublic>, AppError> {
     let claims = freebuff_shared::auth::decode_access_token(
@@ -149,7 +149,7 @@ pub async fn update_user(
 
 pub async fn logout(
     State(_state): State<AuthState>,
-    TypedHeader(_bearer): TypedHeader<Bearer>,
+    TypedHeader(Authorization(_bearer)): TypedHeader<Authorization<Bearer>>,
 ) -> Result<Json<serde_json::Value>, AppError> {
     // In production, this would invalidate the refresh token
     Ok(Json(serde_json::json!({ "message": "Logged out" })))
